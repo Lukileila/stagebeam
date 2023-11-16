@@ -4,7 +4,7 @@ const Layout = () => {
   return (
     <div className="layout">
         <header>
-            <nav className="h-[1vh] bg-black text-white text-xs">
+            <nav className="h-[3vh] bg-black text-white text-xs">
                  <NavLink to="/">| Home</NavLink> | 
                 | <NavLink to="templates">Templates</NavLink>  | 
                 | <NavLink to="dashboard">Dashboard</NavLink>  | 
