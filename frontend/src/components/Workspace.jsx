@@ -73,7 +73,7 @@ export const Workspace = () => {
               e.preventDefault();
             }}
           >
-            <h1 className='text-white text-xl'>StagePlanner</h1>
+            <h1 className='text-gray-700 p-2 text-xl'>StagePlanner</h1>
             <div
               className='bg-amber-200 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%]'
               style={{
@@ -101,4 +101,4 @@ export const Workspace = () => {
             ></div>
           </div>
         );
-      }
+}
