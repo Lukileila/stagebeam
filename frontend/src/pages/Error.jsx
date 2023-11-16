@@ -1,4 +1,4 @@
-export default function Error(){    
+export const Error=()=>{    
     return (
     <>
     <div>
