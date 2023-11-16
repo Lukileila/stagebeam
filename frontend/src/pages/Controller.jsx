@@ -1,5 +1,8 @@
 export const Controller = () => {
   return (
-    <div>Controller</div>
+    <div>Objects</div>
+    <div>
+        <div>Beamer</div>
+    </div>
   )
 }
