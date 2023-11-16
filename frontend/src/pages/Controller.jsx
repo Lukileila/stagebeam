@@ -6,8 +6,8 @@ export const Controller = () => {
   return (
     <>
     <ObjectsMenu/>
-    <Workspace/>
     <Timeline/>
+    <Workspace/> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
     </>
           )
 }

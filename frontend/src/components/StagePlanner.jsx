@@ -7,7 +7,9 @@ export const StagePlanner = ({ spotlight, setspotlight }) => {
     
     useEffect(() => {
         setStageDimensions(stageContainer.current.getBoundingClientRect());
+        console.log("stageDimension:",stageDimensions);  //returns undefined
     }, []);
+
     
     const dragLight = (e) => {
         e.target.classList.add('opacity-40');
@@ -15,8 +17,9 @@ export const StagePlanner = ({ spotlight, setspotlight }) => {
     
     const stopDrag = (e) => {
         e.target.classList.remove('opacity-40');
-        let x = e.clientX;
-        let y = e.clientY - stageDimensions.top;
+        let x = e.clientX  -stageDimensions.left ;
+        let y = e.clientY  - stageDimensions.top ;
+        console.log("stageDimension from stopDrag:",stageDimensions); //returns valid getBoundingClientRect
     
         setspotlight({ x, y });
     
@@ -31,15 +34,16 @@ export const StagePlanner = ({ spotlight, setspotlight }) => {
     
     return (
         <div
-        className='fixed bg-black top-[3vh] h-[67vh] left-[30vw] w-[70vw] border-2 overflow-hidden group/canvas'
+        className='fixed bg-black top-[3vh] h-[67vh] left-[30vw] w-[70vw] border-2 overflow-visible /* group/canvas */ z-1'
         ref={stageContainer}
-        onDragOver={(e) => {
+
+     /*    onDragOver={(e) => {
             e.preventDefault();
-        }}
+        }} */
         >
         <h1 className='text-gray-700 p-2 text-xl'>StagePlanner</h1>
         <div
-            className='bg-amber-200 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%]'
+            className='bg-blue-500 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%] z-10'
             style={{
             top: spotlight.y + 'px',
             left: spotlight.x + 'px',
