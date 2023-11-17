@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export const StagePlanner = ({ spotlight, setspotlight }) => {
+export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio }) => {
 
     const stageContainer = useRef();
     const [stageDimensions, setStageDimensions] = useState();
@@ -41,8 +41,8 @@ export const StagePlanner = ({ spotlight, setspotlight }) => {
             e.preventDefault();
         }} */
         >
-                                <div className="absolute bg-tansparent border-2 border-pink-500 h-10 w-10 z-30"></div>
-        <h1 className='text-gray-700 p-2 text-xl'>StagePlanner</h1>
+
+        <h1 className='absolute text-gray-700 p-2 text-xl'>StagePlanner</h1>
         <div
             className='bg-blue-500 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%] z-10'
             style={{
@@ -53,6 +53,7 @@ export const StagePlanner = ({ spotlight, setspotlight }) => {
             onDragStart={dragLight}
             onDragEnd={stopDrag}
         ></div>
+                <div className=" bg-tansparent border-2 border-pink-500 w-full z-30 mt-auto my-auto" style={{aspectRatio:projectionAspectRatio}}> </div>
         </div>
     );
 }
