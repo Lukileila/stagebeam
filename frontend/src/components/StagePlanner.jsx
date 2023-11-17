@@ -41,6 +41,7 @@ export const StagePlanner = ({ spotlight, setspotlight }) => {
             e.preventDefault();
         }} */
         >
+                                <div className="absolute bg-tansparent border-2 border-pink-500 h-10 w-10 z-30"></div>
         <h1 className='text-gray-700 p-2 text-xl'>StagePlanner</h1>
         <div
             className='bg-blue-500 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%] z-10'

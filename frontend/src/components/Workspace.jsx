@@ -34,11 +34,12 @@ export const Workspace = () => {
 
 
     return (
-
-        <StagePlanner
-            spotlight={spotlight}
-            setspotlight={setspotlight}
-        />
+        <>
+            <StagePlanner
+                spotlight={spotlight}
+                setspotlight={setspotlight}
+            />
+        </>
 
     );
 }

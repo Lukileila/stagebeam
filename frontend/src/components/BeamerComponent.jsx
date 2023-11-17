@@ -31,18 +31,6 @@ export const BeamerComponent = () => {
         };
     }, []);
 
-    useEffect(() => {
-        setspotlight(
-        localStorage.getItem('light') ?? {
-            x: 10,
-            y: 90,
-        }
-        );
-        window.addEventListener('storage', onStorageUpdate);
-        return () => {
-        window.removeEventListener('storage', onStorageUpdate);
-        };
-    }, []);
 
 
 
