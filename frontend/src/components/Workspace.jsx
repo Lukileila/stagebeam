@@ -11,6 +11,11 @@ export const Workspace = () => {
         y: 40,
     });
 
+    const [ratioCoords, setRatioCoords] = useState({
+        x: 0.5,
+        y: 0.5,
+    });
+
     const [projectionAspectRatio, setProjectionAspectRatio] = useState(1);
 
 
@@ -19,12 +24,14 @@ export const Workspace = () => {
         const { key, newValue } = e;
         if (key === 'light') {
             setspotlight(JSON.parse(newValue));
+        } else if (key === 'ratioCoords') {
+            setRatioCoords(JSON.parse(newValue));
         } else if (key ==='projectionAspectRatio'){
             setProjectionAspectRatio(newValue);
         }
     };
 
- //Event Listener
+ //Event Listener, listening to storage updates
     useEffect(() => {
 
         setspotlight(
@@ -33,6 +40,9 @@ export const Workspace = () => {
         setProjectionAspectRatio(
             localStorage.getItem('projectionAspectRatio') ?? 2
         );
+        setRatioCoords(
+            localStorage.getItem('ratioCoords') ?? { x: 0.5, y: 0.5,}
+        );
 
         window.addEventListener('storage', onStorageUpdate);
         return () => {
@@ -40,6 +50,7 @@ export const Workspace = () => {
         };
     }, []);
 
+ //Console logging a state as it changes
     useEffect(() => {
    console.log("projectionAspectRatio State is:",projectionAspectRatio)
     }, [projectionAspectRatio]); 
@@ -50,6 +61,8 @@ export const Workspace = () => {
             <StagePlanner
                 spotlight={spotlight}
                 setspotlight={setspotlight}
+                ratioCoords={ratioCoords}
+                setRatioCoords={setRatioCoords}
                 projectionAspectRatio={projectionAspectRatio}
                 setProjectionAspectRatio={setProjectionAspectRatio}
             />
