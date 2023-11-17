@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export const Beamer = ({ spotlight }) => {
+export const Beamer = ({ spotlight, relCoords }) => {
 
     const [projectionAspectRatio, setProjectionAspectRatio] = useState(1);
 
@@ -19,14 +19,14 @@ export const Beamer = ({ spotlight }) => {
     useEffect(() => { getScreenAspectRatio() }, []);
 
  //Event Listener
-
-    useEffect(() => {
+//not working yet
+/*     useEffect(() => {
             addEventListener("fullscreenchange",(e)=>getScreenAspectRatio);
         return () => {
             removeEventListener("fullscreenchange",(e)=>getScreenAspectRatio);
         };
     }, []);
-
+ */
 
     return (
    
@@ -40,6 +40,16 @@ export const Beamer = ({ spotlight }) => {
             }}
         >
         </div>
+{/* 
+        <div
+            className='bg-purple-900 w-20 aspect-square rounded-full absolute -translate-x-[50%] -translate-y-[50%]'
+            style={{
+            top: relCoords.y + 'px',
+            left: relCoords.x + 'px',
+            }}
+        >
+        </div> */}
+
         </div>
     );
 }
