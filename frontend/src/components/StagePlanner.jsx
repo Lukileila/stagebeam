@@ -16,7 +16,6 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
     useEffect(() => {
         const handleResize = () => {
             let x=workspace.current.getBoundingClientRect();
-            console.log("x.width",x.width,"x.height",x.height,"w/h",x.width/x.height,"projectionAspectRatio",projectionAspectRatio);
             if ((x.width/x.height)>projectionAspectRatio){setAspectToggle(true) }else setAspectToggle(false);
             setStageDimensions(stageContainer.current.getBoundingClientRect());
         };
@@ -39,7 +38,6 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
         let x = e.clientX  -stageDimensions.left ;
         let y = e.clientY  -stageDimensions.top ;
         setspotlight({ x, y });
-        console.log("stageDimension from stopDrag:",stageDimensions); //returns valid getBoundingClientRect */
 
         localStorage.setItem(
             'light',
@@ -61,20 +59,7 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
             })
             );    
     };
-
-    useEffect(() => {
-        console.log("projectionAspectRatio State is:",projectionAspectRatio)
-         }, [projectionAspectRatio]); 
-    useEffect(() => {
-        console.log("relCoords are:",relCoords)
-        }, [relCoords]); 
-    useEffect(() => {
-        console.log("stage dimensions are:",stageDimensions)
-        }, [stageDimensions]); 
-        useEffect(() => {
-            console.log("aspectToggle is:",aspectToggle)
-            }, [aspectToggle]); 
-         
+        
     
     return (
         <div className='fixed bg-black text-white top-[3vh] h-[67vh] left-[30vw] w-[70vw] border-2 overflow-visible /* group/canvas */ z-1  ' ref={workspace}>
@@ -83,7 +68,7 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
 
             <div className={`relative bg-transparent border-2 border-pink-500 ${aspectToggle && 'h-full'} z-30`} style={{aspectRatio:projectionAspectRatio}} ref={stageContainer}>
 
-            <div className="flex flex-wrap w-full h-full justify-end content-end"><p>spotlight.y:| relCoords.y:{parseFloat(relCoords.ry).toFixed(2)} relCoords.x:{parseFloat(relCoords.rx).toFixed(2)}| beamer aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</p></div>
+            <div className="flex flex-wrap w-full h-full justify-end content-end"><p>relCoords.y:{parseFloat(relCoords.ry).toFixed(2)} relCoords.x:{parseFloat(relCoords.rx).toFixed(2)}| beamer aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</p></div>
 
                 <div
                     className='bg-blue-500 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%] z-10'
