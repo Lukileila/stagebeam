@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export const Beamer = ({ spotlight, relCoords }) => {
+export const BeamerDisplay = ({ spotlight, relCoords }) => {
 
     const [projectionAspectRatio, setProjectionAspectRatio] = useState(1);
 
@@ -16,7 +16,7 @@ export const Beamer = ({ spotlight, relCoords }) => {
         localStorage.setItem('projectionAspectRatio',ratio);
     };
 
-    useEffect(() => { getScreenAspectRatio() }, []);
+    useEffect(() => { getScreenAspectRatio() }, []); // Executed only on reload but should listen to a bunch of events like fullscreenchange
 
  //Event Listener
 //not working yet
@@ -30,22 +30,14 @@ export const Beamer = ({ spotlight, relCoords }) => {
 
     return (
    
-        <div className='bg-black h-[97vh] relative overflow-hidden border-2'>
-        <h1 className='text-white text-xl'>I&apos;m just a beaaaaamer</h1>
-        <div
-            className='bg-amber-200 w-20 aspect-square rounded-full absolute -translate-x-[50%] -translate-y-[50%]'
-            style={{
-            top: spotlight.y + 'px',
-            left: spotlight.x + 'px',
-            }}
-        >
-        </div>
+        <div className='bg-black h-[100vh] relative overflow-hidden'>
+                        <div className="p-2 flex text-gray-800 flex-wrap w-full h-full justify-end content-end"><p>free version of StageBeam.live</p></div>
 
         <div
-            className='bg-purple-900 w-20 aspect-square rounded-full absolute -translate-x-[50%] -translate-y-[50%]'
+            className='bg-amber-100 w-[300px] aspect-square rounded-full absolute -translate-x-[50%] -translate-y-[50%]'
             style={{
-            top: relCoords.y + 'px',
-            left: relCoords.x + 'px',
+                top: relCoords.ry*100 + '%',
+                left: relCoords.rx*100 + '%',
             }}
         >
         </div>

@@ -1,7 +1,7 @@
-import { BeamerComponent } from "../components/BeamerComponent"
+import { BeamerManager } from "../components/BeamerManager"
 
 export const Beamer = () => {
   return (
-    <BeamerComponent/>
+    <BeamerManager/>
   )
 }

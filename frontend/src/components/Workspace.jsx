@@ -11,9 +11,9 @@ export const Workspace = () => {
         y: 40,
     });
 
-    const [ratioCoords, setRatioCoords] = useState({
-        x: 0.5,
-        y: 0.5,
+    const [relCoords, setrelCoords] = useState({
+        rx: 0.5,
+        ry: 0.5,
     });
 
     const [projectionAspectRatio, setProjectionAspectRatio] = useState(1);
@@ -24,8 +24,8 @@ export const Workspace = () => {
         const { key, newValue } = e;
         if (key === 'light') {
             setspotlight(JSON.parse(newValue));
-        } else if (key === 'ratioCoords') {
-            setRatioCoords(JSON.parse(newValue));
+        } else if (key === 'relCoords') {
+            setrelCoords(JSON.parse(newValue));
         } else if (key ==='projectionAspectRatio'){
             setProjectionAspectRatio(newValue);
         }
@@ -40,8 +40,8 @@ export const Workspace = () => {
         setProjectionAspectRatio(
             localStorage.getItem('projectionAspectRatio') ?? 2
         );
-        setRatioCoords(
-            localStorage.getItem('ratioCoords') ?? { x: 0.5, y: 0.5,}
+        setrelCoords(
+            localStorage.getItem('relCoords') ?? { rx: 0.5, ry: 0.5,}
         );
 
         window.addEventListener('storage', onStorageUpdate);
@@ -61,8 +61,8 @@ export const Workspace = () => {
             <StagePlanner
                 spotlight={spotlight}
                 setspotlight={setspotlight}
-                ratioCoords={ratioCoords}
-                setRatioCoords={setRatioCoords}
+                relCoords={relCoords}
+                setrelCoords={setrelCoords}
                 projectionAspectRatio={projectionAspectRatio}
                 setProjectionAspectRatio={setProjectionAspectRatio}
             />

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Beamer } from "./Beamer";
+import { BeamerDisplay } from "./BeamerDisplay";
 
 
-export const BeamerComponent = () => {
+export const BeamerManager = () => {
 
     //absolute Coordinates
     const [spotlight, setspotlight] = useState({
@@ -12,8 +12,8 @@ export const BeamerComponent = () => {
 
     //relative Coordinates
     const [relCoords, setRelCoords] = useState({
-        x: 0.8,
-        y: 0.8,
+        rx: 0.8,
+        ry: 0.8,
     });
 
     //updating function for Both
@@ -21,8 +21,8 @@ export const BeamerComponent = () => {
         const { key, newValue } = e;
         if (key === 'light') {
         setspotlight(JSON.parse(newValue));
-        } else if (key === 'ratioCoords') {
-        setRatioCoords(JSON.parse(newValue));}
+        } else if (key === 'relCoords') {
+        setRelCoords(JSON.parse(newValue));}
     };
 
 
@@ -35,8 +35,8 @@ export const BeamerComponent = () => {
         );
         setRelCoords(
         localStorage.getItem('relCoords') ?? {
-            x:0.1,
-            y:0.1,
+            rx:0.1,
+            ry:0.1,
         }
         );
         window.addEventListener('storage', onStorageUpdate);
@@ -66,7 +66,7 @@ export const BeamerComponent = () => {
 
 
     return (
-        <Beamer spotlight={spotlight} />
+        <BeamerDisplay spotlight={spotlight} relCoords={relCoords}/>
     );
 }
 
