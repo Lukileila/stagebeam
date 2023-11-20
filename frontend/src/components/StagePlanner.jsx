@@ -2,13 +2,32 @@ import { useEffect, useRef, useState } from "react";
 
 export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, relCoords, setrelCoords }) => {
 
-    const stageContainer = useRef();
     const [stageDimensions, setStageDimensions] = useState();
-    
+    const [aspectToggle, setAspectToggle]=useState(false);
+    const stageContainer = useRef();
+    const workspace = useRef();
+
     useEffect(() => {
         setStageDimensions(stageContainer.current.getBoundingClientRect());
-        console.log("stageDimension:",stageDimensions);  //returns undefined
     }, [projectionAspectRatio]);
+
+  // manages Beamer size / aspect ratio display
+
+    useEffect(() => {
+        const handleResize = () => {
+            let x=workspace.current.getBoundingClientRect();
+            console.log("x.width",x.width,"x.height",x.height,"w/h",x.width/x.height,"projectionAspectRatio",projectionAspectRatio);
+            if ((x.width/x.height)>projectionAspectRatio){setAspectToggle(true) }else setAspectToggle(false);
+            setStageDimensions(stageContainer.current.getBoundingClientRect());
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, [projectionAspectRatio]);
+
+    
+   
     
     const dragLight = (e) => {
         e.target.classList.add('opacity-40');
@@ -52,18 +71,17 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
     useEffect(() => {
         console.log("stage dimensions are:",stageDimensions)
         }, [stageDimensions]); 
-     
+        useEffect(() => {
+            console.log("aspectToggle is:",aspectToggle)
+            }, [aspectToggle]); 
+         
     
     return (
-        <div className='fixed bg-black top-[3vh] h-[67vh] left-[30vw] w-[70vw] border-2 overflow-visible /* group/canvas */ z-1' 
-
-             
-       /*      onDragOver={(e) => { e.preventDefault(); }} If default is prevented, the coordinates get all messed up*/
-        >
+        <div className='fixed bg-black text-white top-[3vh] h-[67vh] left-[30vw] w-[70vw] border-2 overflow-visible /* group/canvas */ z-1  ' ref={workspace}>
 
             <h1 className='absolute text-gray-700 p-2 text-xl'>StagePlanner</h1>
 
-            <div className="bg-transparent border-2 border-pink-500  text-gray-900 z-30 relative" style={{aspectRatio:projectionAspectRatio}} ref={stageContainer}>
+            <div className={`relative bg-transparent border-2 border-pink-500 ${aspectToggle && 'h-full'} z-30`} style={{aspectRatio:projectionAspectRatio}} ref={stageContainer}>
 
             <div className="flex flex-wrap w-full h-full justify-end content-end"><p>spotlight.y:| relCoords.y:{parseFloat(relCoords.ry).toFixed(2)} relCoords.x:{parseFloat(relCoords.rx).toFixed(2)}| beamer aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</p></div>
 

@@ -36,8 +36,8 @@ export const BeamerDisplay = ({ spotlight, relCoords }) => {
         <div
             className='bg-amber-100 w-[300px] aspect-square rounded-full absolute -translate-x-[50%] -translate-y-[50%]'
             style={{
-                top: relCoords.ry*100 + '%',
-                left: relCoords.rx*100 + '%',
+                top: relCoords.ry*100   + '%',
+                left: relCoords.rx*100  + '%',
             }}
         >
         </div>
