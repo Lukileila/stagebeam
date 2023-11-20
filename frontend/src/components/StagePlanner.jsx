@@ -29,7 +29,6 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
       }, [projectionAspectRatio]);
 
     
-   
     
     const dragLight = (e) => {
         e.target.classList.add('opacity-40');
