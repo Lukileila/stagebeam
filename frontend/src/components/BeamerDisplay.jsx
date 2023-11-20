@@ -40,7 +40,7 @@ export const Beamer = ({ spotlight, relCoords }) => {
             }}
         >
         </div>
-{/* 
+
         <div
             className='bg-purple-900 w-20 aspect-square rounded-full absolute -translate-x-[50%] -translate-y-[50%]'
             style={{
@@ -48,7 +48,7 @@ export const Beamer = ({ spotlight, relCoords }) => {
             left: relCoords.x + 'px',
             }}
         >
-        </div> */}
+        </div>
 
         </div>
     );

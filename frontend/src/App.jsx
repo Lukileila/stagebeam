@@ -1,3 +1,5 @@
+//This file is for routing
+
 // Imports for routing
 import { 
   createBrowserRouter,

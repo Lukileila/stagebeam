@@ -1,3 +1,5 @@
+//This is the main app page. This file returns all the important components.
+
 import { ObjectsMenu } from "../components/ObjectsMenu"
 import { Timeline } from "../components/Timeline"
 import { Workspace } from "../components/Workspace"
