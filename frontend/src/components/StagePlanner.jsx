@@ -9,10 +9,13 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
 
     useEffect(() => {
         setStageDimensions(stageContainer.current.getBoundingClientRect());
+        let x=workspace.current.getBoundingClientRect();
+        if ((x.width/x.height)>projectionAspectRatio){setAspectToggle(true) }else setAspectToggle(false);
+
     }, [projectionAspectRatio]);
 
-  // manages Beamer size / aspect ratio display
-
+  // manages Beamer size / aspect ratio display    
+  
     useEffect(() => {
         const handleResize = () => {
             let x=workspace.current.getBoundingClientRect();
