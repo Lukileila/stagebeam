@@ -31,7 +31,7 @@ const router = createBrowserRouter(
       <Route path="controller" element={<Controller />}/>
       <Route path="beamer" element={<Beamer />}/>
       <Route path="about" element={<About />}/>
-      <Route path="*" element={<Error/>} />     
+      <Route path="*" element={<Error/>} />     {/* replace with not found  */}
     </Route>
 
   )

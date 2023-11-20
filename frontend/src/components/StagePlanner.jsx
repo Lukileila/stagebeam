@@ -8,7 +8,7 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
     useEffect(() => {
         setStageDimensions(stageContainer.current.getBoundingClientRect());
         console.log("stageDimension:",stageDimensions);  //returns undefined
-    }, []);
+    }, [projectionAspectRatio]);
 
     
     const dragLight = (e) => {
@@ -31,6 +31,8 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
         })
         );
 
+        // let relx = (e.clientX  -stageDimensions.left) ;
+        // let rely = (e.clientY  -stageDimensions.top) ;
         let relx = (e.clientX  -stageDimensions.left)/stageDimensions.width ;
         let rely = (e.clientY  -stageDimensions.top)/stageDimensions.height ;
         setRatioCoords({ relx, rely });
@@ -50,8 +52,11 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
         console.log("projectionAspectRatio State is:",projectionAspectRatio)
          }, [projectionAspectRatio]); 
     useEffect(() => {
-        console.log("ratioCoords are:",ratioCoords)
+        // console.log("ratioCoords are:",ratioCoords)
         }, [ratioCoords]); 
+    useEffect(() => {
+        console.log("stage dimensions are:",stageDimensions)
+        }, [stageDimensions]); 
      
     
     return (
@@ -63,10 +68,12 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
 
             <h1 className='absolute text-gray-700 p-2 text-xl'>StagePlanner</h1>
 
-            <div className=" bg-tansparent border-2 border-pink-500 {w-full} z-30 mt-auto my-auto" style={{aspectRatio:projectionAspectRatio}} ref={stageContainer}>
+            <div className="bg-transparent border-2 border-pink-500 z-30 relative" style={{aspectRatio:projectionAspectRatio}} ref={stageContainer}>
                 <div
                     className='bg-blue-500 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%] z-10'
                     style={{
+                    // top: ratioCoords.y + '%',
+                    // left: ratioCoords.x + '%',
                     top: spotlight.y + 'px',
                     left: spotlight.x + 'px',
                     }}

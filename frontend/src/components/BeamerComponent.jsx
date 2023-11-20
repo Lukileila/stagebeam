@@ -48,7 +48,7 @@ export const BeamerComponent = () => {
 
 
 
-
+/* Duplicate? Check!
 
     useEffect(() => {
         setRelCoords(
@@ -62,11 +62,7 @@ export const BeamerComponent = () => {
         window.removeEventListener('storage', onStorageUpdate);
         };
     }, []);
-
-
-
-
-
+ */
 
 
     return (
