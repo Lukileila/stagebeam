@@ -18,6 +18,10 @@ import { Templates } from "./pages/Templates.jsx";
 
 
 
+
+
+
+
 // Imports for state management
 import {useState, useEffect} from 'react';
 
