@@ -1,4 +1,4 @@
-// Imports for routing
+// Imports for routing   // Should i add here "import {link} ?"
 import { 
   createBrowserRouter,
   Route,
@@ -15,6 +15,8 @@ import { Controller } from "./pages/Controller.jsx";
 import { Beamer } from "./pages/Beamer.jsx";
 import { Error } from './pages/Error.jsx';
 import { Templates } from "./pages/Templates.jsx";
+
+
 
 // Imports for state management
 import {useState, useEffect} from 'react';
