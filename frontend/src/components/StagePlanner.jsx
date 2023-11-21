@@ -2,17 +2,20 @@ import { useEffect, useRef, useState } from "react";
 
 export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, relCoords, setrelCoords }) => {
 
+
+  // Declaring all the states and references
     const [stageDimensions, setStageDimensions] = useState();
     const [aspectToggle, setAspectToggle]=useState(false);
     const stageContainer = useRef();
     const workspace = useRef();
 
+  // Toggling aspectToggle depending on whether the pink border box (stage) fits in the black box (workspace)
     useEffect(() => {
         setStageDimensions(stageContainer.current.getBoundingClientRect());
         let x=workspace.current.getBoundingClientRect();
         if ((x.width/x.height)>projectionAspectRatio){setAspectToggle(true) }else setAspectToggle(false);
 
-    }, [projectionAspectRatio]);
+    }, [projectionAspectRatio, aspectToggle]);
 
   // manages Beamer size / aspect ratio display    
   
@@ -26,7 +29,7 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
         return () => {
           window.removeEventListener('resize', handleResize);
         };
-      }, [projectionAspectRatio]);
+      }, [projectionAspectRatio, aspectToggle]);
 
     
     
