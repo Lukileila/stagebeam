@@ -8,8 +8,8 @@ export const Templates = () => {
         </div>
 
         <div className="absolute top-8">
-          <button className="text-yellow-500" onClick={() => alert("What we're creating today?")}>
-            What we're creating today?
+          <button className="text-yellow-500 text-7xl md:font-bold " onClick={() => alert("Get creative")}>
+            Get creative!
           </button>
         </div>
 
@@ -24,7 +24,7 @@ export const Templates = () => {
             </div>
 
             <div className="bg-yellow-500 p-4 rounded">
-              <img src="./src/assets/images/templatesimages3.png" alt="Template 3" className="cursor-pointer w-32 h-32" />
+              <img src="./src/assets/images/templatesimages6.png" alt="Template 3" className="cursor-pointer w-32 h-32" />
             </div>
 
             <div className="bg-yellow-500 p-4 rounded">
@@ -36,7 +36,7 @@ export const Templates = () => {
             </div>
 
             <div className="bg-yellow-500 p-4 rounded">
-              <img src="./src/assets/images/templatesimages6.png" alt="Template 6" className="cursor-pointer w-32 h-32" />
+              <img src="./src/assets/images/templatesimages3.png" alt="Template 6" className="cursor-pointer w-32 h-32" />
             </div>
           </div>
         </div>

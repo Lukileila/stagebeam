@@ -16,9 +16,9 @@ export const Dashboard = () => {
           <button className="px-8 py-4 bg-yellow-500 text-zinc-950 rounded mb-2">   Threads   </button>
         </div>
 
-        {/* Content should be right side (70% of the screen) */}
+        {/* Content should be right side (70% of the screen free for a real simulating panel) */}
         <div className="w-70% ml-48"> 
-          {/* Here goes dashboard mobile thing */}
+          {/* Here goes dashboard mobile thing / simulating panel */}
         </div>
       </div>
     </>
