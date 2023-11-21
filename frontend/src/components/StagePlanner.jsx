@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ObjectCreator } from "./ObjectCreator";
 
 export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, relCoords, setrelCoords }) => {
 
@@ -98,6 +99,7 @@ export const StagePlanner = ({ spotlight, setspotlight, projectionAspectRatio, r
                     onDragEnd={stopDrag}
                   >
                   </div>  
+              <ObjectCreator/>
                     
             </div>
         </div>
