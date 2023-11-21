@@ -12,8 +12,16 @@ export const Home = () => {
 
           
           <div className="absolute top-4 right-4 flex gap-4">
-            <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded">Sign Up</button>
+
+            
+          <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded">Sign Up</button>
+
+
+
+          <NavLink to="dashboard">
             <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded">Already have an account? Log In</button>
+            </NavLink>
+
           </div>
 
           <div className="flex justify-between items-center w-full p-4">
