@@ -24,7 +24,7 @@ export const Home = () => {
           <div className="flex flex-col items-center mt-16">
            
             <NavLink to="controller">
-              <button className="px-8 py-4 bg-yellow-500 text-zinc-950 rounded mb-4">Create your first stage</button>
+              <button className="px-8 py-4  bg-yellow-500 text-zinc-950 rounded mb-4">Create your first stage</button>
             </NavLink>
 
             <NavLink to="templates">
