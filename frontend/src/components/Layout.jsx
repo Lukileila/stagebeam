@@ -1,3 +1,6 @@
+// file not used at the moment
+
+
 import {NavLink, Outlet} from "react-router-dom"
 
 const Layout = () => {

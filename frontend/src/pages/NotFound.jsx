@@ -1,4 +1,4 @@
-export const Error=()=>{    
+export const NotFound = () => {    
     return (
     <>
     <div>

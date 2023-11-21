@@ -26,7 +26,7 @@ import {useState, useEffect} from 'react';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
+    <Route path="/">
       <Route index element={<Home />}/> {/*Landing Page*/}
       <Route path="templates" element={<Templates />}/>
       <Route path="dashboard" element={<Dashboard />}/>
@@ -38,6 +38,7 @@ const router = createBrowserRouter(
 
   )
 );
+
 
 const App = () => {
   return (
