@@ -20,6 +20,7 @@ export const Workspace = () => {
     // Active Objects: They are aaaaaaaall in here:
     const [activeObjects, setActiveObjects] = useState([]);
 
+
  //References
       const stageContainer = useRef();
       const workspace = useRef();
