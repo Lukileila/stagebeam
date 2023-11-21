@@ -7,15 +7,13 @@ import {
   createRoutesFromElements,
   RouterProvider
 } from "react-router-dom";
-// Import for layout
-import Layout from './components/Layout.jsx';
 // Imports for pages
 import { Home } from "./pages/Home.jsx";
-import { About } from "./pages/About.jsx";
+import { Templates } from "./pages/Templates.jsx";
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { Controller } from "./pages/Controller.jsx";
 import { Beamer } from "./pages/Beamer.jsx";
-import { Templates } from "./pages/Templates.jsx";
+import { About } from "./pages/About.jsx";
 import { NotFound } from './pages/NotFound.jsx';
 
 // Imports for state management
@@ -35,7 +33,6 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />}/>
       <Route path="*" element={<NotFound/>} /> 
     </Route>
-
   )
 );
 
