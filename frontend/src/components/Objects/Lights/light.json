@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "spotlight",
+    "thumbnail": "img", 
+    "elements":[  
+      {"css": {         
+              "color":"#FFCCCCFF", 
+              "width":"300px",
+              "border-radius": "999px",
+              "translate": "-50% -50%"
+      }}
+    ]
+  },
+
+  {
+    "id": 2,
+    "name": "rgb trio",
+    "thumbnail": "img", 
+    "elements":[  
+      {"css": {         
+                "color":"#FF0000FF", 
+                "width":"300px",
+                "border-radius": "999px", 
+                "translate": "-50% -50%"
+      }},
+      {"css": {          
+                "color":"#00FF00FF",
+                "width":"300px",
+                "border-radius": "999px", 
+                "translate": "-40% -40%"
+      }},
+      {"css": {         
+      "color":"#0000FFFF", 
+      "width":"300px",
+      "border-radius": "999px", 
+      "translate": "-60% -60%"
+}}
+    ]
+  }
+
+]
