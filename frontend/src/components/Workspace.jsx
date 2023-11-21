@@ -6,11 +6,6 @@ import { ObjectCreator } from "./ObjectCreator";
 export const Workspace = () => {
 
  //States
-    // Absolute Coords
-    const [spotlight, setspotlight] = useState({
-        x: 40,
-        y: 40,
-    });
     // Relative Coords
     const [relCoords, setrelCoords] = useState({
         rx: 0.5,
@@ -31,9 +26,7 @@ export const Workspace = () => {
  // This function mirrors the localstorage contents of certain keys to states
     const onStorageUpdate = (e) => {
         const { key, newValue } = e;
-        if (key === 'light') {
-            setspotlight(JSON.parse(newValue));
-        } else if (key === 'relCoords') {
+        if (key === 'relCoords') {
             setrelCoords(JSON.parse(newValue));
         } else if (key ==='projectionAspectRatio'){
             setProjectionAspectRatio(newValue);
@@ -42,9 +35,6 @@ export const Workspace = () => {
 
  //Event Listener, listening to storage updates
     useEffect(() => {
-        setspotlight(
-            localStorage.getItem('light') ?? { x: 10, y: 90,}
-        );
         setProjectionAspectRatio(
             localStorage.getItem('projectionAspectRatio') ?? 2
         );
@@ -86,18 +76,6 @@ export const Workspace = () => {
     const stopDrag = (e) => {
         e.target.classList.remove('opacity-40');
 
-        let x = e.clientX  -stageDimensions.left ;
-        let y = e.clientY  -stageDimensions.top ;
-        setspotlight({ x, y });
-
-        localStorage.setItem(
-            'light',
-            JSON.stringify({
-                x,
-                y,
-            })
-            );
-
         let rx = (e.clientX  -stageDimensions.left)/stageDimensions.width ;
         let ry = (e.clientY  -stageDimensions.top)/stageDimensions.height ;
         setrelCoords({ rx, ry });
@@ -122,17 +100,6 @@ export const Workspace = () => {
             <div className="flex flex-wrap w-full h-full justify-end content-end text-gray-500"><p> rx: {parseFloat(relCoords.rx).toFixed(2)} ry: {parseFloat(relCoords.ry).toFixed(2)} | beamer aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</p></div>
 
 
-            <div
-    className='bg-blue-500 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%] z-10'
-    style={{
-    top: spotlight.y + 'px',
-    left: spotlight.x + 'px',
-    }}
-    draggable
-    onDragStart={dragLight}
-    onDragEnd={stopDrag}
-  >
-  </div>  
 
 <div
     className='bg-purple-500 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%] z-10'
