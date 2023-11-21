@@ -4,22 +4,22 @@ import { ObjectsMenu } from "../components/ObjectsMenu"
 import { Timeline } from "../components/Timeline"
 import { Workspace } from "../components/Workspace"
 import { useEffect, useState } from "react";
-import templateObjects from "../data/objectTemplates.json"
+import objectTemplates from "../data/objectTemplates.json"
 
 
 
 export const Controller = () => {
 
   // Active Objects: They are aaaaaaaall going to live here:
-  const [activeObjects, setActiveObjects] = useState(/* templateObjects.json() */);
-
-  useEffect(() => { console.log(templateObjects) }, []);
+  const [templateObjects, setTemplateObjects] = useState([]);
+  const [activeObjects, setActiveObjects] = useState([]);
+  useEffect(() => { setTemplateObjects(objectTemplates) }, []);
 
   return (
     <>
-        <ObjectsMenu activeObjects={activeObjects} setActiveObjects={setActiveObjects}/>
+        <ObjectsMenu  activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} setTemplateObjects={setTemplateObjects}  />
         <Timeline/>
-        <Workspace activeObjects={activeObjects} setActiveObjects={setActiveObjects}/> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
+        <Workspace    activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} setTemplateObjects={setTemplateObjects}  /> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
     </>
           )
 }
