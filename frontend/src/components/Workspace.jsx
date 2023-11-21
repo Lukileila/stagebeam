@@ -17,6 +17,8 @@ export const Workspace = () => {
     const [stageDimensions, setStageDimensions] = useState();
     // h-full active or not for the pink box
     const [aspectToggle, setAspectToggle]=useState(false);
+    // Active Objects: They are aaaaaaaall in here:
+    const [activeObjects, setActiveObjects] = useState([]);
 
 
  //References

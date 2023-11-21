@@ -11,18 +11,20 @@ import {
   createRoutesFromElements,
   RouterProvider
 } from "react-router-dom";
-// Import for layout
-import Layout from './components/Layout.jsx';
 // Imports for pages
 import { Home } from "./pages/Home.jsx";
+<<<<<<< HEAD
+import { Templates } from "./pages/Templates.jsx";
+=======
 import { Share } from "./pages/Share.jsx";
 import { WatchTutorialVideo } from "./pages/WatchTutorialVideo.jsx";
 import { About } from "./pages/About.jsx";
+>>>>>>> main
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { Controller } from "./pages/Controller.jsx";
 import { Beamer } from "./pages/Beamer.jsx";
-import { Error } from './pages/Error.jsx';
-import { Templates } from "./pages/Templates.jsx";
+import { About } from "./pages/About.jsx";
+import { NotFound } from './pages/NotFound.jsx';
 
 
 
@@ -40,7 +42,7 @@ import {useState, useEffect} from 'react';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout/>}>
+    <Route path="/">
       <Route index element={<Home />}/> {/*Landing Page*/}
       <Route path="templates" element={<Templates />}/>
       <Route path="dashboard" element={<Dashboard />}/>
@@ -48,16 +50,20 @@ const router = createBrowserRouter(
       <Route path="beamer" element={<Beamer />}/>
       <Route path="about" element={<About />}/>
 <<<<<<< HEAD
+      <Route path="*" element={<NotFound/>} /> 
+=======
+<<<<<<< HEAD
       <Route path="*" element={<Error/>} />     {/* replace with not found  */}
 =======
       <Route path="*" element={<Error/>} />  
       <Route path="share" element={<Share />}/>  
       <Route path="watchtutorialvideo" element={<WatchTutorialVideo />}/>   
 >>>>>>> main
+>>>>>>> main
     </Route>
-
   )
 );
+
 
 const App = () => {
   return (
