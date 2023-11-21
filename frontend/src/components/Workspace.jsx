@@ -3,7 +3,7 @@ import { ObjectCreator } from "./ObjectCreator";
 
 
 // Main function
-export const Workspace = () => {
+export const Workspace = ({templateObjects, setTemplateObjects, activeObjects, setActiveObjects}) => {
 
  //States
     // Relative Coords
@@ -17,8 +17,6 @@ export const Workspace = () => {
     const [stageDimensions, setStageDimensions] = useState();
     // h-full active or not for the pink box
     const [aspectToggle, setAspectToggle]=useState(false);
-    // Active Objects: They are aaaaaaaall in here:
-    const [activeObjects, setActiveObjects] = useState([]);
 
 
  //References
@@ -96,14 +94,15 @@ export const Workspace = () => {
     return (
         <div ref={workspace} className='fixed bg-black text-white top-[3vh] h-[67vh] left-[30vw] w-[70vw] border-2 overflow-visible /* group/canvas */ z-1  ' >
 
-            <h1 className='absolute text-gray-700 p-2 text-xl'>StagePlanner</h1>
+            <h1 className='absolute text-gray-700 p-2 text-xl'>Workspace</h1>
 
             <div  ref={stageContainer} className={`relative bg-transparent border-2 border-pink-500 ${aspectToggle && 'h-full'} z-30`} style={{aspectRatio:projectionAspectRatio}}>
+                <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} />
 
-                <div className="flex flex-wrap w-full h-full justify-end content-end text-gray-500"><p> rx: {parseFloat(relCoords.rx).toFixed(2)} ry: {parseFloat(relCoords.ry).toFixed(2)} | beamer aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</p></div>
+                <div className="relative flex flex-wrap w-full h-full justify-end content-end text-gray-500"><p> rx: {parseFloat(relCoords.rx).toFixed(2)} ry: {parseFloat(relCoords.ry).toFixed(2)} | beamer aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</p></div>
 
                 <div
-                    className='bg-purple-500 w-20 aspect-square rounded-full cursor-grab absolute -translate-x-[50%] -translate-y-[50%] z-10'
+                    className='absolute  bg-purple-500 w-20 aspect-square rounded-full cursor-grab -translate-x-[50%] -translate-y-[50%] z-10'
                     style={{
                     top: relCoords.ry*100 + '%',
                     left: relCoords.rx*100 + '%',
@@ -114,7 +113,7 @@ export const Workspace = () => {
                 >
                 </div>  
                 
-                {/* <ObjectCreator/> */}
+
                         
             </div>
         </div>
