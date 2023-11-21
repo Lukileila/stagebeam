@@ -3,7 +3,6 @@
 import { ObjectsMenu } from "../components/ObjectsMenu"
 import { Timeline } from "../components/Timeline"
 import { Workspace } from "../components/Workspace"
-import { Layout } from "../components/Layout"
 
 export const Controller = () => {
   return (
