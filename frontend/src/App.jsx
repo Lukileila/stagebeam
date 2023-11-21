@@ -15,8 +15,8 @@ import { About } from "./pages/About.jsx";
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { Controller } from "./pages/Controller.jsx";
 import { Beamer } from "./pages/Beamer.jsx";
-import { Error } from './pages/Error.jsx';
 import { Templates } from "./pages/Templates.jsx";
+import { NotFound } from './pages/NotFound.jsx';
 
 // Imports for state management
 import {useState, useEffect} from 'react';
@@ -26,14 +26,14 @@ import {useState, useEffect} from 'react';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" >
+    <Route path="/" element={<Layout />}>
       <Route index element={<Home />}/> {/*Landing Page*/}
       <Route path="templates" element={<Templates />}/>
       <Route path="dashboard" element={<Dashboard />}/>
       <Route path="controller" element={<Controller />}/>
       <Route path="beamer" element={<Beamer />}/>
       <Route path="about" element={<About />}/>
-      <Route path="*" element={<Error/>} />     {/* replace with not found  */}
+      <Route path="*" element={<NotFound/>} /> 
     </Route>
 
   )
