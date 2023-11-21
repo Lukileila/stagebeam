@@ -1,9 +1,4 @@
 
-
-
-//The NEXT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IS THE REAL CODE:
-
-
 import { NavLink } from "react-router-dom";
 
 export const Home = () => {
@@ -52,7 +47,7 @@ export const Home = () => {
           <button className="p-4 bg-zinc-950 text-gray-50 rounded-full">Share</button>
 
           </NavLink>
-          
+
         </div>
 
       </div>
