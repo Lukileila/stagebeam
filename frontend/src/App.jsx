@@ -16,7 +16,6 @@ import { About } from "./pages/About.jsx";
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { Controller } from "./pages/Controller.jsx";
 import { Beamer } from "./pages/Beamer.jsx";
-import { About } from "./pages/About.jsx";
 import { NotFound } from './pages/NotFound.jsx';
 
 // Imports for state management
