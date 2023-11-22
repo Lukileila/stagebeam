@@ -12,7 +12,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
  
     let rx = (e.clientX  -stageDimensions.left) /stageDimensions.width ;
     let ry = (e.clientY  -stageDimensions.top)  /stageDimensions.height ;
-    let aO = activeObjects;
+    let aO = [...activeObjects]; /* shallow clone */
     console.log("aO:",aO,"e.target.id:",e.target.id,"aO[e.target.id].position.rx",aO[e.target.id].position.rx,"aO[e.target.id].position.ry",aO[e.target.id].position.ry)
 
      aO[e.target.id].position.rx=rx;
