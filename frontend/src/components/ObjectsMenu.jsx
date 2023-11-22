@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) => {
 
   const addToActive = (templateObject) => {
-    setActiveObjects([...activeObjects, templateObject]);
+    setActiveObjects(prev => [...prev, {...templateObject, id: `${templateObject.name}_${crypto.randomUUID()}`}]);
   };
 
   return (
