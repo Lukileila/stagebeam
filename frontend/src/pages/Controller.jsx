@@ -19,7 +19,7 @@ export const Controller = () => {
     <>
         <ObjectsMenu  activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} setTemplateObjects={setTemplateObjects}  />
         <Timeline/>
-        <Workspace    activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} setTemplateObjects={setTemplateObjects}  /> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
+        <Workspace    activeObjects={activeObjects} setActiveObjects={setActiveObjects}   /> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
     </>
           )
 }

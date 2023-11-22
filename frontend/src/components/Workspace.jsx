@@ -3,7 +3,7 @@ import { ObjectCreator } from "./ObjectCreator";
 
 
 // Main function
-export const Workspace = ({templateObjects, setTemplateObjects, activeObjects, setActiveObjects}) => {
+export const Workspace = ({ activeObjects, setActiveObjects}) => {
 
  //States
     // Relative Coords
@@ -48,6 +48,8 @@ export const Workspace = ({templateObjects, setTemplateObjects, activeObjects, s
         };
     }, []);
 
+    useEffect(() => { console.log("Hi from Workspace! activeObjects",activeObjects) }, [ activeObjects]);
+
   // Toggling aspectToggle depending on whether the pink border box (stage) fits in the black box (workspace)
     useEffect(() => {
         setStageDimensions(stageContainer.current.getBoundingClientRect());
@@ -68,7 +70,7 @@ export const Workspace = ({templateObjects, setTemplateObjects, activeObjects, s
         };
       }, [projectionAspectRatio, aspectToggle]);
   
-  // Dragging Functions. Just copying this for now. Needs restructuring
+  // Dragging Function for test item. Just copying this for now. Needs restructuring
 
     const dragLight = (e) => {
         e.target.classList.add('opacity-40');
@@ -88,7 +90,7 @@ export const Workspace = ({templateObjects, setTemplateObjects, activeObjects, s
                 ry,
             })
             );    
-      };
+      }; 
 
    
     return (
@@ -97,10 +99,14 @@ export const Workspace = ({templateObjects, setTemplateObjects, activeObjects, s
             <h1 className='absolute text-gray-700 p-2 text-xl'>Workspace</h1>
 
             <div  ref={stageContainer} className={`relative bg-transparent border-2 border-pink-500 ${aspectToggle && 'h-full'} z-30`} style={{aspectRatio:projectionAspectRatio}}>
-                <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} />
+
+
 
                 <div className="relative flex flex-wrap w-full h-full justify-end content-end text-gray-500"><p> rx: {parseFloat(relCoords.rx).toFixed(2)} ry: {parseFloat(relCoords.ry).toFixed(2)} | beamer aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</p></div>
+                <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} stageDimensions={stageDimensions}/>
 
+
+                {/* //Test item */}
                 <div
                     className='absolute  bg-purple-500 w-20 aspect-square rounded-full cursor-grab -translate-x-[50%] -translate-y-[50%] z-10'
                     style={{
@@ -113,8 +119,7 @@ export const Workspace = ({templateObjects, setTemplateObjects, activeObjects, s
                 >
                 </div>  
                 
-
-                        
+                  
             </div>
         </div>
     );
