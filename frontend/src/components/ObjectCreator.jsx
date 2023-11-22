@@ -14,23 +14,28 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
     let ry = (e.clientY  -stageDimensions.top)  /stageDimensions.height ;
     let aO = activeObjects;
     console.log("aO:",aO,"e.target.id:",e.target.id,"aO[e.target.id].position.rx",aO[e.target.id].position.rx,"aO[e.target.id].position.ry",aO[e.target.id].position.ry)
-    /* Codesketch, probably not working: */
-    aO[e.target.id].position.rx=rx;
-    aO[e.target.id].position.ry=ry;
-    console.log("stageDimensions:",stageDimensions)
+
+     aO[e.target.id].position.rx=rx;
+     aO[e.target.id].position.ry=ry; 
+
+
+    /* 
+    aO[2].position.rx=rx;
+    aO[2].position.ry=ry; */
     setActiveObjects([...aO]);
-    /* setrelCoords({ rx, ry }); */
-    localStorage.setItem(
+
+
+ /*    localStorage.setItem(
         'activeObjects',
         JSON.stringify({aO})
-        );
+        ); */
   };
 
   return (<>
   
     {activeObjects.length>0 && activeObjects.map((x,i)=>{
       return (
-        
+          
           <div key={i} id={i} draggable onDragStart={startDrag} onDragEnd={stopDrag}
             className="absolute block text-white mix-blend-screen cursor-grab -translate-x-[50%] -translate-y-[50%]" 
             style={{
