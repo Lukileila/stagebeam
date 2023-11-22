@@ -39,7 +39,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
             }}>
 
             {x.elements.length>0 && x.elements.map((x,j)=>{ return (
-            <div key={j} aeid={j}
+            <div key={j}
               className="absolute block text-white mix-blend-screen cursor-grab "  
               style={{
                 width:x.css.width,
