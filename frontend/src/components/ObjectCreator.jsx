@@ -39,7 +39,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
       return (
           
           <div key={x.id} id={x.id} draggable onDragStart={startDrag} onDragEnd={(e) => stopDrag(e, x.id)}
-            className="absolute block cursor-grab animate-spin opacity-50 mix-blend-screen" 
+            className="absolute block cursor-grab animate-spin mix-blend-screen" 
             style={{
               top: x.position.ry*100 + '%',
               left: x.position.rx*100 + '%',
