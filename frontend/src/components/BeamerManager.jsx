@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BeamerDisplay } from "./BeamerDisplay";
+import objectTemplates from "../data/objectTemplates.json"
 
 
 export const BeamerManager = () => {
@@ -7,47 +8,26 @@ export const BeamerManager = () => {
     //States
     const [activeObjects, setActiveObjects] = useState([]);
 
-    //updating function for Both
-/*     const onStorageUpdate = (e) => {
+    const onStorageUpdate = (e) => {
         const { key, newValue } = e;
-        if (key === 'activeObject') {
-        setspotlight(JSON.parse(newValue));
+        if (key === 'activeObjects') {
+        setActiveObjects(JSON.parse(newValue));
         }
-    }; */
-
+    };
 
     useEffect(() => {
-        setActiveObjects(
-        localStorage.getItem('activeObjects') ?? []
-        );
+        const aOstring= localStorage.getItem('activeObjects') ?? objectTemplates;
+        const aOparsed= JSON.parse(aOstring);
+        setActiveObjects(aOparsed);
+        
         window.addEventListener('storage', onStorageUpdate);
         return () => {
         window.removeEventListener('storage', onStorageUpdate);
         };
     }, []);
-
-
-
-
-/* Duplicate? Check!
-
-    useEffect(() => {
-        setRelCoords(
-        localStorage.getItem('light') ?? {
-            x: 10,
-            y: 90,
-        }
-        );
-        window.addEventListener('storage', onStorageUpdate);
-        return () => {
-        window.removeEventListener('storage', onStorageUpdate);
-        };
-    }, []);
- */
-
 
     return (
-        <BeamerDisplay /* spotlight={spotlight} */ /* relCoords={relCoords} *//>
+        <BeamerDisplay  activeObjects={activeObjects} setActiveObjects={setActiveObjects}  /* relCoords={relCoords} *//>
     );
 }
 

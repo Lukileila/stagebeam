@@ -38,7 +38,6 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
         };
     }, []);
 
-    useEffect(() => { console.log("Hi from Workspace! activeObjects",activeObjects) }, [ activeObjects]);
 
   // Toggling aspectToggle depending on whether the pink border box (stage) fits in the black box (workspace)
     useEffect(() => {

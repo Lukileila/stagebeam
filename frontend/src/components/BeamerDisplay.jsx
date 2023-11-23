@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { ObjectCreator } from './ObjectCreator';
+import { ObjectCreatorBeamer } from './ObjectCreatorBeamer';
 
-export const BeamerDisplay = ({}) => {
+export const BeamerDisplay = ({activeObjects, setActiveObjects}) => {
 
     //Declaring States
     const [projectionAspectRatio, setProjectionAspectRatio] = useState(1);
@@ -34,8 +34,8 @@ export const BeamerDisplay = ({}) => {
     
 
     //useEffects
-    useEffect(() => { getScreenAspectRatio() }, []); // Executed only on reload but should listen to a bunch of events like fullscreenchange
-
+    useEffect(() => { getScreenAspectRatio() }, []);
+    
     //event Listeners  
     useEffect(() => {
                 document.body.addEventListener('fullscreenchange',getScreenAspectRatio);
@@ -70,9 +70,10 @@ export const BeamerDisplay = ({}) => {
         <>
             <div className='bg-black h-[100vh] relative overflow-hidden'>
                 <div className='absolute p-2 flex text-gray-800 flex-wrap w-full h-full justify-end content-end'><p>free version of StageBeam.live</p></div>
+                <ObjectCreatorBeamer activeObjects={activeObjects}/>
                 {displayInstruction()}
                 {displayExitNotice()}
-                <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} stageDimensions={stageDimensions}/>
+
             </div>
 
 

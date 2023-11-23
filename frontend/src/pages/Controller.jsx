@@ -13,7 +13,10 @@ export const Controller = () => {
   // Active Objects: They are aaaaaaaall going to live here:
   const [templateObjects, setTemplateObjects] = useState([]);
   const [activeObjects, setActiveObjects] = useState([]);
+  // Copying from file to state:
   useEffect(() => { setTemplateObjects(objectTemplates) }, []);
+  // Copying state to localstorage
+  useEffect(() => { localStorage.setItem('activeObjects',JSON.stringify(activeObjects)); }, [activeObjects]);
 
   return (
     <>
