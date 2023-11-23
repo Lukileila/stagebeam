@@ -39,15 +39,16 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
       return (
           
           <div key={x.id} id={x.id} draggable onDragStart={startDrag} onDragEnd={(e) => stopDrag(e, x.id)}
-            className="absolute block text-white mix-blend-screen cursor-grab -translate-x-[50%] -translate-y-[50%]" 
+            className="absolute block cursor-grab animate-spin opacity-50 mix-blend-screen" 
             style={{
               top: x.position.ry*100 + '%',
               left: x.position.rx*100 + '%',
             }}>
+            
 
             {x.elements.length>0 && x.elements.map((x,j)=>{ return (
             <div key={j}
-              className="absolute block text-white mix-blend-screen cursor-grab "  
+              className="absolute block text-white mix-blend-screen cursor-grab"  
               style={{
                 width:x.css.width,
                 height:x.css.width,
@@ -58,9 +59,13 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
             >{x.name}</div>
             )})}
 
+            
+            <div className="centerIndicator  absolute block b-2 border-black border-2 rounded-full text-white mix-blend-normal cursor-grab w-10 h-10 -translate-x-[50%] -translate-y-[50%] "></div>
 
           </div>
         
+
+
       )     
     })}
 
