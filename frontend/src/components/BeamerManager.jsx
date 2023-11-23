@@ -4,40 +4,21 @@ import { BeamerDisplay } from "./BeamerDisplay";
 
 export const BeamerManager = () => {
 
-    //absolute Coordinates
-    const [spotlight, setspotlight] = useState({
-        x: 40,
-        y: 40,
-    });
-
-    //relative Coordinates
-    const [relCoords, setRelCoords] = useState({
-        rx: 0.8,
-        ry: 0.8,
-    });
+    //States
+    const [activeObjects, setActiveObjects] = useState([]);
 
     //updating function for Both
-    const onStorageUpdate = (e) => {
+/*     const onStorageUpdate = (e) => {
         const { key, newValue } = e;
-        if (key === 'light') {
+        if (key === 'activeObject') {
         setspotlight(JSON.parse(newValue));
-        } else if (key === 'relCoords') {
-        setRelCoords(JSON.parse(newValue));}
-    };
+        }
+    }; */
 
 
     useEffect(() => {
-        setspotlight(
-        localStorage.getItem('light') ?? {
-            x: 10,
-            y: 90,
-        }
-        );
-        setRelCoords(
-        localStorage.getItem('relCoords') ?? {
-            rx:0.1,
-            ry:0.1,
-        }
+        setActiveObjects(
+        localStorage.getItem('activeObjects') ?? []
         );
         window.addEventListener('storage', onStorageUpdate);
         return () => {
@@ -66,7 +47,7 @@ export const BeamerManager = () => {
 
 
     return (
-        <BeamerDisplay spotlight={spotlight} relCoords={relCoords}/>
+        <BeamerDisplay /* spotlight={spotlight} */ /* relCoords={relCoords} *//>
     );
 }
 

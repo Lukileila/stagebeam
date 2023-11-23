@@ -6,11 +6,6 @@ import { ObjectCreator } from "./ObjectCreator";
 export const Workspace = ({ activeObjects, setActiveObjects}) => {
 
  //States
-    // Relative Coords
-    const [relCoords, setrelCoords] = useState({
-        rx: 0.5,
-        ry: 0.5,
-    });
     // Aspect Ratio of the window the beamer is in
     const [projectionAspectRatio, setProjectionAspectRatio] = useState(1);
     // Pink box dimensions
@@ -27,9 +22,7 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
  // This function mirrors the localstorage contents of certain keys to states
     const onStorageUpdate = (e) => {
         const { key, newValue } = e;
-        if (key === 'relCoords') {
-            setrelCoords(JSON.parse(newValue));
-        } else if (key ==='projectionAspectRatio'){
+        if (key ==='projectionAspectRatio'){
             setProjectionAspectRatio(newValue);
         }
     };
@@ -38,9 +31,6 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
     useEffect(() => {
         setProjectionAspectRatio(
             localStorage.getItem('projectionAspectRatio') ?? 2
-        );
-        setrelCoords(
-            localStorage.getItem('relCoords') ?? { rx: 0.5, ry: 0.5,}
         );
         window.addEventListener('storage', onStorageUpdate);
         return () => {
