@@ -12,9 +12,13 @@ export const Controller = () => {
 
   // Active Objects: They are aaaaaaaall going to live here:
   const [templateObjects, setTemplateObjects] = useState([]);
-  const [activeObjects, setActiveObjects] = useState(
-    JSON.parse(localStorage.getItem('activeObjects') ?? []) // Not sure if this is a good way to do it.
-    );
+  //If activeObjects doesn't exist yet on local Storage, an empty array is written.
+  const [activeObjects, setActiveObjects] = useState( 
+    !localStorage.getItem('activeObjects')?[]:
+    JSON.parse(localStorage.getItem('activeObjects') )) 
+    
+
+  const [darkmode, setDarkmode] = useState(!localStorage.getItem("darkmode") ? false : JSON.parse(localStorage.getItem("darkmode")));
 
   // Copying from file to state:
   useEffect(() => { setTemplateObjects(objectTemplates) }, []);

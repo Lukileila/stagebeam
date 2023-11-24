@@ -10,7 +10,14 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
  
     let rx = (e.clientX  -stageDimensions.left) /stageDimensions.width ;
     let ry = (e.clientY  -stageDimensions.top)  /stageDimensions.height ;
-    const aO = activeObjects.map(eachObj => eachObj.id === elId ? {...eachObj, position: { rx, ry }} : eachObj)
+    let aO=[];
+
+    //if within screen or 10% outside, add new position, else delete object 
+    if (rx>-0.05 && ry>-0.05){
+      aO = activeObjects.map(eachObj => eachObj.id === elId ? {...eachObj, position: { rx, ry }} : eachObj)
+    }else{
+      aO = activeObjects.map(eachObj => eachObj.id === elId ? " " : eachObj)      
+    }
     setActiveObjects(aO);
   };
 
