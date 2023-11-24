@@ -21,6 +21,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
     setActiveObjects(aO);
   };
 
+  
   return (<>
   
     {activeObjects.length>0 && activeObjects.map((x,i)=>{
@@ -38,8 +39,8 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
             <div key={j}
               className="absolute block text-white mix-blend-screen cursor-grab"  
               style={{
-                width:x.css.width,
-                height:x.css.height,
+                width:x.size*stageDimensions.width+'px',
+                aspectRatio:x.css.aspectRatio,
                 borderRadius:x.css.borderRadius,
                 backgroundColor:x.css.backgroundColor,
                 translate:x.css.translate

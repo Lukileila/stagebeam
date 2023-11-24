@@ -8,7 +8,7 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
     // Aspect Ratio of the window the beamer is in
     const [projectionAspectRatio, setProjectionAspectRatio] = useState(1);
     // Pink box dimensions
-    const [stageDimensions, setStageDimensions] = useState();
+    const [stageDimensions, setStageDimensions] = useState({width:100});
     // h-full active or not for the pink box
     const [aspectToggle, setAspectToggle]=useState(false);
 
