@@ -24,7 +24,7 @@ export const Templates = () => {
             </div>
 
             <div className="bg-yellow-500 p-4 rounded">
-              <img src="./src/assets/images/templatesimages3.png" alt="Template 3" className="cursor-pointer w-32 h-32" />
+              <img src="./src/assets/images/templatesimages6.png" alt="Template 3" className="cursor-pointer w-32 h-32" />
             </div>
 
             <div className="bg-yellow-500 p-4 rounded">
@@ -36,7 +36,7 @@ export const Templates = () => {
             </div>
 
             <div className="bg-yellow-500 p-4 rounded">
-              <img src="./src/assets/images/templatesimages6.png" alt="Template 6" className="cursor-pointer w-32 h-32" />
+              <img src="./src/assets/images/templatesimages3.png" alt="Template 6" className="cursor-pointer w-32 h-32" />
             </div>
           </div>
         </div>
