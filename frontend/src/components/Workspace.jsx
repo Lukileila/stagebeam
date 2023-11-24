@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ObjectCreator } from "./ObjectCreator";
 
-
 // Main function
 export const Workspace = ({ activeObjects, setActiveObjects}) => {
 
@@ -12,7 +11,6 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
     const [stageDimensions, setStageDimensions] = useState();
     // h-full active or not for the pink box
     const [aspectToggle, setAspectToggle]=useState(false);
-
 
  //References
       const stageContainer = useRef();
@@ -27,7 +25,7 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
         }
     };
 
- //Event Listener, listening to storage updates
+ //Sets up event listeners for storage updates
     useEffect(() => {
         setProjectionAspectRatio(
             localStorage.getItem('projectionAspectRatio') ?? 2
@@ -39,7 +37,7 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
     }, []);
 
 
-  // Toggling aspectToggle depending on whether the pink border box (stage) fits in the black box (workspace)
+  // Toggling aspectToggle depending on whether the pink border box (stage) fits in the black box (workspace). (Responsiveness)
     useEffect(() => {
         setStageDimensions(stageContainer.current.getBoundingClientRect());
         let x=workspace.current.getBoundingClientRect();
@@ -60,7 +58,7 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
       }, [projectionAspectRatio, aspectToggle]);
    
     return (
-        <div ref={workspace} className='fixed bg-black text-white top-[3vh] h-[67vh] left-[30vw] w-[70vw] border-2 overflow-visible /* group/canvas */ z-1  ' >
+        <div ref={workspace} className='fixed bg-black text-white h-[70%] left-[30%] w-[70%] border-2 overflow-visible /* group/canvas */ z-1  ' >
 
             <h1 className='absolute text-gray-700 p-2 text-xl'>Workspace</h1>
 
