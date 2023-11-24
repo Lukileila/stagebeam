@@ -13,9 +13,11 @@ export const Home = () => {
           
           <div className="absolute top-4 right-4 flex gap-4">
 
-            
-          <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded">Sign Up</button>
+            {/* TEST started here adding more NavLinks */}
 
+            <NavLink to="signuppage">
+          <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded">Sign Up</button>
+          </NavLink>
 
 
           <NavLink to="dashboard">

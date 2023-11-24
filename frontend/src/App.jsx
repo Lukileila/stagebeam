@@ -12,6 +12,7 @@ import { Home } from "./pages/Home.jsx";
 import { Templates } from "./pages/Templates.jsx";
 import { Share } from "./pages/Share.jsx";
 import { WatchTutorialVideo } from "./pages/WatchTutorialVideo.jsx";
+import { SignUpPage } from "./pages/SignUpPage.jsx";
 import { About } from "./pages/About.jsx";
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { Controller } from "./pages/Controller.jsx";
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
       <Route path="*" element={<NotFound/>} /> 
       <Route path="share" element={<Share />}/>  
       <Route path="watchtutorialvideo" element={<WatchTutorialVideo />}/>   
+      <Route path="signuppage" element={<SignUpPage />}/>
     </Route>
   )
 );
