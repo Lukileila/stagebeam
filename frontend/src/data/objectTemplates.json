@@ -1,41 +1,87 @@
 [
   {
-    "id": 1,
+    "templateId": 1,
     "name": "spotlight",
-    "thumbnail": "img", 
+    "thumbnail": "img",
+    "position": {
+      "rx":0.2,
+      "ry":0.2
+    },
     "elements":[  
       {"css": {         
-              "color":"#FFCCCCFF", 
+              "backgroundColor":"#FFFEF5E5", 
               "width":"300px",
-              "border-radius": "999px",
+              "height":"300px",
+              "borderRadius": "999px",
               "translate": "-50% -50%"
-      }}
+              }
+      }
     ]
   },
 
   {
-    "id": 2,
-    "name": "rgb trio",
-    "thumbnail": "img", 
+    "templateId": 2,
+    "name": "rgb_trio",
+    "thumbnail": "img",
+    "position": {
+      "rx":0.6,
+      "ry":0.6
+    }, 
     "elements":[  
       {"css": {         
-                "color":"#FF0000FF", 
+                "backgroundColor":"#FF0000E5", 
                 "width":"300px",
-                "border-radius": "999px", 
-                "translate": "-50% -50%"
+                "height":"300px",
+                "borderRadius": "999px", 
+                "translate": "-50% -75%"
       }},
       {"css": {          
-                "color":"#00FF00FF",
+                "backgroundColor":"#00FF00E5",
                 "width":"300px",
-                "border-radius": "999px", 
-                "translate": "-40% -40%"
+                "height":"300px",
+                "borderRadius": "999px", 
+                "translate": "-71.75% -37.5%"
       }},
       {"css": {         
-      "color":"#0000FFFF", 
+      "backgroundColor":"#0000FFE5", 
       "width":"300px",
-      "border-radius": "999px", 
-      "translate": "-60% -60%"
-}}
+      "height":"300px",
+      "borderRadius": "999px", 
+      "translate": "-28.25% -37.5%"
+      }}
+    ]
+  },
+  
+  {
+    "templateId": 3,
+    "name": "placeholder",
+    "thumbnail": "img",
+    "position": {
+      "rx":0.5,
+      "ry":0.5
+    }, 
+    "elements":[  
+      {"css": {         
+                "backgroundColor":"#FF0000E5", 
+                "width":"300px",
+                "height":"300px",
+                "borderRadius": "999px", 
+                "translate": "-50% -75%"
+      }},
+      {"css": {          
+                "backgroundColor":"#00FF00E5",
+                "width":"300px",
+                "height":"300px",
+                "borderRadius": "999px", 
+                "translate": "-71.75% -37.5%"
+      }},
+      {"css": {         
+      "backgroundColor":"#0000FFE5", 
+      "width":"300px",
+      "height":"300px",
+      "borderRadius": "999px", 
+      "translate": "-28.25% -37.5%"
+      }}
     ]
   }
 
