@@ -20,7 +20,7 @@ export const ObjectCreatorBeamer = ({activeObjects}) => {
               className="absolute block text-white mix-blend-screen cursor-grab"  
               style={{
                 width:x.css.width,
-                height:x.css.width,
+                height:x.css.height,
                 borderRadius:x.css.borderRadius,
                 backgroundColor:x.css.backgroundColor,
                 translate:x.css.translate

@@ -51,10 +51,12 @@ export const BeamerDisplay = ({activeObjects, setActiveObjects}) => {
     const displayInstruction = ()=>{
         if (!fullscreen) {return(
             <>
-            <div className='absolute flex flex-col flex-wrap w-full h-full p-2 justify-center justify-items-center items-center content-center'>
+            <div className='absolute flex flex-col flex-wrap w-full h-full p-2 justify-center justify-items-center items-center content-center '>
+                <div className='bg-black drop-shadow-2xl rounded-md p-5 border-2 border-gray-900 flex flex-col flex-wrap  justify-center justify-items-center items-center content-center  '>
                 <p className=' text-yellow-400 text-3xl'>Drag this window onto the beamer screen and </p>                                
                 <button onClick={toggleFullScreen} className='border-2 rounded-md border-yellow-400 p-2 m-2 text-yellow-400 text-xl'>⇦ go fullscreen ⇨</button>
                 <p className=' text-gray-600 text-xl'>Display settings must be:</p><p className=' text-gray-600 text-xl'>[ Multiple screens: Extend these displays. ]</p>
+                </div>
             </div>
             </>
     

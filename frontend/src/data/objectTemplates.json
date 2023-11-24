@@ -83,6 +83,25 @@
       "translate": "-28.25% -37.5%"
       }}
     ]
-  }
+  },
 
+  {
+    "templateId": 4,
+    "name": "mrTwister",
+    "thumbnail": "img",
+    "position": {
+      "rx":0.2,
+      "ry":0.2
+    },
+    "elements":[  
+      {"css": {         
+              "backgroundColor":"#FFFEF5E5", 
+              "width":"3000px",
+              "height":"10px",
+              "borderRadius": "5px",
+              "translate": "-5px -50%"
+              }
+      }
+    ]
+  }
 ]
