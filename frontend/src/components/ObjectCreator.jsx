@@ -10,25 +10,8 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
  
     let rx = (e.clientX  -stageDimensions.left) /stageDimensions.width ;
     let ry = (e.clientY  -stageDimensions.top)  /stageDimensions.height ;
-    // const aO = [...activeObjects]; /* shallow clone */
     const aO = activeObjects.map(eachObj => eachObj.id === elId ? {...eachObj, position: { rx, ry }} : eachObj)
-
-    // console.log("aO:",aO,"e.target.id:",e.target.id,"aO[e.target.id].position.rx",aO[e.target.id].position.rx,"aO[e.target.id].position.ry",aO[e.target.id].position.ry)
-
-    // aO[elIndex].position.rx=rx;
-    // aO[elIndex].position.ry=ry;
-
-
-    /* 
-    aO[2].position.rx=rx;
-    aO[2].position.ry=ry; */
     setActiveObjects(aO);
-
-
- /*    localStorage.setItem(
-        'activeObjects',
-        JSON.stringify({aO})
-        ); */
   };
 
   return (<>
