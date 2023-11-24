@@ -1,5 +1,4 @@
 export const ObjectCreatorBeamer = ({activeObjects}) => {
-  console.log("activeObjects",activeObjects);
 
   return (<>
   
@@ -19,8 +18,8 @@ export const ObjectCreatorBeamer = ({activeObjects}) => {
             <div key={j}
               className="absolute block text-white mix-blend-screen cursor-grab"  
               style={{
-                width:x.css.width,
-                height:x.css.width,
+                width:x.size*screen.width+'px',
+                aspectRatio:x.css.aspectRatio,
                 borderRadius:x.css.borderRadius,
                 backgroundColor:x.css.backgroundColor,
                 translate:x.css.translate

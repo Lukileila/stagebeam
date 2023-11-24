@@ -9,12 +9,12 @@
     },
     "elements":[  
       {"css": {         
-              "backgroundColor":"#FFFEF5E5", 
-              "width":"300px",
-              "height":"300px",
+              "backgroundColor":"#FFFEF5E5",
+              "aspectRatio":"1",
               "borderRadius": "999px",
               "translate": "-50% -50%"
-              }
+              },
+       "size":0.2
       }
     ]
   },
@@ -30,25 +30,30 @@
     "elements":[  
       {"css": {         
                 "backgroundColor":"#FF0000E5", 
-                "width":"300px",
+                "aspectRatio":"1",
                 "height":"300px",
                 "borderRadius": "999px", 
                 "translate": "-50% -75%"
-      }},
+      },
+      "size":0.2},
       {"css": {          
                 "backgroundColor":"#00FF00E5",
-                "width":"300px",
+                "aspectRatio":"1",
+                "width":"300",
                 "height":"300px",
                 "borderRadius": "999px", 
                 "translate": "-71.75% -37.5%"
-      }},
+      },
+      "size":0.2},
       {"css": {         
-      "backgroundColor":"#0000FFE5", 
-      "width":"300px",
-      "height":"300px",
-      "borderRadius": "999px", 
-      "translate": "-28.25% -37.5%"
-      }}
+          "backgroundColor":"#0000FFE5", 
+          "aspectRatio":"1",
+          "width":"300px",
+          "height":"300px",
+          "borderRadius": "999px", 
+          "translate": "-28.25% -37.5%"
+      },
+      "size":0.2}
     ]
   },
   
@@ -63,26 +68,50 @@
     "elements":[  
       {"css": {         
                 "backgroundColor":"#FF0000E5", 
-                "width":"300px",
+                "aspectRatio":"1",
                 "height":"300px",
                 "borderRadius": "999px", 
                 "translate": "-50% -75%"
-      }},
+      },
+      "size":0.2},
       {"css": {          
                 "backgroundColor":"#00FF00E5",
-                "width":"300px",
+                "aspectRatio":"1",
+                "width":"300",
                 "height":"300px",
                 "borderRadius": "999px", 
                 "translate": "-71.75% -37.5%"
-      }},
+      },
+      "size":0.2},
       {"css": {         
-      "backgroundColor":"#0000FFE5", 
-      "width":"300px",
-      "height":"300px",
-      "borderRadius": "999px", 
-      "translate": "-28.25% -37.5%"
-      }}
+          "backgroundColor":"#0000FFE5", 
+          "aspectRatio":"1",
+          "width":"300px",
+          "height":"300px",
+          "borderRadius": "999px", 
+          "translate": "-28.25% -37.5%"
+      },
+      "size":0.2}
+    ]
+  },
+
+  {
+    "templateId": 4,
+    "name": "mrTwister",
+    "thumbnail": "img",
+    "position": {
+      "rx":0.2,
+      "ry":0.2
+    },
+    "elements":[  
+      {"css": {         
+              "backgroundColor":"#FFFEF5E5", 
+              "width":"3000px",
+              "height":"10px",
+              "borderRadius": "5px",
+              "translate": "-5px -50%"
+              }
+      }
     ]
   }
-
 ]

@@ -21,6 +21,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
     setActiveObjects(aO);
   };
 
+  
   return (<>
   
     {activeObjects.length>0 && activeObjects.map((x,i)=>{
@@ -38,8 +39,8 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
             <div key={j}
               className="absolute block text-white mix-blend-screen cursor-grab"  
               style={{
-                width:x.css.width,
-                height:x.css.width,
+                width:x.size*stageDimensions.width+'px',
+                aspectRatio:x.css.aspectRatio,
                 borderRadius:x.css.borderRadius,
                 backgroundColor:x.css.backgroundColor,
                 translate:x.css.translate
@@ -48,7 +49,8 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
             )})}
 
             
-            <div className="centerIndicator  absolute block b-2 border-black border-2 rounded-full text-white mix-blend-normal cursor-grab w-10 h-10 -translate-x-[50%] -translate-y-[50%] "></div>
+            <div className="centerIndicator  absolute block b-4 border-black border-4 rounded-full text-white mix-blend-normal cursor-grab w-10 h-10 -translate-x-[50%] -translate-y-[50%] "></div>
+            <div className="centerIndicator  absolute block b-2 border-yellow-500 border-2 rounded-full text-white mix-blend-normal cursor-grab w-10 h-10 -translate-x-[50%] -translate-y-[50%] "></div>
 
           </div>
         
