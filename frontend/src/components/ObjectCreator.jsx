@@ -16,7 +16,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
     if (rx>-0.05 && ry>-0.05){
       aO = activeObjects.map(eachObj => eachObj.id === elId ? {...eachObj, position: { rx, ry }} : eachObj)
     }else{
-      aO = activeObjects.map(eachObj => eachObj.id === elId ? " " : eachObj)      
+      aO = activeObjects.filter(object=>!(object.id===elId)).map(object=>object)
     }
     setActiveObjects(aO);
   };
