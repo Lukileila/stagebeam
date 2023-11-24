@@ -13,7 +13,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
     let aO=[];
 
     //if within screen or 10% outside, add new position, else delete object 
-    if (rx>-0.05 && ry>-0.05){
+    if (rx>-0.05 && rx<1.05  && ry>-0.05 && ry<1.05){
       aO = activeObjects.map(eachObj => eachObj.id === elId ? {...eachObj, position: { rx, ry }} : eachObj)
     }else{
       aO = activeObjects.filter(object=>!(object.id===elId)).map(object=>object)
