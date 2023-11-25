@@ -17,11 +17,12 @@ export const Controller = () => {
     !localStorage.getItem('activeObjects')?[]:
     JSON.parse(localStorage.getItem('activeObjects') )) 
     
-
-  const [darkmode, setDarkmode] = useState(!localStorage.getItem("darkmode") ? false : JSON.parse(localStorage.getItem("darkmode")));
+/* 
+  const [darkmode, setDarkmode] = useState(!localStorage.getItem("darkmode") ? false : JSON.parse(localStorage.getItem("darkmode"))); */
 
   // Copying from file to state:
-  useEffect(() => { setTemplateObjects(objectTemplates) }, []);
+  useEffect(() => { setTemplateObjects(objectTemplates); }, []);
+
 
   // Copying state to localstorage
   useEffect(() => { localStorage.setItem('activeObjects',JSON.stringify(activeObjects)); }, [activeObjects]);

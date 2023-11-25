@@ -54,7 +54,7 @@ export const BeamerDisplay = ({activeObjects, setActiveObjects}) => {
             <>
             <div className='absolute flex flex-col flex-wrap w-full h-full p-2 justify-center justify-items-center items-center content-center z-60'>
                 <div className='border-2 border-gray-800 p-2 bg-gradient-to-t from-gray-950 to-gray-900 rounded
-                flex flex-col flex-wrap  justify-center justify-items-center items-center content-center  '>
+                flex flex-col flex-wrap  justify-center justify-items-center items-center content-center max-w-sm'>
                 <p className='  text-gray-300 text-xl'>Drag this window onto the beamer screen and go fullscreen:</p>
                 <button onClick={toggleFullScreen} className=' border-2 rounded border-gray-950 opacity-100 bg-yellow-500 hover:bg-yellow-400 box-shadow p-2 m-2 aspect-square'>
                     <img src="./src/assets/icons/fullscreenSvg.svg" alt="go fullscreen" className="w-10 aspect-square fill-white"></img>
@@ -77,7 +77,7 @@ export const BeamerDisplay = ({activeObjects, setActiveObjects}) => {
             <div className='bg-black h-[100vh] relative overflow-hidden '>
 
                 <div className='absolute p-2 flex text-gray-800 flex-wrap w-full h-full justify-end content-end'><p>free version of StageBeam.live</p></div>
-                <div className={!fullscreen?"blur-lg":""}>
+                <div className={!fullscreen?"blur-lg h-full w-full absolute":" h-full w-full absolute"}> {/* could probably be written more elegantly without repetition */}
                 <ObjectCreatorBeamer activeObjects={activeObjects}/>
                 </div>
                 {displayInstruction()}

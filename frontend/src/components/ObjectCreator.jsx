@@ -2,7 +2,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
 
 
   const startDrag = (e) => {
-    e.target.classList.add('opacity-40');
+    /* e.target.classList.add('opacity-40'); */
   };
 
   const stopDrag = (e, elId) => {
@@ -34,7 +34,6 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
               left: x.position.rx*100 + '%',
             }}>
             
-
             {x.elements.length>0 && x.elements.map((x,j)=>{ return (
             <div key={j}
               className="absolute block text-white mix-blend-screen cursor-grab"  
