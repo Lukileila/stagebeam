@@ -2,6 +2,8 @@ import React from 'react'
 
 export const Timeline = () => {
   return (
-    <div className='fixed border-2 left-[30vw] top-[70vh] h-[30vh] w-[70vw] bg-yellow-500 p-2 text-white'> Timeline</div>
+    <div className='fixed left-[30%] w-[70%] top-[70%] h-[30%] bg-black p-1'>
+      <div className='w-full h-full border-2 border-gray-800 p-2 bg-gradient-to-t from-gray-950 to-gray-900 rounded text-white'> Timeline</div>
+    </div>
   )
 }
