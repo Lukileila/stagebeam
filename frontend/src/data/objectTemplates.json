@@ -2,7 +2,7 @@
   {
     "templateId": 1,
     "name": "spotlight",
-    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
+    "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png",
     "position": {
       "rx":0.2,
       "ry":0.2
@@ -22,7 +22,7 @@
   {
     "templateId": 2,
     "name": "red",
-    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
+    "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/162JTZpSmAcNsAlCWRA379/e59a07c34fa2ed4b6cb182335e6cce63/red.png",
     "position": {
       "rx":0.2,
       "ry":0.2
@@ -42,7 +42,7 @@
   {
     "templateId": 3,
     "name": "green",
-    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
+    "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/1qWTwOvRKj8Izw3Nd2Ky89/c09f911dbe304a2d4ec09ab020fbcc11/green.png",
     "position": {
       "rx":0.2,
       "ry":0.2
@@ -62,7 +62,7 @@
   {
     "templateId": 1,
     "name": "blue",
-    "thumbnail": "img",
+    "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/sgdiR81mLWKsw9EILMSLj/01dd331f565d4a6b74513aa7fdef4737/blue.png",
     "position": {
       "rx":0.2,
       "ry":0.2
@@ -82,7 +82,7 @@
   {
     "templateId": 2,
     "name": "rgb_trio",
-    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
+    "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/5yDJSX05hBK5gkprb2eiFZ/19e2534d8b80bcae0ce8820f89f88425/rgb_trio.png",
     "position": {
       "rx":0.6,
       "ry":0.6
@@ -158,7 +158,7 @@
   {
     "templateId": 4,
     "name": "mrTwister",
-    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
+    "thumbnail": "https://i.pinimg.com/originals/9a/f8/72/9af87257f744794b3de07d6bb95c7198.png",
     "position": {
       "rx":0.2,
       "ry":0.2
