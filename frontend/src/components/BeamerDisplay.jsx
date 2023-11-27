@@ -59,7 +59,7 @@ export const BeamerDisplay = ({activeObjects, setActiveObjects}) => {
                 <button onClick={toggleFullScreen} className=' border-2 rounded border-gray-950 opacity-100 bg-yellow-500 hover:bg-yellow-400 box-shadow p-2 m-2 aspect-square'>
                     <img src="./src/assets/icons/fullscreenSvg.svg" alt="go fullscreen" className="w-10 aspect-square fill-white"></img>
                 </button>
-                <p className=' text-gray-300 text-md'>Display settings must be:</p><p className=' text-gray-300 text-md'> Multiple screens: Extend these displays.</p>
+                <p className=' text-gray-300 text-md w-full'>⚙️ Display settings must be: <br></br> Multiple screens: Extend these displays.</p>
                 </div>
             </div>
             </>

@@ -56,12 +56,6 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
           window.removeEventListener('resize', handleResize);
         };
       }, [projectionAspectRatio, aspectToggle]);
-
-     //probably doesn't do anything
-    const doNotDropHere=(e)=> {
-        console.log("doNotDropHere")
-        e.preventDefault();
-    }
    
     return (
         <div className='fixed left-[30%] w-[70%] h-[70%] bg-black p-1'>
@@ -70,11 +64,11 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
                 <h1 className='absolute text-gray-700 p-2 text-md'>Beamer - aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</h1>
                 
                 {/* formerly the "pink box": */}
-                <div  ref={stageContainer} className={`relative bg-transparent border-2 border-yellow-500 ${aspectToggle && 'h-full'} z-30 `} draggable={false} style={{aspectRatio:projectionAspectRatio}}>
+                <div  ref={stageContainer} className={`relative bg-transparent border-2 border-yellow-400 ${aspectToggle && 'h-full'} z-30 `} draggable={false} style={{aspectRatio:projectionAspectRatio}}>
                     <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} stageDimensions={stageDimensions}/>
                 </div>    
                 {/* Masking elements cause issues, when objects are dragged into them */}
-                <div className={'absolute left-0 top-0 w-6 h-full bg-gray-800 mix-blend-darken  z-40'} draggable="false" onDrop={doNotDropHere}></div>   {/* left masking overlay */}
+                <div className={'absolute left-0 top-0 w-6 h-full bg-gray-800 mix-blend-darken  z-40'} draggable='false'></div>   {/* left masking overlay */}
                 <div className={'absolute left-0 top-0 h-6 w-full bg-gray-800 mix-blend-darken  z-40'}></div>    {/* top masking overlay */}
                 <div className={'absolute top-0 h-full w-full bg-gray-800 mix-blend-darken  z-40'} style={{left:stageDimensions.width+1.25*20}}></div> {/* right masking overlay */}
                 <div className={'absolute bottom-0 w-full bg-gray-800 mix-blend-darken z-40'}  style={{height:(window.innerHeight*0.7 -stageDimensions.height-1.25*20 )}} ></div> {/* bottom masking overlay */}
