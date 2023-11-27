@@ -27,6 +27,8 @@ export const Controller = () => {
   // Copying state to localstorage
   useEffect(() => { localStorage.setItem('activeObjects',JSON.stringify(activeObjects)); }, [activeObjects]);
 
+  //Maybe change overall layout to grid at some point
+
   return (
     <>
         <ObjectsMenu  activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} />
