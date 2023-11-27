@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { PaletteCard } from "./PaletteCard";
-import { ActiveCard } from "./ActiveCard";
+import { PaletteCards } from "./PaletteCards";
+import { ActiveCards } from "./ActiveCards";
 
 export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) => {
 
@@ -23,7 +23,6 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
   const openBeamer = ()=> {
     window.open("/beamer")
   }
-
   const clearActiveObjects = ()=>{
     setActiveObjects([])
   }
@@ -42,8 +41,11 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
 
         <div className='grow flex flex-col border-2 my-1 border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 rounded p-1  text-gray-300 z-0'> 
           <h1 className='text-gray-600'>Objects Palette</h1>
-          <div className='grow flex flex-row flex-wrap justify-start content-start border-2 my-1 border-gray-950 bg-black rounded-lg p-1  text-gray-300 z-0'> 
-              <PaletteCard templateObjects={templateObjects} activeObjects={activeObjects} setActiveObjects={setActiveObjects}/>
+          <div className='grow border-2 my-1 border-gray-950 bg-black rounded-lg p-1  text-gray-300 z-0'> 
+              <h3 className="text-gray-300 text-sm">Lights ⮟</h3>
+              <div className='grow flex flex-row flex-wrap justify-start content-start'>
+              <PaletteCards templateObjects={templateObjects} activeObjects={activeObjects} setActiveObjects={setActiveObjects}/>
+              </div>
           </div>
         </div>
         <div className='grow flex flex-col border-2  border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 rounded p-1  text-gray-300 z-0'> 
@@ -53,8 +55,8 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
             <p className='text-black hover:translate-y-px'>clear all 🗑️</p>  </button>
           </div>
 
-          <div className='grow border-2 my-1 border-gray-950 bg-black  rounded-lg px-1 overflow-auto text-gray-300 z-0'> 
-            <ActiveCard activeObjects={activeObjects} setActiveObjects={setActiveObjects}/>
+          <div className='grow border-2 my-1 border-gray-950 bg-black  rounded-lg  overflow-auto text-gray-300 z-0'> 
+            <ActiveCards activeObjects={activeObjects} setActiveObjects={setActiveObjects}/>
           </div>
           
         </div>

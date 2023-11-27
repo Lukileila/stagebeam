@@ -1,4 +1,4 @@
-export const PaletteCard = ({templateObjects, setTemplateObjects, activeObjects, setActiveObjects}) => {
+export const PaletteCards = ({templateObjects, setTemplateObjects, activeObjects, setActiveObjects}) => {
 
 
     const addToActive = (templateObject) => {
