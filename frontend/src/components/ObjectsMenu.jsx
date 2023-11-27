@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { PaletteCard } from "./PaletteCard";
+import { ActiveCard } from "./ActiveCard";
 
 export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) => {
 
@@ -34,8 +35,8 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
         <div   className='flex flex-col justify-between border-2 border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 rounded p-1 text-gray-300  cursor-pointer' > 
           <h1 className='text-gray-600'>Beamer window</h1>
 
-          <button onClick={openBeamer} className=' border-2 border-gray-800  rounded p-1 ' style={{backgroundColor:beamerOnline?'#FACC15':"#6B7280"}}>
-            <p className='inline text-gray-900'>{beamerOnline?"beamer window is open ":'pop out the beamer window '}</p><img src="./src/assets/icons/popoutSvg.svg" alt="popout" className=" inline w-5 aspect-square fill-white"></img>
+          <button onClick={openBeamer} className='flex hover:translate-y-px border-2 border-gray-800  rounded p-1 ' style={{backgroundColor:beamerOnline?'#FACC15':"#6B7280"}}>
+            <p className=' text-gray-900 '>{beamerOnline?"beamer window is open ":'pop out the beamer window '}</p><img src="./src/assets/icons/popoutSvg.svg" alt="popout" className=" w-5 aspect-square fill-white"></img>
           </button>
         </div>     
 
@@ -48,16 +49,12 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
         <div className='grow flex flex-col border-2  border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 rounded p-1  text-gray-300 z-0'> 
           <div className="flex flex-row justify-between">
           <h1 className='text-gray-600'>Active Objects</h1>
-          <button onClick={clearActiveObjects} className=' border-2 border-gray-800 bg-gray-900 text-white rounded px-1 h-'>
-            <p className='inline text-gray-600 '>clear all 🗑️</p>  </button>
+          <button onClick={clearActiveObjects} className=' border outline outline-1 outline-black border-gray-800 hover:border-gray-950 bg-gray-900  hover:bg-gray-900 rounded px-1 h-'>
+            <p className='text-black hover:translate-y-px'>clear all 🗑️</p>  </button>
           </div>
 
-          <div className='grow border-2 my-1 border-gray-950 bg-black  rounded-lg px-1  text-gray-300 z-0'> 
-            <ul className='list-disc p-5'>
-              {activeObjects.length>0 && activeObjects.map((Object,it)=>{
-                return <li key={it} onClick={()=>addToActive(Object)} className="cursor-pointer">{Object.name}</li>
-              })}
-            </ul>
+          <div className='grow border-2 my-1 border-gray-950 bg-black  rounded-lg px-1 overflow-auto text-gray-300 z-0'> 
+            <ActiveCard activeObjects={activeObjects} setActiveObjects={setActiveObjects}/>
           </div>
           
         </div>
