@@ -2,7 +2,7 @@
   {
     "templateId": 1,
     "name": "spotlight",
-    "thumbnail": "img",
+    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
     "position": {
       "rx":0.2,
       "ry":0.2
@@ -22,7 +22,7 @@
   {
     "templateId": 2,
     "name": "red",
-    "thumbnail": "img",
+    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
     "position": {
       "rx":0.2,
       "ry":0.2
@@ -42,7 +42,7 @@
   {
     "templateId": 3,
     "name": "green",
-    "thumbnail": "img",
+    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
     "position": {
       "rx":0.2,
       "ry":0.2
@@ -82,7 +82,7 @@
   {
     "templateId": 2,
     "name": "rgb_trio",
-    "thumbnail": "img",
+    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
     "position": {
       "rx":0.6,
       "ry":0.6
@@ -120,7 +120,7 @@
   {
     "templateId": 3,
     "name": "placeholder",
-    "thumbnail": "img",
+    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
     "position": {
       "rx":0.5,
       "ry":0.5
@@ -158,7 +158,7 @@
   {
     "templateId": 4,
     "name": "mrTwister",
-    "thumbnail": "img",
+    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
     "position": {
       "rx":0.2,
       "ry":0.2
