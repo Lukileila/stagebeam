@@ -68,7 +68,7 @@ export const BeamerDisplay = ({activeObjects, setActiveObjects}) => {
 
     const displayExitNotice = ()=>{
         if (exitNotice&&fullscreen) {return(
-            <div className='absolute  flex text-red-500 flex-wrap w-full h-full justify-end content-start'><button onClick={toggleFullScreen} className=' border-2 rounded border-gray-950 opacity-100 bg-yellow-500 hover:bg-yellow-400 box-shadow p-2  aspect-square'>❌</button></div>
+            <div className='absolute  flex text-red-500 flex-wrap w-full h-full justify-end content-start'><button onClick={toggleFullScreen} className=' border-2 rounded-bl border-gray-950 opacity-100 bg-yellow-500 hover:bg-yellow-400 box-shadow p-2  aspect-square'>❌</button></div>
 
         )}}
 
