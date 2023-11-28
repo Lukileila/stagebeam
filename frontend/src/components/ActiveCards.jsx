@@ -14,7 +14,22 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
         setActiveObjects(aO);
       };
     
-
+    const handleForm=(e)=>{
+      let aO=activeObjects;
+      console.log("aO",aO)
+      const id=e.target.id;
+      console.log("id",id);
+      const value=e.target.value;
+      aO = activeObjects.map(object=>{
+        if (!id===object.id){
+          return (object)
+        }else{
+          const alteredObject=object;
+          alteredObject.elements[0].size=value/100;
+          return (alteredObject)
+        }});
+      setActiveObjects(aO);
+    };
 
     return (
 
@@ -43,18 +58,24 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
                         <div className='px-1'>
                         <p>x: {activeObject.position.rx.toFixed(3)} y: {activeObject.position.ry.toFixed(3)}</p>
 
-                        {activeObject.controls.keys().length>0 && activeObject.map((x,j)=>{ 
+                        {activeObject.controls && Object.keys(activeObject.controls).map((x,index)=>{ 
+                          console.log("called", activeObject.name);
                           return (
-                            <div key={j}
-                              className="absolute block text-white mix-blend-screen cursor-grab"  
+
+                            <div key={index}
+                              className=" block text-white mix-blend-screen cursor-grab"  
                               style={{
-                                width:x.size*screen.width+'px',
-                                aspectRatio:x.css.aspectRatio,
-                                borderRadius:x.css.borderRadius,
-                                backgroundColor:x.css.backgroundColor,
-                                translate:x.css.translate
-                              }}
-                            >{x.name}</div>
+                                backgroundColor:"transparent",
+                                                      }}
+                            >                            
+                            <form >
+                              <label form="size">Size: </label>
+                              <input type={x} value={activeObject.controls.x} id={activeObject.id} onChange={(e)=>handleForm(e)} min="0" max="100"/>
+                            </form> 
+
+                          </div>
+                          
+
                           )
                         })}
 
