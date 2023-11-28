@@ -18,7 +18,7 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
     };
   }, []);
 
-  useEffect(()=>{},[selected])
+
 
 
   const openBeamer = ()=> {
@@ -36,7 +36,7 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
           <h1 className='text-gray-600'>Beamer window</h1>
 
           <button onClick={openBeamer} className='flex hover:translate-y-px border-2 border-gray-800  rounded p-1 ' style={{backgroundColor:beamerOnline?'#FACC15':"#6B7280"}}>
-            <p className=' text-gray-900 '>{beamerOnline?"beamer window is open ":'pop out the beamer window '}</p><img src="./src/assets/icons/popoutSvg.svg" alt="popout" className=" w-5 aspect-square fill-white"></img>
+            <p className=' text-gray-900 '>{beamerOnline?"beamer window is open ":'pop out the beamer window '}</p><img src="../public/assets/icons/popoutSvg.svg" alt="popout" className=" w-5 aspect-square "></img>
           </button>
         </div>     
 

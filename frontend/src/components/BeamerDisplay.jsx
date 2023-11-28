@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { ObjectCreatorBeamer } from './ObjectCreatorBeamer';
-import fullscreenSvg from '../assets/icons/fullscreenSvg.svg';
 
 export const BeamerDisplay = ({activeObjects, setActiveObjects}) => {
 
@@ -57,7 +56,7 @@ export const BeamerDisplay = ({activeObjects, setActiveObjects}) => {
                 flex flex-col flex-wrap  justify-center justify-items-center items-center content-center max-w-sm'>
                 <p className='  text-gray-300 text-xl'>Drag this window onto the beamer screen and go fullscreen:</p>
                 <button onClick={toggleFullScreen} className=' border-2 rounded border-gray-950 opacity-100 bg-yellow-500 hover:bg-yellow-400 box-shadow p-2 m-2 aspect-square'>
-                    <img src="./src/assets/icons/fullscreenSvg.svg" alt="go fullscreen" className="w-10 aspect-square fill-white"></img>
+                    <img src="../public/assets/icons/fullscreenSvg.svg" alt="go fullscreen" className="w-10 aspect-square fill-white"></img>
                 </button>
                 <p className=' text-gray-300 text-md w-full'>⚙️ Display settings must be: <br></br> Multiple screens: Extend these displays.</p>
                 </div>
