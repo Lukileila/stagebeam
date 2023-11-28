@@ -16,14 +16,13 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
     
     const handleForm=(e)=>{
       let aO=activeObjects;
-      console.log("aO",aO)
       const id=e.target.id;
-      console.log("id",id);
+   ;
       const value=e.target.value;
       aO = activeObjects.map(object=>{
-        if (!id===object.id){
+        if (!(id===object.id)){    console.log("TRUE:  id from target: ",id, "id from object", object.id)
           return (object)
-        }else{
+        }else{  console.log("FALSE:  id from target: ",id, "id from object", object.id)
           const alteredObject=object;
           alteredObject.elements[0].size=value/100;
           return (alteredObject)
