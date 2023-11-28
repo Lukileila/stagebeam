@@ -14,13 +14,13 @@
               "borderRadius": "999px",
               "translate": "-50% -50%"
               },
-       "size":0.2,
-       "controls":{
-        "one":"twi"
-
-              }
+       "size":0.2
+          }
+      ],
+    "controls":{
+      "range":"size"
       }
-    ]
+
   },
 
   {

@@ -30,7 +30,6 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
                             <p className='block mx-1 text-gray-400 h-min'>{activeObject.name}</p>
                           </div>
 
-
                           <div className="flex content-end">
                             <button onClick={()=>addToActive(activeObject)} className='m-px border outline outline-1 outline-black border-gray-900 hover:border-gray-950 bg-gray-950  hover:bg-gray-black rounded px-1 h-'>
                             <p className='text-gray-700 hover:translate-y-px'>copy 🧱</p>  </button>
@@ -42,8 +41,24 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
 
                       {selected===activeObject.id && 
                         <div className='px-1'>
-
                         <p>x: {activeObject.position.rx.toFixed(3)} y: {activeObject.position.ry.toFixed(3)}</p>
+
+                        {activeObject.controls.keys().length>0 && activeObject.map((x,j)=>{ 
+                          return (
+                            <div key={j}
+                              className="absolute block text-white mix-blend-screen cursor-grab"  
+                              style={{
+                                width:x.size*screen.width+'px',
+                                aspectRatio:x.css.aspectRatio,
+                                borderRadius:x.css.borderRadius,
+                                backgroundColor:x.css.backgroundColor,
+                                translate:x.css.translate
+                              }}
+                            >{x.name}</div>
+                          )
+                        })}
+
+
                         </div>
                       }
                       </div>
