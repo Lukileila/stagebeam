@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { PaletteCards } from "./PaletteCards";
 import { ActiveCards } from "./ActiveCards";
 
-export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) => {
+export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, selected, setSelected}) => {
 
   
   const [beamerOnline, setBeamerOnline] = useState( JSON.parse(localStorage.getItem('beamerOnline'))) 
@@ -18,6 +18,7 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
     };
   }, []);
 
+  useEffect(()=>{},[selected])
 
 
   const openBeamer = ()=> {
@@ -56,7 +57,7 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
           </div>
 
           <div className='grow border-2 my-1 border-gray-950 bg-black  rounded-lg  overflow-auto text-gray-300 z-0'> 
-            <ActiveCards activeObjects={activeObjects} setActiveObjects={setActiveObjects}/>
+            <ActiveCards activeObjects={activeObjects} setActiveObjects={setActiveObjects} selected={selected} setSelected={setSelected}/>
           </div>
           
         </div>

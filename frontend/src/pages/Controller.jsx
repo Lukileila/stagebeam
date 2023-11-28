@@ -16,6 +16,9 @@ export const Controller = () => {
   const [activeObjects, setActiveObjects] = useState( 
     !localStorage.getItem('activeObjects')?[]:
     JSON.parse(localStorage.getItem('activeObjects') )) 
+  // mostly for expanding it on the menu
+  const [selected, setSelected] = useState(NaN);
+  useEffect(()=>console.log("controller",selected),[selected])
     
 /* 
   const [darkmode, setDarkmode] = useState(!localStorage.getItem("darkmode") ? false : JSON.parse(localStorage.getItem("darkmode"))); */
@@ -31,9 +34,9 @@ export const Controller = () => {
 
   return (
     <>
-        <ObjectsMenu  activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} />
+        <ObjectsMenu  activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} selected={selected} setSelected={setSelected}/>
         <Timeline/>
-        <Workspace    activeObjects={activeObjects} setActiveObjects={setActiveObjects}   /> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
+        <Workspace    activeObjects={activeObjects} setActiveObjects={setActiveObjects}  selected={selected} setSelected={setSelected}  /> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
     </>
           )
 }

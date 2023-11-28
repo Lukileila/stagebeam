@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ObjectCreator } from "./ObjectCreator";
 
 // Main function
-export const Workspace = ({ activeObjects, setActiveObjects}) => {
+export const Workspace = ({ activeObjects, setActiveObjects, selected, setSelected}) => {
 
  //States
     // Aspect Ratio of the window the beamer is in
@@ -65,7 +65,7 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
                 
                 {/* formerly the "pink box": */}
                 <div  ref={stageContainer} className={`relative bg-transparent border-2 border-yellow-400 ${aspectToggle && 'h-full'} z-30 `} draggable={false} style={{aspectRatio:projectionAspectRatio}}>
-                    <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} stageDimensions={stageDimensions}/>
+                    <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} stageDimensions={stageDimensions}  selected={selected} setSelected={setSelected}/>
                 </div>    
                 {/* Masking elements cause issues, when objects are dragged into them */}
                 <div className={'absolute left-0 top-0 w-6 h-full bg-gray-800 mix-blend-darken  z-40'} draggable='false'></div>   {/* left masking overlay */}

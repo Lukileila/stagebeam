@@ -1,4 +1,4 @@
-export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}) => {
+export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions, selected, setSelected}) => {
 
 
   const startDrag = (e) => {
@@ -6,7 +6,9 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions}
   };
 
   const stopDrag = (e, elId) => {
-    e.target.classList.remove('opacity-40');
+    /* e.target.classList.remove('opacity-40'); */
+    setSelected(elId);
+    console.log("sydfgsdfg",elId);
  
     let rx = (e.clientX  -stageDimensions.left) /stageDimensions.width ;
     let ry = (e.clientY  -stageDimensions.top)  /stageDimensions.height ;
