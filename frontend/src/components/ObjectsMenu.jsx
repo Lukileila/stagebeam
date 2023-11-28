@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { PaletteCards } from "./PaletteCards";
 import { ActiveCards } from "./ActiveCards";
 
-export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) => {
+export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, selected, setSelected}) => {
 
   
   const [beamerOnline, setBeamerOnline] = useState( JSON.parse(localStorage.getItem('beamerOnline'))) 
@@ -17,6 +17,7 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
     window.removeEventListener('storage', onStorageUpdate);
     };
   }, []);
+
 
 
 
@@ -35,7 +36,7 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
           <h1 className='text-gray-600'>Beamer window</h1>
 
           <button onClick={openBeamer} className='flex hover:translate-y-px border-2 border-gray-800  rounded p-1 ' style={{backgroundColor:beamerOnline?'#FACC15':"#6B7280"}}>
-            <p className=' text-gray-900 '>{beamerOnline?"beamer window is open ":'pop out the beamer window '}</p><img src="./src/assets/icons/popoutSvg.svg" alt="popout" className=" w-5 aspect-square fill-white"></img>
+            <p className=' text-gray-900 '>{beamerOnline?"beamer window is open ":'pop out the beamer window '}</p><img src="../public/assets/icons/popoutSvg.svg" alt="popout" className=" w-5 aspect-square "></img>
           </button>
         </div>     
 
@@ -56,7 +57,7 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects}) 
           </div>
 
           <div className='grow border-2 my-1 border-gray-950 bg-black  rounded-lg  overflow-auto text-gray-300 z-0'> 
-            <ActiveCards activeObjects={activeObjects} setActiveObjects={setActiveObjects}/>
+            <ActiveCards activeObjects={activeObjects} setActiveObjects={setActiveObjects} selected={selected} setSelected={setSelected}/>
           </div>
           
         </div>

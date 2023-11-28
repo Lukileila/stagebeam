@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 
-export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects, setActiveObjects}) => {
+export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects, setActiveObjects, selected, setSelected}) => {
 
-    const [expanded, setExpanded] = useState(NaN);
+
 
     const addToActive = (Object) => {
         setActiveObjects(prev => [...prev, {...Object, id: `${Object.name}_${crypto.randomUUID()}`}]);
@@ -14,18 +14,18 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
         setActiveObjects(aO);
       };
     
-    useEffect(()=>console.log("expanded",expanded),[expanded])
+
 
     return (
 
     <>
       {activeObjects.length>0 && activeObjects.map((activeObject,it)=>{
           return <div key={it}  className="">
-                      <div className='border border-slate-800 bg-gray-950 rounded m-px' onMouseLeave={()=>{setExpanded(NaN)}}>
+                      <div className='border border-slate-800 bg-gray-950 rounded m-px' >  {/* onMouseLeave={()=>{setselected(NaN)} */}
 
-                        <div className=' flex flex-wrap content-end items-end justify-end'>
+                        <div className='flex flex-wrap content-end items-end justify-end'>
 
-                          <div onClick={()=>{setExpanded(activeObject.id)}}  className='cursor-pointer grow flex'>
+                          <div onClick={()=>{setSelected(activeObject.id)}}  className='cursor-pointer grow flex'>
                             <img className="  block w-5 h-5 text-xs"src={`${activeObject.thumbnail}`} alt="img" />
                             <p className='block mx-1 text-gray-400 h-min'>{activeObject.name}</p>
                           </div>
@@ -40,8 +40,11 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
 
                         </div>
 
-                      {expanded===activeObject.id && 
+                      {selected===activeObject.id && 
+                        <div className='px-1'>
+
                         <p>x: {activeObject.position.rx.toFixed(3)} y: {activeObject.position.ry.toFixed(3)}</p>
+                        </div>
                       }
                       </div>
 
