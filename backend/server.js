@@ -1,67 +1,81 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+const cors = require('cors');
+const bcrypt = require('bcrypt');
+const port = process.env.PORT || 3000;
 
 const app = express();
 
+app.use(cors());
+app.use(express.json());
 
-// posgresql DB: make sure no typooooossssss!!!  >>>>>> test starts here (agregar antes del numero de puerto talvez? "process.env.PORT ||"")
-const port = 3000;
+// Hash password function
+const hashPassword = async (password) => {
+  return await bcrypt.hash(password, 10);
+};
 
+///////   Must check what port number ----is cors well installed?
 
+const pool = new Pool();
+/////
 
-
-
-
-
-const pool = new Pool({
-  user: 'efpymima',
-  host: 'flora.db.elephantsql.com',
-  database: 'efpymima',
-  password: 'hBblMU3zU-yNB9m5czgC1UKKBxQYjTow',
-});
-
-
-// posgresql DB: make sure no typooooossssss!!!  >>>>>> test ends here
-
-
-
-
-
-//global, later I can tailor more...middleware
-app.use(bodyParser.json());
-
-
-// test to connect, use postman !!!!    :
-
-
-
-
-
-
-
+// endpoint sign up/ new user registratioon:
 
 
 app.post('/api/signup', async (req, res) => {
-  const { name, email, password } = req.body;
-
-  
-  if (!name || !email || !password) {
-    return res.status(400).json({ message: 'all fields are required!!!' });
-  }
-
   try {
-    const result = await pool.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *', [name, email, password]);
+    const { name, email, password } = req.body;
+
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: 'All fields are required!!!' });
+    }
+
+    const hashedPassword = await hashPassword(password);
+
+    const result = await pool.query(
+      'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *',
+      [name, email, hashedPassword]
+    );
+
     res.json({ user: result.rows[0] });
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+//  endpoint  for login test!!!!!!!!!!!
+
+
+app.post('/api/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required for login' });
+    }
+
+    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+
+    if (!result.rows.length) {
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
+
+    const user = result.rows[0];
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
+
+    res.json({ user });
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-//now tesst for GET requests: TEST ONLY!!!!
-
-
+// endpoint get all
 app.get('/api/users', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM users');
@@ -72,9 +86,10 @@ app.get('/api/users', async (req, res) => {
   }
 });
 
-//now tesst for GET requests: TEST ONLY!!!!
-
-
 app.listen(port, () => {
-  console.log(`Server is jumping on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
+
+
+
+
