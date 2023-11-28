@@ -12,17 +12,31 @@ export const Controller = () => {
 
   // Active Objects: They are aaaaaaaall going to live here:
   const [templateObjects, setTemplateObjects] = useState([]);
-  const [activeObjects, setActiveObjects] = useState([]);
+  //If activeObjects doesn't exist yet on local Storage, an empty array is written.
+  const [activeObjects, setActiveObjects] = useState( 
+    !localStorage.getItem('activeObjects')?[]:
+    JSON.parse(localStorage.getItem('activeObjects') )) 
+  // mostly for expanding it on the menu
+  const [selected, setSelected] = useState(NaN);
+  useEffect(()=>console.log("controller",selected),[selected])
+    
+/* 
+  const [darkmode, setDarkmode] = useState(!localStorage.getItem("darkmode") ? false : JSON.parse(localStorage.getItem("darkmode"))); */
+
   // Copying from file to state:
-  useEffect(() => { setTemplateObjects(objectTemplates) }, []);
+  useEffect(() => { setTemplateObjects(objectTemplates); }, []);
+
+
   // Copying state to localstorage
   useEffect(() => { localStorage.setItem('activeObjects',JSON.stringify(activeObjects)); }, [activeObjects]);
 
+  //Maybe change overall layout to grid at some point
+
   return (
     <>
-        <ObjectsMenu  activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} />
+        <ObjectsMenu  activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} selected={selected} setSelected={setSelected}/>
         <Timeline/>
-        <Workspace    activeObjects={activeObjects} setActiveObjects={setActiveObjects}   /> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
+        <Workspace    activeObjects={activeObjects} setActiveObjects={setActiveObjects}  selected={selected} setSelected={setSelected}  /> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
     </>
           )
 }

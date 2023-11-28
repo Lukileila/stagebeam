@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { ObjectCreator } from "./ObjectCreator";
 
 // Main function
-export const Workspace = ({ activeObjects, setActiveObjects}) => {
+export const Workspace = ({ activeObjects, setActiveObjects, selected, setSelected}) => {
 
  //States
     // Aspect Ratio of the window the beamer is in
     const [projectionAspectRatio, setProjectionAspectRatio] = useState(1);
     // Pink box dimensions
-    const [stageDimensions, setStageDimensions] = useState();
+    const [stageDimensions, setStageDimensions] = useState({width:100, height:100}); //initial nonsense Values just so it doesn't cause an error / warning
     // h-full active or not for the pink box
     const [aspectToggle, setAspectToggle]=useState(false);
 
@@ -58,14 +58,20 @@ export const Workspace = ({ activeObjects, setActiveObjects}) => {
       }, [projectionAspectRatio, aspectToggle]);
    
     return (
-        <div ref={workspace} className='fixed bg-black text-white h-[70%] left-[30%] w-[70%] border-2 overflow-visible /* group/canvas */ z-1  ' >
+        <div className='fixed left-[30%] w-[70%] h-[70%] bg-black p-1'>
+            <div ref={workspace} className=' bg-black text-gray-300 h-full w-full p-5 /* group/canvas */ z-1 overflow-hidden rounded-sm' >
 
-            <h1 className='absolute text-gray-700 p-2 text-xl'>Workspace</h1>
-
-            <div  ref={stageContainer} className={`relative bg-transparent border-2 border-pink-500 ${aspectToggle && 'h-full'} z-30`} style={{aspectRatio:projectionAspectRatio}}>
-                <div className="relative flex flex-wrap w-full h-full justify-end content-end text-gray-500 p-1"><p> beamer aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</p></div>
-                <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} stageDimensions={stageDimensions}/>          
-                  
+                <h1 className='absolute text-gray-700 p-2 text-md'>Beamer - aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</h1>
+                
+                {/* formerly the "pink box": */}
+                <div  ref={stageContainer} className={`relative bg-transparent border-2 border-yellow-400 ${aspectToggle && 'h-full'} z-30 `} draggable={false} style={{aspectRatio:projectionAspectRatio}}>
+                    <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} stageDimensions={stageDimensions}  selected={selected} setSelected={setSelected}/>
+                </div>    
+                {/* Masking elements cause issues, when objects are dragged into them */}
+                <div className={'absolute left-0 top-0 w-6 h-full bg-gray-800 mix-blend-darken  z-40'} draggable='false'></div>   {/* left masking overlay */}
+                <div className={'absolute left-0 top-0 h-6 w-full bg-gray-800 mix-blend-darken  z-40'}></div>    {/* top masking overlay */}
+                <div className={'absolute top-0 h-full w-full bg-gray-800 mix-blend-darken  z-40'} style={{left:stageDimensions.width+1.25*20}}></div> {/* right masking overlay */}
+                <div className={'absolute bottom-0 w-full bg-gray-800 mix-blend-darken z-40'}  style={{height:(window.innerHeight*0.7 -stageDimensions.height-1.25*20 )}} ></div> {/* bottom masking overlay */}
             </div>
         </div>
     );
