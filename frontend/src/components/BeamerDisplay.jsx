@@ -77,7 +77,7 @@ export const BeamerDisplay = ({activeObjects, setActiveObjects}) => {
             <div className='bg-black h-[100vh] relative overflow-hidden '>
 
                 <div className='absolute p-2 flex text-gray-800 flex-wrap w-full h-full justify-end content-end'><p>free version of StageBeam.live</p></div>
-                <div className=' h-full w-full absolute' style={{filter: !fullscreen ?'blur(16px)':'none'}}> {/* could probably be written more elegantly without repetition */}
+                <div className=' h-full w-full absolute' style={{filter: !fullscreen ?'blur(16px)':'none'}}>
                 <ObjectCreatorBeamer activeObjects={activeObjects}/>
                 </div>
                 {displayInstruction()}

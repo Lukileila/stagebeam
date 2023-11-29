@@ -10,6 +10,7 @@
     },
     "size":0.3,
     "opacity":0.9,
+    "edgeHardness":0.8,
 
     "controls":[
       {"type":"range",
@@ -17,12 +18,15 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"}
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"edgeHardness",
+      "label":"edge Hardness"}
         ],
 
     "elements":[  
       {"css": {         
-              "backgroundColor":"#FFFEF5E5",
+              "backgroundColor":"#FFFEF5",
               "aspectRatio":"1",
               "borderRadius": "50%",
               "translate": "-50% -50%"
@@ -42,6 +46,7 @@
     },
     "size":"0.3",
     "opacity":"0.9",
+    "edgeHardness":0.8,
 
     "controls":[
       {"type":"range",
@@ -49,7 +54,10 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"}
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"edgeHardness",
+      "label":"edge Hardness"}
         ],
     "elements":[  
       {"css": {         
@@ -73,6 +81,7 @@
     },
     "size":"0.3",
     "opacity":"0.9",
+    "edgeHardness":0.8,
 
     "controls":[
       {"type":"range",
@@ -104,6 +113,7 @@
     },
     "size":"0.3",
     "opacity":"0.9",
+    "edgeHardness":0.8,
 
     "controls":[
       {"type":"range",
@@ -111,7 +121,10 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"}
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"edgeHardness",
+      "label":"edge Hardness"}
         ],
     "elements":[  
       {"css": {         
@@ -135,6 +148,7 @@
     },     
     "size":"0.3",
     "opacity":"0.9",
+    "edgeHardness":0.8,
 
     "controls":[
       {"type":"range",
@@ -142,7 +156,10 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"}
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"edgeHardness",
+      "label":"edge Hardness"}
         ],
     "elements":[  
       {"css": {         

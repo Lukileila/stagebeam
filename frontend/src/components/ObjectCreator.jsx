@@ -35,14 +35,18 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
               left: x.position.rx*100 + '%',
             }}>
             
-            {x.elements.length>0 && x.elements.map((element,j)=>{ return (
+            {x.elements.length>0 && x.elements.map((element,j)=>{ 
+              console.log("Soft?",x.edgeSoftness)
+              
+              return (
             <div key={j}
+        
               className="absolute block text-white mix-blend-screen cursor-grab"  
               style={{
                 width:element.size*x.size*stageDimensions.width+'px',
                 aspectRatio:element.css.aspectRatio,
                 borderRadius:element.css.borderRadius,
-                backgroundColor:element.css.backgroundColor,
+                background: (x.edgeHardness === NaN)? element.css.backgroundColor : `radial-gradient(circle, ${element.css.backgroundColor} ${x.edgeHardness*100*0.7071068+'%'}, rgba(0,0,0,0) 70.71068%)`,
                 translate:element.css.translate,
                 opacity: x.opacity,
               }}
