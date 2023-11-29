@@ -36,22 +36,21 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
             }}>
             
             {x.elements.length>0 && x.elements.map((element,j)=>{ 
-              console.log("Soft?",x.edgeSoftness)
-              
               return (
-            <div key={j}
-        
-              className="absolute block text-white mix-blend-screen cursor-grab"  
-              style={{
-                width:element.size*x.size*stageDimensions.width+'px',
-                aspectRatio:element.css.aspectRatio,
-                borderRadius:element.css.borderRadius,
-                background: (x.edgeHardness === NaN)? element.css.backgroundColor : `radial-gradient(circle, ${element.css.backgroundColor} ${x.edgeHardness*100*0.7071068+'%'}, rgba(0,0,0,0) 70.71068%)`,
-                translate:element.css.translate,
-                opacity: x.opacity,
-              }}
-            ></div>
-            )})}
+                <div
+                  key={j}
+                  className="absolute block text-white mix-blend-screen cursor-grab"  
+                  style={{
+                    width:element.size*x.size*stageDimensions.width+'px',
+                    aspectRatio:element.css.aspectRatio,
+                    borderRadius:element.css.borderRadius,
+                    background: (x.edgeHardness === NaN)? element.css.backgroundColor : `radial-gradient(circle, ${element.css.backgroundColor} ${x.edgeHardness*100*0.7071068+'%'}, rgba(0,0,0,0) 70.71068%)`,
+                    translate:element.css.translate,
+                    opacity: x.opacity,
+                  }}
+                ></div>
+              )
+            })}
 
             
             <div className="centerIndicator  absolute block b-4 border-black border-4 rounded-full text-white mix-blend-normal cursor-grab w-10 h-10 -translate-x-[50%] -translate-y-[50%] opacity-100"></div>
