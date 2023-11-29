@@ -2,11 +2,10 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
 
 
   const startDrag = (e) => {
-    /* e.target.classList.add('opacity-40'); */
   };
 
   const stopDrag = (e, elId) => {
-    /* e.target.classList.remove('opacity-40'); */
+
     setSelected(elId);
     console.log("sydfgsdfg",elId);
  
@@ -30,23 +29,23 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
       return (
           
           <div key={x.id} id={x.id} draggable onDragStart={startDrag} onDragEnd={(e) => stopDrag(e, x.id)}
-            className="absolute block cursor-grab animate-spin mix-blend-screen" 
+            className="absolute block cursor-grab mix-blend-screen" 
             style={{
               top: x.position.ry*100 + '%',
               left: x.position.rx*100 + '%',
             }}>
             
-            {x.elements.length>0 && x.elements.map((x,j)=>{ return (
+            {x.elements.length>0 && x.elements.map((element,j)=>{ return (
             <div key={j}
               className="absolute block text-white mix-blend-screen cursor-grab"  
               style={{
-                width:x.size*stageDimensions.width+'px',
-                aspectRatio:x.css.aspectRatio,
-                borderRadius:x.css.borderRadius,
-                backgroundColor:x.css.backgroundColor,
-                translate:x.css.translate
+                width:element.size*x.size*stageDimensions.width+'px',
+                aspectRatio:element.css.aspectRatio,
+                borderRadius:element.css.borderRadius,
+                backgroundColor:element.css.backgroundColor,
+                translate:element.css.translate
               }}
-            >{x.name}</div>
+            ></div>
             )})}
 
             

@@ -7,17 +7,24 @@
       "rx":0.2,
       "ry":0.2
     },
+
     "elements":[  
       {"css": {         
               "backgroundColor":"#FFFEF5E5",
               "aspectRatio":"1",
               "borderRadius": "999px",
               "translate": "-50% -50%"
-              }
-          }
-      ],
+              },
+        "size":"1"
+      }
+      
+    ],
+    "size":"0.3",
+
     "controls":{
-      "range":"size"
+      "range":"size",
+      "range":"opacity",
+      "text":"opacity"
       }
 
   },
@@ -39,7 +46,12 @@
               },
        "size":0.2
       }
-    ]
+    ],
+    "size":"1",
+
+    "controls":{
+      "range":"size"
+      }
   },
 
   {
