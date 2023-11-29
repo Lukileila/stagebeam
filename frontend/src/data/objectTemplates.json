@@ -24,7 +24,7 @@
       {"css": {         
               "backgroundColor":"#FFFEF5E5",
               "aspectRatio":"1",
-              "borderRadius": "999px",
+              "borderRadius": "50%",
               "translate": "-50% -50%"
               },
         "size":1
@@ -55,7 +55,7 @@
       {"css": {         
               "backgroundColor":"#FF0000E5",
               "aspectRatio":"1",
-              "borderRadius": "999px",
+              "borderRadius": "50%",
               "translate": "-50% -50%"
               },
        "size":1
@@ -86,7 +86,7 @@
       {"css": {         
               "backgroundColor":"#00FF00E5",
               "aspectRatio":"1",
-              "borderRadius": "999px",
+              "borderRadius": "50%",
               "translate": "-50% -50%"
               },
        "size":1
@@ -117,7 +117,7 @@
       {"css": {         
               "backgroundColor":"#0000FFE5",
               "aspectRatio":"1",
-              "borderRadius": "999px",
+              "borderRadius": "50%",
               "translate": "-50% -50%"
               },
        "size":1
@@ -149,7 +149,7 @@
                 "backgroundColor":"#FF0000E5", 
                 "aspectRatio":"1",
                 "height":"300px",
-                "borderRadius": "999px", 
+                "borderRadius": "50%", 
                 "translate": "-50% -75%"
       },
       "size":0.7},
@@ -158,7 +158,7 @@
                 "aspectRatio":"1",
                 "width":"300",
                 "height":"300px",
-                "borderRadius": "999px", 
+                "borderRadius": "50%", 
                 "translate": "-71.75% -37.5%"
       },
       "size":0.7},
@@ -167,7 +167,7 @@
           "aspectRatio":"1",
           "width":"300px",
           "height":"300px",
-          "borderRadius": "999px", 
+          "borderRadius": "50%", 
           "translate": "-28.25% -37.5%"
       },
       "size":0.7}
@@ -187,7 +187,7 @@
                 "backgroundColor":"#FF0000E5", 
                 "aspectRatio":"1",
                 "height":"300px",
-                "borderRadius": "999px", 
+                "borderRadius": "50%", 
                 "translate": "-50% -75%"
       },
       "size":0.2},
@@ -196,7 +196,7 @@
                 "aspectRatio":"1",
                 "width":"300",
                 "height":"300px",
-                "borderRadius": "999px", 
+                "borderRadius": "50%", 
                 "translate": "-71.75% -37.5%"
       },
       "size":0.2},
@@ -205,7 +205,7 @@
           "aspectRatio":"1",
           "width":"300px",
           "height":"300px",
-          "borderRadius": "999px", 
+          "borderRadius": "50%", 
           "translate": "-28.25% -37.5%"
       },
       "size":0.2}
