@@ -17,14 +17,13 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
     const handleForm=(e)=>{
       let aO=activeObjects;
       const id=e.target.id;
-   ;
       const value=e.target.value;
       aO = activeObjects.map(object=>{
         if (!(id===object.id)){    console.log("TRUE:  id from target: ",id, "id from object", object.id)
           return (object)
         }else{  console.log("FALSE:  id from target: ",id, "id from object", object.id)
           const alteredObject=object;
-          alteredObject.elements[0].size=value/100;
+          alteredObject.size=value/100;
           return (alteredObject)
         }});
       setActiveObjects(aO);
@@ -69,9 +68,9 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
                             >                            
                             <form >
                               <label form="size">Size: </label>
-                              <input type={x} value={activeObject.controls.x} id={activeObject.id} onChange={(e)=>handleForm(e)} min="0" max="100"/>
+                              <input type={x} value={activeObject.size*100} id={activeObject.id} onChange={(e)=>handleForm(e)} min="0" max="100"/>
                             </form> 
-                            <p>size: {activeObject.elements[0].size}</p>
+                            <p>size: {activeObject.size}</p>
 
                           </div>
                           
