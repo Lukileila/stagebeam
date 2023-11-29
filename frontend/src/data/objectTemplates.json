@@ -17,10 +17,7 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"},
-      {"type":"range",
-      "property":"position.rx",
-      "label":"rx"}
+      "label":"Opacity"}
         ],
 
     "elements":[  
@@ -52,10 +49,7 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"},
-      {"type":"range",
-      "property":"position.rx",
-      "label":"rx"}
+      "label":"Opacity"}
         ],
     "elements":[  
       {"css": {         
@@ -86,10 +80,7 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"},
-      {"type":"range",
-      "property":"position.rx",
-      "label":"rx"}
+      "label":"Opacity"}
         ],
     "elements":[  
       {"css": {         
@@ -120,10 +111,7 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"},
-      {"type":"range",
-      "property":"position.rx",
-      "label":"rx"}
+      "label":"Opacity"}
         ],
     "elements":[  
       {"css": {         
@@ -154,10 +142,7 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"},
-      {"type":"range",
-      "property":"position.rx",
-      "label":"rx"}
+      "label":"Opacity"}
         ],
     "elements":[  
       {"css": {         
