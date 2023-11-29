@@ -13,8 +13,7 @@
               "aspectRatio":"1",
               "borderRadius": "999px",
               "translate": "-50% -50%"
-              },
-       "size":0.2
+              }
           }
       ],
     "controls":{

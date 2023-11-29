@@ -71,6 +71,7 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
                               <label form="size">Size: </label>
                               <input type={x} value={activeObject.controls.x} id={activeObject.id} onChange={(e)=>handleForm(e)} min="0" max="100"/>
                             </form> 
+                            <p>size: {activeObject.elements[0].size}</p>
 
                           </div>
                           
