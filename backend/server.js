@@ -61,14 +61,14 @@ app.post('/api/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    const user = result.rows[0];
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const {id, email: dbEmail, name, password: dbPassword} = result.rows[0];
+    const passwordMatch = await bcrypt.compare(password, dbPassword);
 
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    res.json({ user });
+    res.json({ id, email: dbEmail, name });
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ message: 'Internal Server Error' });
