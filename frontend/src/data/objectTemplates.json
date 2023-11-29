@@ -3,10 +3,25 @@
     "templateId": 1,
     "name": "spotlight",
     "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png",
+
     "position": {
       "rx":0.2,
       "ry":0.2
     },
+    "size":"0.3",
+    "opacity":"0.9",
+
+    "controls":[
+      {"type":"range",
+      "property":"size",
+      "label":"Size"},
+      {"type":"range",
+      "property":"opacity",
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"position.rx",
+      "label":"rx"}
+        ],
 
     "elements":[  
       {"css": {         
@@ -18,14 +33,9 @@
         "size":"1"
       }
       
-    ],
-    "size":"0.3",
+    ]
 
-    "controls":{
-      "range":"size",
-      "range":"opacity",
-      "text":"opacity"
-      }
+
 
   },
 

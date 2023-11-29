@@ -43,14 +43,15 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
                 aspectRatio:element.css.aspectRatio,
                 borderRadius:element.css.borderRadius,
                 backgroundColor:element.css.backgroundColor,
-                translate:element.css.translate
+                translate:element.css.translate,
+                opacity: x.opacity,
               }}
             ></div>
             )})}
 
             
-            <div className="centerIndicator  absolute block b-4 border-black border-4 rounded-full text-white mix-blend-normal cursor-grab w-10 h-10 -translate-x-[50%] -translate-y-[50%] "></div>
-            <div className="centerIndicator  absolute block b-2 border-yellow-500 border-2 rounded-full text-white mix-blend-normal cursor-grab w-10 h-10 -translate-x-[50%] -translate-y-[50%] "></div>
+            <div className="centerIndicator  absolute block b-4 border-black border-4 rounded-full text-white mix-blend-normal cursor-grab w-10 h-10 -translate-x-[50%] -translate-y-[50%] opacity-100"></div>
+            <div className="centerIndicator  absolute block b-2 border-yellow-500 border-2 rounded-full text-white mix-blend-normal cursor-grab w-10 h-10 -translate-x-[50%] -translate-y-[50%] opacity-100"></div>
 
           </div>
         

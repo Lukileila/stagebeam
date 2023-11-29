@@ -18,10 +18,6 @@ export const Controller = () => {
     JSON.parse(localStorage.getItem('activeObjects') )) 
   // mostly for expanding it on the menu
   const [selected, setSelected] = useState(NaN);
-  useEffect(()=>console.log("controller",selected),[selected])
-    
-/* 
-  const [darkmode, setDarkmode] = useState(!localStorage.getItem("darkmode") ? false : JSON.parse(localStorage.getItem("darkmode"))); */
 
   // Copying from file to state:
   useEffect(() => { setTemplateObjects(objectTemplates); }, []);

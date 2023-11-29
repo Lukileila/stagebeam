@@ -18,12 +18,17 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
       let aO=activeObjects;
       const id=e.target.id;
       const value=e.target.value;
+      const property=e.target.dataset.property;
+      console.log("e.target.property",e.target.property)
       aO = activeObjects.map(object=>{
-        if (!(id===object.id)){    console.log("TRUE:  id from target: ",id, "id from object", object.id)
+        if (!(id===object.id)){   console.log("true fired")  //checks, whether it is the Object which is to be altered
           return (object)
-        }else{  console.log("FALSE:  id from target: ",id, "id from object", object.id)
+        }else{ console.log("false fired")
           const alteredObject=object;
-          alteredObject.size=value/100;
+          alteredObject[property]=value/100;
+          console.log("hippety, hoppety, this is the property:",property)
+          console.log(alteredObject[property]);
+          console.log(alteredObject);
           return (alteredObject)
         }});
       setActiveObjects(aO);
@@ -56,25 +61,15 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
                         <div className='px-1'>
                         <p>x: {activeObject.position.rx.toFixed(3)} y: {activeObject.position.ry.toFixed(3)}</p>
 
-                        {activeObject.controls && Object.keys(activeObject.controls).map((x,index)=>{ 
-                          console.log("called", activeObject.name);
+                        {activeObject.controls && activeObject.controls.map((x,index)=>{ 
                           return (
-
                             <div key={index}
-                              className=" block text-white mix-blend-screen cursor-grab"  
-                              style={{
-                                backgroundColor:"transparent",
-                                                      }}
-                            >                            
-                            <form >
-                              <label form="size">Size: </label>
-                              <input type={x} value={activeObject.size*100} id={activeObject.id} onChange={(e)=>handleForm(e)} min="0" max="100"/>
-                            </form> 
-                            <p>size: {activeObject.size}</p>
+                              className=" block text-white" style={{ backgroundColor:"transparent"}}n> 
 
+                              <input type={x.type} value={ activeObject[x.property]*100} id={activeObject.id} data-property={x.property} min="0" max="100" onChange={(e)=>handleForm(e)}/>
+
+                            <p>{x.label} {activeObject[x.property]}</p>
                           </div>
-                          
-
                           )
                         })}
 
