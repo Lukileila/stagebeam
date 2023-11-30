@@ -3,23 +3,41 @@
     "templateId": 1,
     "name": "spotlight",
     "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png",
+
     "position": {
       "rx":0.2,
       "ry":0.2
     },
+    "size":0.3,
+    "opacity":0.9,
+    "edgeHardness":0.8,
+    "color":"#ffffff",
+
+    "controls":[
+      {"type":"range",
+      "property":"size",
+      "label":"Size"},
+      {"type":"range",
+      "property":"opacity",
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"edgeHardness",
+      "label":"edge Hardness"},
+      {"type":"color",
+      "property":"color",
+      "label":"Color"}
+
+        ],
+
     "elements":[  
       {"css": {         
-              "backgroundColor":"#FFFEF5E5",
+              "backgroundColor":"#FFFEF5",
               "aspectRatio":"1",
-              "borderRadius": "999px",
+              "borderRadius": "50%",
               "translate": "-50% -50%"
               },
-       "size":0.2,
-       "controls":{
-        "one":"twi"
-
-              }
-      }
+        "size":1
+      }  
     ]
   },
 
@@ -31,14 +49,30 @@
       "rx":0.2,
       "ry":0.2
     },
+    "size":"0.3",
+    "opacity":"0.9",
+    "edgeHardness":0.8,
+    "color":"",
+
+    "controls":[
+      {"type":"range",
+      "property":"size",
+      "label":"Size"},
+      {"type":"range",
+      "property":"opacity",
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"edgeHardness",
+      "label":"edge Hardness"}
+        ],
     "elements":[  
       {"css": {         
               "backgroundColor":"#FF0000E5",
               "aspectRatio":"1",
-              "borderRadius": "999px",
+              "borderRadius": "50%",
               "translate": "-50% -50%"
               },
-       "size":0.2
+       "size":1
       }
     ]
   },
@@ -51,14 +85,26 @@
       "rx":0.2,
       "ry":0.2
     },
+    "size":"0.3",
+    "opacity":"0.9",
+    "edgeHardness":0.8,
+
+    "controls":[
+      {"type":"range",
+      "property":"size",
+      "label":"Size"},
+      {"type":"range",
+      "property":"opacity",
+      "label":"Opacity"}
+        ],
     "elements":[  
       {"css": {         
               "backgroundColor":"#00FF00E5",
               "aspectRatio":"1",
-              "borderRadius": "999px",
+              "borderRadius": "50%",
               "translate": "-50% -50%"
               },
-       "size":0.2
+       "size":1
       }
     ]
   },
@@ -71,14 +117,29 @@
       "rx":0.2,
       "ry":0.2
     },
+    "size":"0.3",
+    "opacity":"0.9",
+    "edgeHardness":0.8,
+
+    "controls":[
+      {"type":"range",
+      "property":"size",
+      "label":"Size"},
+      {"type":"range",
+      "property":"opacity",
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"edgeHardness",
+      "label":"edge Hardness"}
+        ],
     "elements":[  
       {"css": {         
               "backgroundColor":"#0000FFE5",
               "aspectRatio":"1",
-              "borderRadius": "999px",
+              "borderRadius": "50%",
               "translate": "-50% -50%"
               },
-       "size":0.2
+       "size":1
       }
     ]
   },
@@ -90,34 +151,49 @@
     "position": {
       "rx":0.6,
       "ry":0.6
-    }, 
+    },     
+    "size":"0.3",
+    "opacity":"0.9",
+    "edgeHardness":0.8,
+
+    "controls":[
+      {"type":"range",
+      "property":"size",
+      "label":"Size"},
+      {"type":"range",
+      "property":"opacity",
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"edgeHardness",
+      "label":"edge Hardness"}
+        ],
     "elements":[  
       {"css": {         
                 "backgroundColor":"#FF0000E5", 
                 "aspectRatio":"1",
                 "height":"300px",
-                "borderRadius": "999px", 
+                "borderRadius": "50%", 
                 "translate": "-50% -75%"
       },
-      "size":0.2},
+      "size":0.7},
       {"css": {          
                 "backgroundColor":"#00FF00E5",
                 "aspectRatio":"1",
                 "width":"300",
                 "height":"300px",
-                "borderRadius": "999px", 
+                "borderRadius": "50%", 
                 "translate": "-71.75% -37.5%"
       },
-      "size":0.2},
+      "size":0.7},
       {"css": {         
           "backgroundColor":"#0000FFE5", 
           "aspectRatio":"1",
           "width":"300px",
           "height":"300px",
-          "borderRadius": "999px", 
+          "borderRadius": "50%", 
           "translate": "-28.25% -37.5%"
       },
-      "size":0.2}
+      "size":0.7}
     ]
   },
   
@@ -134,7 +210,7 @@
                 "backgroundColor":"#FF0000E5", 
                 "aspectRatio":"1",
                 "height":"300px",
-                "borderRadius": "999px", 
+                "borderRadius": "50%", 
                 "translate": "-50% -75%"
       },
       "size":0.2},
@@ -143,7 +219,7 @@
                 "aspectRatio":"1",
                 "width":"300",
                 "height":"300px",
-                "borderRadius": "999px", 
+                "borderRadius": "50%", 
                 "translate": "-71.75% -37.5%"
       },
       "size":0.2},
@@ -152,7 +228,7 @@
           "aspectRatio":"1",
           "width":"300px",
           "height":"300px",
-          "borderRadius": "999px", 
+          "borderRadius": "50%", 
           "translate": "-28.25% -37.5%"
       },
       "size":0.2}
