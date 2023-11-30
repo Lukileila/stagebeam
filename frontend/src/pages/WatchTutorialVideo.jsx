@@ -1,13 +1,14 @@
 import background3 from '../assets/images/background3.png'
+import preparingtutorial2 from '../assets/images/preparingtutorial2.png'
 
 
 
 export const WatchTutorialVideo = () => {
   return (
     <>
-     <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${background3})` }}>
+     <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${preparingtutorial2})` }}>
 
-        // <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${background3})` }}> </div>
+       
        
       </div>
 
