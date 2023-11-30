@@ -39,7 +39,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
 
               let elementBackgroundColor = x.color ? x.color :  element.css.backgroundColor;
               console.log(elementBackgroundColor);
-              const elementBackground = (x.edgeHardness === NaN)? elementBackgroundColor : `radial-gradient(circle, ${elementBackgroundColor} ${x.edgeHardness*100*0.7071068+'%'}, rgba(0,0,0,0) 70.71068%)`;
+              const elementBackground = (x.edgeHardness === 1)? elementBackgroundColor : `radial-gradient(circle, ${elementBackgroundColor} ${x.edgeHardness*100*0.7071068+'%'}, rgba(0,0,0,0) 70.71068%)`;
 
               return (
                 <div
