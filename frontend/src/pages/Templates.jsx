@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { LogOutButton } from '../components/LogOutButton.jsx';
 import logo from '../assets/images/LogoWOBG.png'
 import background2 from '../assets/images/background2.png'
 import template1 from '../assets/images/templatesimages.png'
@@ -50,6 +51,7 @@ export const Templates = () => {
           </div>
         </div>
       </div>
+      <LogOutButton />
     </>
   );
 };
