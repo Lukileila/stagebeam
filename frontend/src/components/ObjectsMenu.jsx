@@ -36,8 +36,8 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
         <div   className='flex flex-col justify-between border-2 border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 rounded p-1 text-gray-300  cursor-pointer' > 
           <h1 className='text-gray-600'>Beamer window</h1>
 
-          <button onClick={openBeamer} className='flex hover:translate-y-px border-2 border-gray-800  rounded p-1 ' style={{backgroundColor:beamerOnline?'#FACC15':"#6B7280"}}>
-            <p className=' text-gray-900 '>{beamerOnline?"beamer window is open ":'pop out the beamer window '}</p><img src={popoutSvg} alt="popout" className=" w-5 aspect-square "></img>
+          <button onClick={openBeamer} className='flex  hover:translate-y-px justify-between border outline outline-1 outline-black border-gray-800 hover:border-gray-950 bg-gray-900   rounded px-2 py-1 ' style={{backgroundColor:beamerOnline?'#6B7280':"#FACC15"}}>
+            <p className=' text-black '>{beamerOnline?"beamer window is open  ":'pop out the beamer window  '}</p><img src={popoutSvg} alt="popout" className=" w-5 aspect-square "></img>
           </button>
         </div>     
 

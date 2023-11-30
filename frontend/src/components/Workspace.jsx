@@ -64,7 +64,7 @@ export const Workspace = ({ activeObjects, setActiveObjects, selected, setSelect
                 <h1 className='absolute text-gray-700 p-2 text-md'>Beamer - aspect ratio: {parseFloat(projectionAspectRatio).toFixed(2)}</h1>
                 
                 {/* formerly the "pink box": */}
-                <div  ref={stageContainer} className={`relative bg-transparent border-2 border-yellow-400 ${aspectToggle && 'h-full'} z-30 `} draggable={false} style={{aspectRatio:projectionAspectRatio}}>
+                <div id="canVas" ref={stageContainer} className={`relative bg-transparent border-2 border-yellow-400 ${aspectToggle && 'h-full'} z-30 `} draggable={false} style={{aspectRatio:projectionAspectRatio}}>
                     <ObjectCreator activeObjects={activeObjects} setActiveObjects={setActiveObjects} stageDimensions={stageDimensions}  selected={selected} setSelected={setSelected}/>
                 </div>    
                 {/* Masking elements cause issues, when objects are dragged into them */}
