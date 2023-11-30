@@ -13,6 +13,11 @@ export const ObjectCreatorBeamer = ({activeObjects}) => {
             }}>
             
             {x.elements.length>0 && x.elements.map((element,j)=>{ 
+
+              let elementBackgroundColor = x.color ? x.color :  element.css.backgroundColor;
+              console.log(elementBackgroundColor);
+              const elementBackground = (x.edgeHardness === NaN)? elementBackgroundColor : `radial-gradient(circle, ${elementBackgroundColor} ${x.edgeHardness*100*0.7071068+'%'}, rgba(0,0,0,0) 70.71068%)`;
+
               return (
                 <div
                   key={j}
@@ -21,7 +26,7 @@ export const ObjectCreatorBeamer = ({activeObjects}) => {
                     width:element.size*x.size*screen.width+'px',
                     aspectRatio:element.css.aspectRatio,
                     borderRadius:element.css.borderRadius,
-                    background: (x.edgeHardness === NaN)? element.css.backgroundColor : `radial-gradient(circle, ${element.css.backgroundColor} ${x.edgeHardness*100*0.7071068+'%'}, rgba(0,0,0,0) 70.71068%)`,
+                    background: elementBackground,
                     translate:element.css.translate,
                     opacity: x.opacity,
                   }}
