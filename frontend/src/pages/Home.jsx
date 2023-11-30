@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 import {useUserContext} from '../context/UserContext'
 import logo from '../assets/images/LogoWOBG.png'
+import background from '../assets/images/background.png'
 
 export const Home = () => {
   const {user} = useUserContext();
   return (
     <>
-      <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: 'url("./src/assets/images/background.png")' }}>
+      <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${background})` }}>
 
         
       <NavLink to='/'><img src={logo} alt="Logo" className="max-w-32 absolute top-4 left-4" /></NavLink>

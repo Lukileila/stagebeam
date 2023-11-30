@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import logo from '../assets/images/LogoWOBG.png'
+import background2 from '../assets/images/background2.png'
 import template1 from '../assets/images/templatesimages.png'
 import template2 from '../assets/images/templatesimages2.png'
 import template3 from '../assets/images/templatesimages3.png'
@@ -10,7 +11,7 @@ import template6 from '../assets/images/templatesimages6.png'
 export const Templates = () => {
   return (
     <>
-      <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: 'url("./src/assets/images/background2.png")' }}>
+      <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${background2})` }}>
 
         <div className="absolute top-4 left-4">
         <NavLink to='/'><img src={logo} alt="Logo" className="max-w-32 absolute top-4 left-4" /></NavLink>        </div>

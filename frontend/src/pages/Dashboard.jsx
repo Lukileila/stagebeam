@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/images/LogoWOBG.png'
+import background from '../assets/images/backgroundDashboard.png'
 
 export const Dashboard = () => {
   return (
     <>
-      <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: 'url("./src/assets/images/backgroundDashboard.png")' }}>
+     <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundDashboard})` }}>
         
         
 
