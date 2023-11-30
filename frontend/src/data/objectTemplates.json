@@ -11,6 +11,7 @@
     "size":0.3,
     "opacity":0.9,
     "edgeHardness":0.8,
+    "color":"#ffffff",
 
     "controls":[
       {"type":"range",
@@ -21,7 +22,11 @@
       "label":"Opacity"},
       {"type":"range",
       "property":"edgeHardness",
-      "label":"edge Hardness"}
+      "label":"edge Hardness"},
+      {"type":"color",
+      "property":"color",
+      "label":"Color"}
+
         ],
 
     "elements":[  
@@ -47,6 +52,7 @@
     "size":"0.3",
     "opacity":"0.9",
     "edgeHardness":0.8,
+    "color":"",
 
     "controls":[
       {"type":"range",
