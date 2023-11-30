@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 // Imports for pages
 import { Home } from "./pages/Home.jsx";
+import { LogInPage } from "./pages/LogInPage.jsx";
 import { Templates } from "./pages/Templates.jsx";
 import { Share } from "./pages/Share.jsx";
 import { WatchTutorialVideo } from "./pages/WatchTutorialVideo.jsx";
@@ -18,6 +19,7 @@ import { Dashboard } from "./pages/Dashboard.jsx";
 import { Controller } from "./pages/Controller.jsx";
 import { Beamer } from "./pages/Beamer.jsx";
 import { NotFound } from './pages/NotFound.jsx';
+
 
 // Imports for state management
 import {useState, useEffect} from 'react';
@@ -29,6 +31,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route index element={<Home />}/> {/*Landing Page*/}
+      <Route path="loginpage" element={<LogInPage />}/>
       <Route path="templates" element={<Templates />}/>
       <Route path="dashboard" element={<Dashboard />}/>
       <Route path="controller" element={<Controller />}/>
@@ -38,6 +41,7 @@ const router = createBrowserRouter(
       <Route path="share" element={<Share />}/>  
       <Route path="watchtutorialvideo" element={<WatchTutorialVideo />}/>   
       <Route path="signuppage" element={<SignUpPage />}/>
+      
     </Route>
   )
 );
