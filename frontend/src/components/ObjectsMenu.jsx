@@ -50,6 +50,8 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
               </div>
           </div>
         </div>
+
+
         <div className='grow flex flex-col border-2  border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 rounded p-1  text-gray-300 z-0'> 
           <div className="flex flex-row justify-between">
           <h1 className='text-gray-600'>Active Objects</h1>
@@ -57,7 +59,7 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
             <p className='text-black hover:translate-y-px'>clear all 🗑️</p>  </button>
           </div>
 
-          <div className='grow border-2 my-1 border-gray-950 bg-black  rounded-lg  overflow-auto text-gray-300 z-0'> 
+          <div className='grow border-2 border-gray-950 bg-black  rounded-lg  overflow-auto text-gray-300 z-0'> 
             <ActiveCards activeObjects={activeObjects} setActiveObjects={setActiveObjects} selected={selected} setSelected={setSelected}/>
           </div>
           
