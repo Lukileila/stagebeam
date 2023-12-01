@@ -22,7 +22,7 @@ export const Controller = () => {
   const [activeScenes, setActiveScenes] = useState( 
     !localStorage.getItem('activeScenes')?[]:
     JSON.parse(localStorage.getItem('activeObjects') ));
-  const [selectedScene, setSelectedScene] = useState(NaN);
+  const [selectedScene, setSelectedScene] = useState(0);
 
 
   // Copying from file to state:
@@ -33,7 +33,7 @@ export const Controller = () => {
 
 
   // Copying state to localstorage
-  useEffect(() => { localStorage.setItem('activeObjects',JSON.stringify(activeObjects)); }, [activeObjects]);
+  useEffect(() => {console.log(activeObjects); localStorage.setItem('activeObjects',JSON.stringify(activeObjects)); }, [activeObjects]);
 
   //Maybe change overall layout to grid at some point
 

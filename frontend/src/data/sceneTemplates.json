@@ -4,23 +4,244 @@
         "name":"Scene1",
         "thumbnail":"",
         "aOs":[
-            1,2,3
-        ]
+            
+                {
+                  "templateId": 1,
+                  "name": "spotlight",
+                  "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png",
+                  "position": {
+                    "rx": 0.13568757355195696,
+                    "ry": 0.768203088472744
+                  },
+                  "size": 0.3,
+                  "opacity": 0.9,
+                  "edgeHardness": 0.8,
+                  "color": "#ffffff",
+                  "controls": [
+                    {
+                      "type": "range",
+                      "property": "size",
+                      "label": "Size"
+                    },
+                    {
+                      "type": "range",
+                      "property": "opacity",
+                      "label": "Opacity"
+                    },
+                    {
+                      "type": "range",
+                      "property": "edgeHardness",
+                      "label": "edge Hardness"
+                    },
+                    {
+                      "type": "color",
+                      "property": "color",
+                      "label": "Color"
+                    }
+                  ],
+                  "elements": [
+                    {
+                      "css": {
+                        "backgroundColor": "#FFFEF5",
+                        "aspectRatio": "1",
+                        "borderRadius": "50%",
+                        "translate": "-50% -50%"
+                      },
+                      "size": 1
+                    }
+                  ],
+                  "id": "spotlight_afc7853c-1277-4a11-942e-8d00c15cbddf"
+                }
+              ]
+        
     },
     {
         "templateId":2,
         "name":"Scene2",
         "thumbnail":"",
         "aOs":[
-            1,2,3
-        ]
+            {
+              "templateId": 1,
+              "name": "spotlight",
+              "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png",
+              "position": {
+                "rx": 0.4310689836689094,
+                "ry": 0.7782231287571711
+              },
+              "size": 0.44,
+              "opacity": 0.71,
+              "edgeHardness": 0.8,
+              "color": "#ffffff",
+              "controls": [
+                {
+                  "type": "range",
+                  "property": "size",
+                  "label": "Size"
+                },
+                {
+                  "type": "range",
+                  "property": "opacity",
+                  "label": "Opacity"
+                },
+                {
+                  "type": "range",
+                  "property": "edgeHardness",
+                  "label": "edge Hardness"
+                },
+                {
+                  "type": "color",
+                  "property": "color",
+                  "label": "Color"
+                }
+              ],
+              "elements": [
+                {
+                  "css": {
+                    "backgroundColor": "#FFFEF5",
+                    "aspectRatio": "1",
+                    "borderRadius": "50%",
+                    "translate": "-50% -50%"
+                  },
+                  "size": 1
+                }
+              ],
+              "id": "spotlight_afc7853c-1277-4a11-942e-8d00c15cbddf"
+            },
+            {
+              "templateId": 2,
+              "name": "red",
+              "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/162JTZpSmAcNsAlCWRA379/e59a07c34fa2ed4b6cb182335e6cce63/red.png",
+              "position": {
+                "rx": 0.4373314870636151,
+                "ry": 0.2672010742513892
+              },
+              "size": 0.37,
+              "opacity": 0.83,
+              "edgeHardness": 0.8,
+              "color": "",
+              "controls": [
+                {
+                  "type": "range",
+                  "property": "size",
+                  "label": "Size"
+                },
+                {
+                  "type": "range",
+                  "property": "opacity",
+                  "label": "Opacity"
+                },
+                {
+                  "type": "range",
+                  "property": "edgeHardness",
+                  "label": "edge Hardness"
+                }
+              ],
+              "elements": [
+                {
+                  "css": {
+                    "backgroundColor": "#FF0000E5",
+                    "aspectRatio": "1",
+                    "borderRadius": "50%",
+                    "translate": "-50% -50%"
+                  },
+                  "size": 1
+                }
+              ],
+              "id": "red_9afcc6e3-4ec0-414f-945e-1b9d04951855"
+            }
+          ]
+        
     },
     {
         "templateId":3,
         "name":"Scene3",
         "thumbnail":"",
         "aOs":[
-            1,2,3
-        ]
+            {
+              "templateId": 1,
+              "name": "spotlight",
+              "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png",
+              "position": {
+                "rx": 0.807862937917036,
+                "ry": 0.7398129743335339
+              },
+              "size": 0.8,
+              "opacity": 0.12,
+              "edgeHardness": 1,
+              "color": "#ffffff",
+              "controls": [
+                {
+                  "type": "range",
+                  "property": "size",
+                  "label": "Size"
+                },
+                {
+                  "type": "range",
+                  "property": "opacity",
+                  "label": "Opacity"
+                },
+                {
+                  "type": "range",
+                  "property": "edgeHardness",
+                  "label": "edge Hardness"
+                },
+                {
+                  "type": "color",
+                  "property": "color",
+                  "label": "Color"
+                }
+              ],
+              "elements": [
+                {
+                  "css": {
+                    "backgroundColor": "#FFFEF5",
+                    "aspectRatio": "1",
+                    "borderRadius": "50%",
+                    "translate": "-50% -50%"
+                  },
+                  "size": 1
+                }
+              ],
+              "id": "spotlight_afc7853c-1277-4a11-942e-8d00c15cbddf"
+            },
+            {
+              "templateId": 3,
+              "name": "green",
+              "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/1qWTwOvRKj8Izw3Nd2Ky89/c09f911dbe304a2d4ec09ab020fbcc11/green.png",
+              "position": {
+                "rx": 0.7796816726408603,
+                "ry": 0.2404809668262503
+              },
+              "size": 0.11,
+              "opacity": 1,
+              "edgeHardness": 0.8,
+              "controls": [
+                {
+                  "type": "range",
+                  "property": "size",
+                  "label": "Size"
+                },
+                {
+                  "type": "range",
+                  "property": "opacity",
+                  "label": "Opacity"
+                }
+              ],
+              "elements": [
+                {
+                  "css": {
+                    "backgroundColor": "#00FF00E5",
+                    "aspectRatio": "1",
+                    "borderRadius": "50%",
+                    "translate": "-50% -50%"
+                  },
+                  "size": 1
+                }
+              ],
+              "id": "green_6c174a67-7728-4e92-807d-a41f09be99a3"
+            }
+          ]
     }
 ]
+
+

@@ -28,6 +28,9 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
   const clearActiveObjects = ()=>{
     setActiveObjects([])
   }
+  const exportActiveObjects = ()=>{
+    setActiveObjects([])
+  }
 
 
   return (
@@ -55,9 +58,15 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
         <div className='grow flex flex-col border-2  border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 rounded p-1  text-gray-300 z-0'> 
           <div className="flex flex-row justify-between">
           <h1 className='text-gray-600'>Active Objects in Scene</h1>
-          <button onClick={clearActiveObjects} className=' border outline outline-1 outline-black border-gray-800 hover:border-gray-950 bg-gray-900  hover:bg-gray-900 rounded px-1 mr-1'>
-            <p className='text-black hover:translate-y-px'>clear all 🗑️</p>  </button>
-          </div>
+          <div>
+            <button onClick={exportActiveObjects} className='mb-1 border outline outline-1 outline-black border-gray-800 hover:border-gray-950 bg-gray-900  hover:bg-gray-900 rounded px-1 mr-1'>
+              <p className='text-black hover:translate-y-px'>export</p>
+            </button>
+            <button onClick={clearActiveObjects} className=' border outline outline-1 outline-black border-gray-800 hover:border-gray-950 bg-gray-900  hover:bg-gray-900 rounded px-1 mr-1'>
+              <p className='text-black hover:translate-y-px'>clear all 🗑️</p>
+            </button>
+          </div> 
+        </div>
 
           <div className='grow border-2 border-gray-950 bg-black  rounded-lg  overflow-auto text-gray-300 z-0'> 
             <ActiveCards activeObjects={activeObjects} setActiveObjects={setActiveObjects} selected={selected} setSelected={setSelected}/>
