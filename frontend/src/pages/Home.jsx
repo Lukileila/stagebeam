@@ -1,12 +1,14 @@
 import { NavLink } from "react-router-dom";
 import {useUserContext} from '../context/UserContext'
 import logo from '../assets/images/LogoWOBG.png'
+import background from '../assets/images/background.png'
+import { LogOutButton } from '../components/LogOutButton.jsx';
 
 export const Home = () => {
   const {user} = useUserContext();
   return (
     <>
-      <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: 'url("./src/assets/images/background.png")' }}>
+      <div className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${background})` }}>
 
         
       <NavLink to='/'><img src={logo} alt="Logo" className="max-w-32 absolute top-4 left-4" /></NavLink>
@@ -15,16 +17,26 @@ export const Home = () => {
           
           <div className="absolute top-4 right-4 flex gap-4">
 
-            {/* TEST started here adding more NavLinks */}
+            
           <div className="text-yellow-500">Hello {user ? user.name : 'there!'}</div>
-            <NavLink to="signuppage">
-          <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded">Sign Up</button>
-          </NavLink>
+            
+
+{/* Must see how this should be written!!! */}
+
+          {user ? (
+            <LogOutButton />
+          ) : (
+            <>
+              <NavLink to="signuppage">
+                <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded">Sign Up</button>
+              </NavLink>
 
 
-          <NavLink to="loginpage">
-            <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded">Already have an account? Log In</button>
-            </NavLink>
+              <NavLink to="loginpage">
+                <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded">Already have an account? Log In</button>
+              </NavLink>
+            </>
+          )}
 
           </div>
 
