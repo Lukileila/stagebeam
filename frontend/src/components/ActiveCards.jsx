@@ -19,7 +19,6 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
       const id=e.target.id;
       const value=e.target.value;
       const property=e.target.dataset.property;
-      console.log("e.target.property",e.target.property)
       aO = activeObjects.map(object=>{
 
         if (!(id===object.id)){  //checks, whether it is the Object which is to be altered
@@ -31,9 +30,7 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
 
           alteredObject[property]=e.target.dataset.type==="range"?(value/100):value;
 
-          console.log("hippety, hoppety, this is the property:",property)
-          console.log(alteredObject[property]);
-          console.log(alteredObject);
+   /*        console.log("hippety, hoppety, this is the property:",property) */
           return (alteredObject)
         }});
       setActiveObjects(aO);
@@ -68,8 +65,6 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
 
                         {activeObject.controls && activeObject.controls.map((x,index)=>{ 
 
-                          console.log("activeObject[x.property]",activeObject[x.property])
-                          console.log("typof(x.property)",typeof(activeObject[x.property]))
 
                           let newValue = x.type === "range" ? (activeObject[x.property]*100):activeObject[x.property];
                           return (

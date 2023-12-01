@@ -5,6 +5,7 @@ import { Timeline } from "../components/Timeline"
 import { Workspace } from "../components/Workspace"
 import { useEffect, useState } from "react";
 import objectTemplates from "../data/objectTemplates.json"
+import sceneTemplates from "../data/sceneTemplates.json"
 
 
 
@@ -18,8 +19,16 @@ export const Controller = () => {
     JSON.parse(localStorage.getItem('activeObjects') )) 
   // mostly for expanding it on the menu
   const [selected, setSelected] = useState(NaN);
+  const [activeScenes, setActiveScenes] = useState( 
+    !localStorage.getItem('activeScenes')?[]:
+    JSON.parse(localStorage.getItem('activeObjects') ));
+  const [selectedScene, setSelectedScene] = useState(NaN);
+
 
   // Copying from file to state:
+  useEffect(() => { setTemplateObjects(objectTemplates); }, []);
+
+    // Copying from file to state this is only for testing purposes!!:
   useEffect(() => { setTemplateObjects(objectTemplates); }, []);
 
 
