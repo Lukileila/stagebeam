@@ -69,7 +69,7 @@ export const ActiveCards = ({templateObjects, setTemplateObjects, activeObjects,
                           let newValue = x.type === "range" ? (activeObject[x.property]*100):activeObject[x.property];
                           return (
                             <div key={index}
-                              className=" block text-white" style={{ backgroundColor:"transparent"}}n> 
+                              className=" block text-white" style={{ backgroundColor:"transparent"}}> 
 
                               <input type={x.type} value={newValue} id={activeObject.id} data-property={x.property} data-type={x.type} min="0" max="100" onChange={(e)=>handleForm(e)}/>
 

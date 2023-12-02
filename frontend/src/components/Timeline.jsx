@@ -12,8 +12,7 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
  
   //If the selected Scene changes, the active Objects are changed
   useEffect(()=>{
-    const p = Number(selectedPosition); 
-
+    const p = Number(selectedPosition);
     activeScenes[p]? setActiveObjects(activeScenes[p].aOs) : console.error("activeScenes[p]is falsy");
   }, [selectedScene]); 
 
@@ -109,25 +108,21 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
   const deleteScene =(e) =>{
     let aS=[];
     aS = activeScenes.filter(scene=>{!(scene.id===e.target.id)}).map(scene=>scene);
-    aS.length<1 && addScene();
+/*     aS.length<1 && addScene(); */
     setActiveScenes(aS);
   }
 
   return (
     <div className='fixed flex left-[30%] w-[70%] top-[70%] h-[30%] bg-black p-1 pt-0'>
-
-
  
       <div className='grow flex flex-col border-2 p-1 rounded       border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 text-gray-300'> 
         <h1 className='text-gray-600'>Scenes in this Show</h1>
         <div className='h-full max-h-full flex flex-row items-center first-letter:border-2 border-gray-950 bg-black rounded-lg p-3  text-gray-300 overflow-hidden '> 
 
-
-          {console.log(activeScenes)}
           {activeScenes.length>0 && activeScenes.map((scene,iterator)=>{
 
             return (<>
-                <div className='h-full shrink items-center h-max-full flex flex-col border rounded m-px p-2 border-slate-800  bg-gradient-to-b from-gray-950 to-gray-900 w-64'
+                <div key={crypto.randomUUID()} className='h-full shrink items-center h-max-full flex flex-col border rounded m-px p-2 border-slate-800  bg-gradient-to-b from-gray-950 to-gray-900 w-64'
                     style={{
                       borderColor: scene.id === selectedScene ? "yellow": "black"
                     }}      
