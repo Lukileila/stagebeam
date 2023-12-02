@@ -1,10 +1,10 @@
 [
     {
         "templateId":1,
-        "name":"Scene1",
-        "thumbnail":"",
+        "id":"sdghisdgsbgsdbsdfgsdfuhsd",
+        "name":"Intro",
+        "thumbnail":"https://images.ctfassets.net/vu8gu00g7wzj/kpMtKv4bhZyvuROWpD8t5/97e45a4accc583f5dd33d80cf5c661a1/Untitled.png",
         "aOs":[
-            
                 {
                   "templateId": 1,
                   "name": "spotlight",
@@ -57,8 +57,9 @@
     },
     {
         "templateId":2,
-        "name":"Scene2",
-        "thumbnail":"",
+        "name":"Approach",
+        "id":"ujvnjkapkfkjhvjmfoeihugsg",
+        "thumbnail":"https://images.ctfassets.net/vu8gu00g7wzj/18HdGzBGXCzHxMqr4oYte0/685b1a7033b1aa89ca38fcdf9a877be7/Untitled.png",
         "aOs":[
             {
               "templateId": 1,
@@ -110,7 +111,7 @@
             {
               "templateId": 2,
               "name": "red",
-              "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/162JTZpSmAcNsAlCWRA379/e59a07c34fa2ed4b6cb182335e6cce63/red.png",
+              "thumbnail": "https://images.ctfassets.net/vu8gu00g7wzj/18HdGzBGXCzHxMqr4oYte0/685b1a7033b1aa89ca38fcdf9a877be7/Untitled.png",
               "position": {
                 "rx": 0.4373314870636151,
                 "ry": 0.2672010742513892
@@ -154,8 +155,9 @@
     },
     {
         "templateId":3,
-        "name":"Scene3",
-        "thumbnail":"",
+        "name":"Heartbeat",
+        "id":"iwxljdhhdhd",
+        "thumbnail":"https://images.ctfassets.net/vu8gu00g7wzj/5pEy2c6Y1WX7rKI3Jkr6p3/33676f9345676a14b974748f70b6f732/Untitled.png",
         "aOs":[
             {
               "templateId": 1,

@@ -10,8 +10,8 @@ export const Beamer = () => {
   useEffect(()=>{setBeamerOnline(true)}
 
     ,[]);
-
-  useEffect(()=>{console.log("beamerOnline",beamerOnline)},[beamerOnline])
+/* 
+  useEffect(()=>{console.log("beamerOnline",beamerOnline)},[beamerOnline]) */
   
 
 
