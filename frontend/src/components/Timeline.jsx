@@ -121,18 +121,16 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
 
           {activeScenes.length>0 && activeScenes.map((scene,iterator)=>{
 
-            return (<>
-                <div key={crypto.randomUUID()} className='h-full shrink items-center h-max-full flex flex-col border rounded m-px p-2 border-slate-800  bg-gradient-to-b from-gray-950 to-gray-900 w-64'
-                    style={{
-                      borderColor: scene.id === selectedScene ? "yellow": "black"
-                    }}      
-                >
-                  <div className='shrink grow border border-black bg-black   overflow-hidden cursor-pointer'  onClick={handleSceneClick} id={scene.id}> <img id={scene.id} className="border border-px border-yellow-400 object-contain object-center" src={scene.thumbnail} data-position={iterator} alt="img" /> </div>
-                  <h2 className='shrink-0 text-md truncate text-ellipsis cursor-pointer hover:rotate-[360deg] duration-1000' data-position={iterator} onClick={handleSceneClick} id={scene.id} >{iterator+1}: {scene.name}</h2>
-                  <button className='cursor-pointer' onClick={deleteScene} id={scene.id} >delete</button>
-                </div>
-                <p className="text-3xl text-gray-400">➞</p>
-             </>
+            return (
+              <div key={crypto.randomUUID()} className='h-full shrink items-center h-max-full flex flex-col border rounded m-px p-2 border-slate-800  bg-gradient-to-b from-gray-950 to-gray-900 w-64'
+                  style={{
+                    borderColor: scene.id === selectedScene ? "yellow": "black"
+                  }}      
+              >
+                <div className='shrink grow border border-black bg-black   overflow-hidden cursor-pointer'  onClick={handleSceneClick} id={scene.id}> <img id={scene.id} className="border border-px border-yellow-400 object-contain object-center" src={scene.thumbnail} data-position={iterator} alt="img" /> </div>
+                <h2 className='shrink-0 text-md truncate text-ellipsis cursor-pointer hover:rotate-[360deg] duration-1000' data-position={iterator} onClick={handleSceneClick} id={scene.id} >{iterator+1}: {scene.name}</h2>
+                <button className='cursor-pointer' onClick={deleteScene} id={scene.id} >delete</button>
+              </div>
             )})}
 
           <div className='h-full shrink items-center h-max-full flex flex-col border rounded m-px p-2    border-slate-800  bg-gradient-to-b from-gray-950 to-gray-900 w-64' onClick={addScene}>

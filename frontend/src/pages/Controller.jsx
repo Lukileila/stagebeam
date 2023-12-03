@@ -28,14 +28,10 @@ export const Controller = () => {
  // Copying from file to state this is only for testing purposes!! Activate to write fake User data to localstorage! Don't forget to comment it out after loading!
   /*  useEffect(() => { setActiveScenes(sceneTemplates); }, []);    */
 
-
-
   // LOCALSTORAGE interaction lives here:
   // Copying state to localstorage
-  useEffect(() => {console.log("activeObjects",activeObjects); localStorage.setItem('activeObjects',JSON.stringify(activeObjects)); }, [activeObjects]);
-  
-  useEffect(() => {console.log("activeScenes",activeScenes); localStorage.setItem('activeScenes',JSON.stringify(activeScenes)); }, [activeScenes]);
-
+  useEffect(() => {console.log("activeObjects",activeObjects);  localStorage.setItem('activeObjects',JSON.stringify(activeObjects)); }, [activeObjects]);
+  useEffect(() => {console.log("activeScenes",activeScenes);    localStorage.setItem('activeScenes',JSON.stringify(activeScenes)); }, [activeScenes]);
 
   //Maybe change overall layout to grid at some point
   return (
