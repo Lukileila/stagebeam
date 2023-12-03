@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react';
 
 export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelectedScene, activeObjects, setActiveObjects}) => {
   const [selectedPosition, setSelectedPosition]=useState(0);
+  const [SceneThumbnailUrls, setSceneThumbnailUrls]=useState([]);
  
   //If the selected Scene changes, the active Objects are changed
   useEffect(()=>{
@@ -13,21 +14,33 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
 
 
 
-  //Calls the thumbnail maker, whenever active Objects are altered. Could probably be turned into its own component
-  useEffect(()=>{paintScene()},[activeObjects]);
+  //Calls the thumbnail maker, whenever certain States altered. Could probably be turned into its own component  - Deactivated to enable Mutation Listener Experiment
+ /*  useEffect(()=>{paintScene()},[activeObjects, selectedPosition]); */
 
   var node = document.getElementById('canVas');
 
-  const paintScene = ()=>{
-    domtoimage.toPng(node)
+  const paintScene = async()=>{
+    const p = Number(selectedPosition);
+    await domtoimage.toPng(node)
     .then(function (dataUrl) {
-        let newAS = activeScenes.map(scene => scene.id === selectedScene ? {...scene, thumbnail:dataUrl} : scene)
-     /*    setActiveScenes(newAS); */
+        const x=SceneThumbnailUrls;
+        x[p]=dataUrl;
+        setSceneThumbnailUrls(x);
     })
     .catch(function (error) {
         console.error('oops, something went wrong!', error);
     });
   }
+
+ //Mutation Listener Experiment
+  const MLconfig={attributes:true, childList:true, subtree:true};
+
+  useEffect(()=>{
+
+    
+  }, []); 
+
+
 
   //from element properties on the DOM to State.
   const handleSceneClick =(e) =>{
@@ -51,6 +64,8 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
   }
 
   useEffect(()=>{console.log("selectedScene",selectedScene)},[selectedScene])
+  
+  useEffect(()=>{console.log("SceneThumbnailUrls",SceneThumbnailUrls)},[SceneThumbnailUrls])
 
   return (
     <div className='fixed flex left-[30%] w-[70%] top-[70%] h-[30%] bg-black p-1 pt-0'>
@@ -66,7 +81,7 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
                     borderColor: scene.id === selectedScene ? "yellow": "black"
                   }}      
               >
-                <div className='shrink grow border border-black bg-black   overflow-hidden cursor-pointer'  onClick={handleSceneClick} id={scene.id}> <img id={scene.id} className="border border-px border-yellow-400 object-contain object-center" src={scene.thumbnail} data-position={iterator} alt="img" /> </div>
+                <div className='shrink grow border border-black bg-black   overflow-hidden cursor-pointer'  onClick={handleSceneClick} id={scene.id}  data-position={iterator} > <img  id={scene.id} data-position={iterator}  className="border border-px border-yellow-400 object-contain object-center" src={SceneThumbnailUrls[iterator]} alt="img" /> </div>
                 <h2 className='shrink-0 text-md truncate text-ellipsis cursor-pointer hover:rotate-[360deg] duration-1000' data-position={iterator} onClick={handleSceneClick} id={scene.id} >{iterator+1}: {scene.name}</h2>
                 <button className='cursor-pointer' onClick={deleteScene} id={scene.id} >delete</button>
               </div>
