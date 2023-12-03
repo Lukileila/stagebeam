@@ -11,12 +11,7 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
     activeScenes[p]? setActiveObjects(activeScenes[p].aOs) : console.error("activeScenes[p]is falsy");
   }, [selectedScene]); 
 
-  //copying active Objects to Scene
-  useEffect(() => {
-    console.log("copy aO to aS fired");
-    let newAS = activeScenes.map(scene => scene.id === selectedScene ? {...scene, aOs:activeObjects} : scene);
-    setActiveScenes(newAS);
-  }, [activeObjects]);
+
 
   //Calls the thumbnail maker, whenever active Objects are altered. Could probably be turned into its own component
   useEffect(()=>{paintScene()},[activeObjects]);
@@ -27,7 +22,7 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
     domtoimage.toPng(node)
     .then(function (dataUrl) {
         let newAS = activeScenes.map(scene => scene.id === selectedScene ? {...scene, thumbnail:dataUrl} : scene)
-        setActiveScenes(newAS);
+     /*    setActiveScenes(newAS); */
     })
     .catch(function (error) {
         console.error('oops, something went wrong!', error);

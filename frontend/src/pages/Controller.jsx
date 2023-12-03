@@ -22,6 +22,14 @@ export const Controller = () => {
   const [selected, setSelected] = useState(NaN);                  //Selected Object, mostly for expanding it on the menu
   const [selectedScene, setSelectedScene] = useState(0);
 
+      //copying active Objects to Scene
+   useEffect(() => {
+    console.log("copy aO to aS fired");
+    let newAS = activeScenes.map(scene => scene.id === selectedScene ? {...scene, aOs:activeObjects} : scene);
+    console.log("newAS",newAS)
+    setActiveScenes(newAS);
+  }, [activeObjects]); 
+
   //Loading Palette Objects from file to State. Might as well not have a state since palette Objects don't change right now.
   useEffect(() => { setTemplateObjects(objectTemplates); }, []); 
 
@@ -37,7 +45,7 @@ export const Controller = () => {
   return (
     <>
         <ObjectsMenu  activeObjects={activeObjects} setActiveObjects={setActiveObjects}  templateObjects={templateObjects} selected={selected} setSelected={setSelected}/>
-        <Timeline     activeObjects={activeObjects} setActiveObjects={setActiveObjects} activeScenes={activeScenes} setActiveScenes={setActiveScenes} selectedScene={selectedScene} setSelectedScene={setSelectedScene}/>
+        <Timeline     activeObjects={activeObjects} setActiveObjects={setActiveObjects}  activeScenes={activeScenes} setActiveScenes={setActiveScenes} selectedScene={selectedScene} setSelectedScene={setSelectedScene}/>
         <Workspace    activeObjects={activeObjects} setActiveObjects={setActiveObjects}  selected={selected} setSelected={setSelected}  /> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
     </>
   )
