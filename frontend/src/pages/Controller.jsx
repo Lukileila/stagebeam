@@ -16,22 +16,22 @@ export const Controller = () => {
     JSON.parse(localStorage.getItem('activeObjects') )) 
 
   const [activeScenes, setActiveScenes] = useState( 
-    !localStorage.getItem('activeScenes')?[]:
+    !localStorage.getItem('activeScenes')?sceneTemplates:
     JSON.parse(localStorage.getItem('activeScenes') ));
 
   const [selected, setSelected] = useState(NaN);                  //Selected Object, mostly for expanding it on the menu
   const [selectedScene, setSelectedScene] = useState(0);
 
   //Loading Palette Objects from file to State. Might as well not have a state since palette Objects don't change right now.
-  useEffect(() => { setTemplateObjects(objectTemplates); }, []);
+  useEffect(() => { setTemplateObjects(objectTemplates); }, []); 
 
  // Copying from file to state this is only for testing purposes!! Activate to write fake User data to localstorage! Don't forget to comment it out after loading!
   /*  useEffect(() => { setActiveScenes(sceneTemplates); }, []);    */
 
   // LOCALSTORAGE interaction lives here:
-  // Copying state to localstorage
+  // Copying states to localstorage
   useEffect(() => {console.log("activeObjects",activeObjects);  localStorage.setItem('activeObjects',JSON.stringify(activeObjects)); }, [activeObjects]);
-  useEffect(() => {console.log("activeScenes",activeScenes);    localStorage.setItem('activeScenes',JSON.stringify(activeScenes)); }, [activeScenes]);
+  useEffect(() => {console.log("activeScenes",activeScenes);    localStorage.setItem('activeScenes',JSON.stringify(activeScenes)); },   [activeScenes]);
 
   //Maybe change overall layout to grid at some point
   return (
@@ -40,5 +40,5 @@ export const Controller = () => {
         <Timeline     activeObjects={activeObjects} setActiveObjects={setActiveObjects} activeScenes={activeScenes} setActiveScenes={setActiveScenes} selectedScene={selectedScene} setSelectedScene={setSelectedScene}/>
         <Workspace    activeObjects={activeObjects} setActiveObjects={setActiveObjects}  selected={selected} setSelected={setSelected}  /> {/*  order matters for overlap, ignoring the set z-index. Yes. Really. I hate it as well. /LZ */}
     </>
-         )
+  )
 }

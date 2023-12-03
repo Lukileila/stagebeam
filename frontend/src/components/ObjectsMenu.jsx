@@ -5,10 +5,8 @@ import { ActiveCards } from "./ActiveCards";
 import popoutSvg from  '../assets/icons/popoutSvg.svg';
 
 export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, selected, setSelected}) => {
-
   
   const [beamerOnline, setBeamerOnline] = useState( JSON.parse(localStorage.getItem('beamerOnline'))) 
-
 
   useEffect(() => {
     const onStorageUpdate=()=>{ setBeamerOnline(JSON.parse(localStorage.getItem('beamerOnline')) ?? false)}
@@ -19,9 +17,6 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
     };
   }, []);
 
-
-
-
   const openBeamer = ()=> {
     window.open("/beamer")
   }
@@ -31,7 +26,6 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
   const exportActiveObjects = ()=>{
     setActiveObjects([])
   }
-
 
   return (
     <>
@@ -53,7 +47,6 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
               </div>
           </div>
         </div>
-
 
         <div className='grow flex flex-col border-2  border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 rounded p-1  text-gray-300 z-0'> 
           <div className="flex flex-row justify-between">
