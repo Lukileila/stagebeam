@@ -12,7 +12,7 @@ app.use(express.json());
 
 const jwtSecretKey = process.env.JWT_SECRET || 'defaultSecretKey';
 
-// const jwtSecretKey = process.env.JWT_SECRET || 'defaultSecretKey';
+
 const pool = new Pool();
 
 const hashPassword = async (password) => {
@@ -43,6 +43,25 @@ app.post('/api/signup', async (req, res) => {
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'All fields are required!!!' });
     }
+// current frontend signup endpoint code:
+
+//        app.use(cors(corsOptions));
+//        const handleSignUp = async () => {
+//        try {
+  //      const response = await axios.post('/api/signup', { name, email, password });
+ //       console.log('User signed up:', response.data.user);
+//        } catch (error) {
+//        console.error('Error signing up:', error.response.data.message);
+ //         }
+//          };
+
+
+
+
+
+
+
+
 
     const hashedPassword = await hashPassword(password);
 
