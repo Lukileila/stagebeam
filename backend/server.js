@@ -15,6 +15,7 @@ const jwtSecretKey = process.env.JWT_SECRET || 'defaultSecretKey';
 // const jwtSecretKey = process.env.JWT_SECRET || 'defaultSecretKey';
 const pool = new Pool();
 
+// Password Hashing
 const hashPassword = async (password) => {
   return await bcrypt.hash(password, 10);
 };
@@ -36,6 +37,7 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+// api/signup receives User data and returns a token
 app.post('/api/signup', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -62,6 +64,7 @@ app.post('/api/signup', async (req, res) => {
   }
 });
 
+// login receives credentials and returns user data andd token
 app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -92,7 +95,18 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// Returns all users. Not sure what this is used for /LZ
 app.get('/api/users', verifyToken, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM users');
+    res.json({ users: result.rows });
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+app.get('/dashboard', verifyToken, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM users');
     res.json({ users: result.rows });
