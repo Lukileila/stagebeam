@@ -15,21 +15,22 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
 
 
   //Calls the thumbnail maker, whenever certain States altered. Could probably be turned into its own component  - Deactivated to enable Mutation Listener Experiment
- /*  useEffect(()=>{paintScene()},[activeObjects, selectedPosition]); */
+   useEffect(()=>{paintScene()},[activeObjects, selectedPosition]); 
 /* 
   const node = document.getElementById('canVas'); */
 
 
-  const paintScene = async()=>{
+  const paintScene = async () => {
     const p = Number(selectedPosition);
     const node = document.getElementById('canVas');
     await domtoimage.toPng(node)
     .then(function (dataUrl) {
       console.log("paintscene.then fired. ScenePosition:",p)
-      const x=SceneThumbnailUrls;
-      /* x[p]=dataUrl; */
-        x.map((element,index)=>{index===p?dataUrl:element});  //should do the same as the commented out line above. i was desperate.
-      console.log("newSceneThumbnailArray",x)
+      console.log('dataUrl', dataUrl)
+      const x = SceneThumbnailUrls;
+      x[p] = dataUrl; 
+      // x = x.map((element,index)=>{index===p?dataUrl:element});  //should do the same as the commented out line above. i was desperate.
+      console.log("newSceneThumbnailArray", x)
       setSceneThumbnailUrls(x);
     })
     .catch(function (error) {
@@ -37,18 +38,18 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
     });
   }
 
-  const whenMutationObserved = (mutationList, observer)=>{console.log("Observer callback fired");paintScene()};
+//   const whenMutationObserved = (mutationList, observer)=>{console.log("Observer callback fired");paintScene()};
 
- //Mutation Listener Experiment
-  const MLconfig={attributes:true, childList:true, subtree:true};
-  const observer= new MutationObserver(whenMutationObserved);
+//  //Mutation Listener Experiment
+//   const MLconfig={attributes:true, childList:true, subtree:true};
+//   const observer= new MutationObserver(whenMutationObserved);
 
-  useEffect(()=>{
-    const node = document.getElementById('canVas');
-    observer.observe(node,MLconfig);
-    return
-    observer.disconnect();
-  }, []); 
+//   useEffect(()=>{
+//     const node = document.getElementById('canVas');
+//     observer.observe(node,MLconfig);
+//     return
+//     observer.disconnect();
+//   }, []); 
 
 
 
@@ -62,6 +63,7 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
     const newId=crypto.randomUUID()
     setActiveScenes(prev => [...prev, {name:"New Scene", thumbnail:"https://upload.wikimedia.org/wikipedia/commons/9/99/Black_square.jpg", aOs:activeObjectsTestdata, id: `${newId}`}]);
     setSelectedScene(newId);
+    // paintScene();
   }
 
   const deleteScene =(e) =>{
@@ -86,7 +88,7 @@ export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelec
           {activeScenes.length>0 && activeScenes.map((scene,iterator)=>{
 
             return (
-              <div key={crypto.randomUUID()} className='h-full shrink items-center h-max-full flex flex-col border rounded m-px p-2 border-slate-800  bg-gradient-to-b from-gray-950 to-gray-900 w-64'
+              <div key={scene.id} className='h-full shrink items-center h-max-full flex flex-col border rounded m-px p-2 border-slate-800  bg-gradient-to-b from-gray-950 to-gray-900 w-64'
                   style={{
                     borderColor: scene.id === selectedScene ? "yellow": "black"
                   }}      

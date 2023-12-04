@@ -36,7 +36,6 @@ export const Workspace = ({ activeObjects, setActiveObjects, selected, setSelect
         };
     }, []);
 
-
   // Toggling aspectToggle depending on whether the pink border box (stage) fits in the black box (workspace). (Responsiveness)
     useEffect(() => {
         setStageDimensions(stageContainer.current.getBoundingClientRect());
