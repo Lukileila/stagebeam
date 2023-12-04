@@ -4,40 +4,50 @@ import {useState, useEffect} from 'react';
 
 export const Timeline = ({activeScenes, setActiveScenes, selectedScene, setSelectedScene, activeObjects, setActiveObjects}) => {
   const [selectedPosition, setSelectedPosition]=useState(0);
-  const [SceneThumbnailUrls, setSceneThumbnailUrls]=useState([]);
+  const [SceneThumbnailUrls, setSceneThumbnailUrls]=useState(["","","","","","","","",""]);
  
   //If the selected Scene changes, the active Objects are changed
   useEffect(()=>{
     const p = Number(selectedPosition);
     activeScenes[p]? setActiveObjects(activeScenes[p].aOs) : console.error("activeScenes[p]is falsy");
-  }, [selectedScene]); 
+  }, [selectedScene]);
 
 
 
   //Calls the thumbnail maker, whenever certain States altered. Could probably be turned into its own component  - Deactivated to enable Mutation Listener Experiment
  /*  useEffect(()=>{paintScene()},[activeObjects, selectedPosition]); */
+/* 
+  const node = document.getElementById('canVas'); */
 
-  var node = document.getElementById('canVas');
 
   const paintScene = async()=>{
     const p = Number(selectedPosition);
+    const node = document.getElementById('canVas');
     await domtoimage.toPng(node)
     .then(function (dataUrl) {
-        const x=SceneThumbnailUrls;
-        x[p]=dataUrl;
-        setSceneThumbnailUrls(x);
+      console.log("paintscene.then fired. ScenePosition:",p)
+      const x=SceneThumbnailUrls;
+      /* x[p]=dataUrl; */
+        x.map((element,index)=>{index===p?dataUrl:element});  //should do the same as the commented out line above. i was desperate.
+      console.log("newSceneThumbnailArray",x)
+      setSceneThumbnailUrls(x);
     })
     .catch(function (error) {
         console.error('oops, something went wrong!', error);
     });
   }
 
+  const whenMutationObserved = (mutationList, observer)=>{console.log("Observer callback fired");paintScene()};
+
  //Mutation Listener Experiment
   const MLconfig={attributes:true, childList:true, subtree:true};
+  const observer= new MutationObserver(whenMutationObserved);
 
   useEffect(()=>{
-
-    
+    const node = document.getElementById('canVas');
+    observer.observe(node,MLconfig);
+    return
+    observer.disconnect();
   }, []); 
 
 
