@@ -12,7 +12,7 @@ export const Dashboard = () => {
       </div>
       <div>
         <div className="flex flex-col justify-end mt-8">
-          <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded mb-2 w-fit">My Saved Stages</button>
+          <button className="px-4 py-2 bg-yellow-500 text-zinc-950 rounded mb-2 w-fit">My Shows</button>
           <button className="px-8 py-4 bg-yellow-500 text-zinc-950 rounded mb-2 w-fit">  Shared with:  </button>
           <button className="px-8 py-4 bg-yellow-500 text-zinc-950 rounded mb-2 w-fit">Share  Now</button>
           <button className="px-8 py-4 bg-yellow-500 text-zinc-950 rounded mb-2 w-fit">Second Set</button>
