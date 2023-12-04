@@ -68,7 +68,7 @@ export const Controller = () => {
   }, [activeObjects]);
 
   useEffect(() => {
-    /* console.log("activeScenes",activeScenes); */
+     console.log("activeScenes",activeScenes); 
     localStorage.setItem('activeScenes', JSON.stringify(activeScenes));
   }, [activeScenes]);
 
