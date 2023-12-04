@@ -7,7 +7,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
   const stopDrag = (e, elId) => {
 
     setSelected(elId);
-    console.log("sydfgsdfg",elId);
+/*     console.log("sydfgsdfg",elId); */
  
     let rx = (e.clientX  -stageDimensions.left) /stageDimensions.width ;
     let ry = (e.clientY  -stageDimensions.top)  /stageDimensions.height ;
@@ -38,8 +38,8 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
             {x.elements.length>0 && x.elements.map((element,j)=>{ 
 
               let elementBackgroundColor = x.color ? x.color :  element.css.backgroundColor;
-              console.log(elementBackgroundColor);
-              const elementBackground = (x.edgeHardness === NaN)? elementBackgroundColor : `radial-gradient(circle, ${elementBackgroundColor} ${x.edgeHardness*100*0.7071068+'%'}, rgba(0,0,0,0) 70.71068%)`;
+ /*              console.log(elementBackgroundColor); */
+              const elementBackground = (x.edgeHardness === 1)? elementBackgroundColor : `radial-gradient(circle, ${elementBackgroundColor} ${x.edgeHardness*100*0.7071068+'%'}, rgba(0,0,0,0) 70.71068%)`;
 
               return (
                 <div
