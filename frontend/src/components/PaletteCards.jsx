@@ -5,12 +5,7 @@ export const PaletteCards = ({templateObjects, setTemplateObjects, activeObjects
         setActiveObjects(prev => [...prev, {...templateObject, id: `${templateObject.name}_${crypto.randomUUID()}`}]);
       };
   return (
-
-
-
     <>
-
-
                 {templateObjects.length>0 && templateObjects.map((templateObject,it)=>{
                     return <div key={it} onClick={()=>addToActive(templateObject)} className="cursor-pointer">
                                 <div className='w-10 h-14  /* border-slate-800 */ bg-gradient-to-b from-gray-950 to-gray-900 rounded m-px'>
@@ -19,9 +14,6 @@ export const PaletteCards = ({templateObjects, setTemplateObjects, activeObjects
                                 </div>
                         </div>
                 })}
-
-
-    
     </>
   )
 }
