@@ -106,7 +106,45 @@ app.get('/api/users', verifyToken, async (req, res) => {
   }
 });
 
-app.get('/dashboard', verifyToken, async (req, res) => {
+
+
+
+///
+
+
+
+app.post('/api/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required for login' });
+    }
+
+    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+
+    if (!result.rows.length) {
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
+
+    const { id, email: dbEmail, name, password: dbPassword } = result.rows[0];
+    const passwordMatch = await bcrypt.compare(password, dbPassword);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
+
+    const token = jwt.sign({ userId: id, email: dbEmail }, jwtSecretKey, { expiresIn: '1h' });
+
+    res.json({ id, email: dbEmail, name, token });
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// Returns the shows a user has
+app.get('/shows', verifyToken, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM users');
     res.json({ users: result.rows });
@@ -115,6 +153,24 @@ app.get('/dashboard', verifyToken, async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+
+// Returns a specific show
+app.get('/show', verifyToken, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM users');
+    res.json({ users: result.rows });
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
+
+
+
+///
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
