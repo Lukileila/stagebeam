@@ -5,19 +5,23 @@ import { useUserContext } from '../context/UserContext';
 
 export const LogInPage = () => {
   const navigate = useNavigate();
-  const { setUser } = useUserContext();
+  const { setToken } = useUserContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post('http://localhost:3000/api/login', {
-        email,
-        password,
-      }); //Later on,I must change this url to the deployed backend's url!!!!!!!!!!!!!!!!!
-      console.log('User logged in:', response.data);
-      setUser(response.data);
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
+        {
+          email,
+          password,
+        }
+      ); //Later on,I must change this url to the deployed backend's url!!!!!!!!!!!!!!!!!
+      console.log('User logged in:', response.headers.authentication);
+      localStorage.setItem('token', response.headers.authentication);
+      setToken(response.headers.authentication);
       navigate('/dashboard');
     } catch (error) {
       console.error('Error logging in:', error.response.data.message);
