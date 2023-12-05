@@ -6,6 +6,16 @@ export const SignUpPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+
+
+  //to be reviewed:            when sshould I in this endpoint,change our url to backend deployment link url? const response = await axios.post('https://stagebeam.live/api/signup', { name, email, password });
+
+// to be reviewed:            const corsOptions = {
+//                            origin: 'https://stage-beam-front-end-url',
+  
+//                             };
+
+app.use(cors(corsOptions));
   const handleSignUp = async () => {
     try {
       const response = await axios.post('/api/signup', { name, email, password });
