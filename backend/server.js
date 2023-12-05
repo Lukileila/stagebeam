@@ -7,19 +7,19 @@ const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.use(cors());
+app.use(cors({ exposedHeaders: 'authentication' }));
 app.use(express.json());
 
 const jwtSecretKey = process.env.JWT_SECRET || 'defaultSecretKey';
 
-
 const pool = new Pool();
 
-// Password Hashing
+// Password Hashing middleware
 const hashPassword = async (password) => {
   return await bcrypt.hash(password, 10);
 };
 
+// Token verification middleware
 const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
 
@@ -45,25 +45,6 @@ app.post('/api/signup', async (req, res) => {
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'All fields are required!!!' });
     }
-// current frontend signup endpoint code:
-
-//        app.use(cors(corsOptions));
-//        const handleSignUp = async () => {
-//        try {
-  //      const response = await axios.post('/api/signup', { name, email, password });
- //       console.log('User signed up:', response.data.user);
-//        } catch (error) {
-//        console.error('Error signing up:', error.response.data.message);
- //         }
-//          };
-
-
-
-
-
-
-
-
 
     const hashedPassword = await hashPassword(password);
 
@@ -74,9 +55,14 @@ app.post('/api/signup', async (req, res) => {
 
     const user = result.rows[0];
 
-    const token = jwt.sign({ userId: user.id, email: user.email }, jwtSecretKey, { expiresIn: '1h' });
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      jwtSecretKey,
+      { expiresIn: '1h' }
+    );
 
-    res.json({ user, token });
+    res.set('Authorization', token);
+    return res.sendStatus(201);
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ message: error.message });
@@ -89,141 +75,164 @@ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: 'Email and password are required for login' });
+      return res
+        .status(400)
+        .json({ message: 'Email and password are required for login' });
     }
 
-    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    const result = await pool.query('SELECT * FROM users WHERE email = $1', [
+      email,
+    ]);
 
     if (!result.rows.length) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    const { id, email: dbEmail, name, password: dbPassword } = result.rows[0];
+    const { id, email: dbEmail, password: dbPassword } = result.rows[0];
     const passwordMatch = await bcrypt.compare(password, dbPassword);
 
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    const token = jwt.sign({ userId: id, email: dbEmail }, jwtSecretKey, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: id, email: dbEmail }, jwtSecretKey, {
+      expiresIn: '1h',
+    });
 
-    res.json({ id, email: dbEmail, name, token });
+    res.set('Authentication', token);
+    return res.sendStatus(200);
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-// Returns all users. Not sure what this is used for /LZ
-app.get('/api/users', verifyToken, async (req, res) => {
+// Returns one user based on the token that was sent by the frontend
+app.get('/api/user', verifyToken, async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM users');
-    res.json({ users: result.rows });
+    const { userId, email } = req.user;
+
+    const result = await pool.query(
+      'SELECT id, name, email FROM users WHERE id=$1 OR email=$2',
+      [userId, email]
+    );
+
+    res.json({ user: result.rows[0] });
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
-
-
-
 
 ///
 
 //Updates the shows list on the database
-app.post('/shows',/* verifyToken, */   async (req, res) => {
-  try {
-    const { userid } = req.body;
-    const result = await pool.query('SELECT * FROM shows WHERE id = $1', [userid]);
+app.post(
+  '/shows',
+  /* verifyToken, */ async (req, res) => {
+    try {
+      const { userid } = req.body;
+      const result = await pool.query('SELECT * FROM shows WHERE id = $1', [
+        userid,
+      ]);
 
-    if (!result.rows.length) {
-      return res.status(401).json({ message: 'Could not find that' });
+      if (!result.rows.length) {
+        return res.status(401).json({ message: 'Could not find that' });
+      }
+
+      /*  const { id: showid, name: showname, thumbnailURL:showthumbnailURL} = result.rows[0]; */
+      const { id, name, thumbnailURL } = result.rows[0];
+      return res.json({ id, name, thumbnailURL });
+    } catch (error) {
+      console.error('Error executing query', error);
+      res.status(500).json({ message: 'Internal Server Error' });
     }
-
-   /*  const { id: showid, name: showname, thumbnailURL:showthumbnailURL} = result.rows[0]; */
-    const { id, name, thumbnailURL} = result.rows[0];
-    return res.json({ id, name, thumbnailURL});
-
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
   }
-});
+);
 
 //Updates one specific show on the database
-app.post('/show', /* verifyToken, */ async (req, res) => {
-  try {
-    const { shows } = req.body;
+app.post(
+  '/show',
+  /* verifyToken, */ async (req, res) => {
+    try {
+      const { shows } = req.body;
 
-    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+      const result = await pool.query('SELECT * FROM users WHERE email = $1', [
+        email,
+      ]);
 
-    if (!result.rows.length) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      if (!result.rows.length) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+      }
+
+      const { id, email: dbEmail, name, password: dbPassword } = result.rows[0];
+      const passwordMatch = await bcrypt.compare(password, dbPassword);
+
+      if (!passwordMatch) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+      }
+
+      const token = jwt.sign({ userId: id, email: dbEmail }, jwtSecretKey, {
+        expiresIn: '1h',
+      });
+
+      res.json({ id, email: dbEmail, name, token });
+    } catch (error) {
+      console.error('Error executing query', error);
+      res.status(500).json({ message: 'Internal Server Error' });
     }
-
-    const { id, email: dbEmail, name, password: dbPassword } = result.rows[0];
-    const passwordMatch = await bcrypt.compare(password, dbPassword);
-
-    if (!passwordMatch) {
-      return res.status(401).json({ message: 'Invalid email or password' });
-    }
-
-    const token = jwt.sign({ userId: id, email: dbEmail }, jwtSecretKey, { expiresIn: '1h' });
-
-    res.json({ id, email: dbEmail, name, token });
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
   }
-});
+);
 
 // Returns a list of the shows a user has
-app.get('/shows',   /* verifyToken, */ async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM users');
-    res.json({ users: result.rows });
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+app.get(
+  '/shows',
+  /* verifyToken, */ async (req, res) => {
+    try {
+      const result = await pool.query('SELECT * FROM shows');
+      res.json({ users: result.rows });
+    } catch (error) {
+      console.error('Error executing query', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
   }
-});
+);
 
-/* app.get('/shows',/* verifyToken, */   async (req, res) => {
+/* app.get('/shows',/* verifyToken, */ async (req, res) => {
   try {
     const { userid } = req.body;
-    const result = await pool.query('SELECT * FROM shows WHERE id = $1', [userid]);
+    const result = await pool.query('SELECT * FROM shows WHERE id = $1', [
+      userid,
+    ]);
 
     if (!result.rows.length) {
       return res.status(401).json({ message: 'Could not find that' });
     }
 
-   /*  const { id: showid, name: showname, thumbnailURL:showthumbnailURL} = result.rows[0]; */
-    const { id, name, thumbnailURL} = result.rows[0];
-    return res.json({ id, name, thumbnailURL});
-
+    /*  const { id: showid, name: showname, thumbnailURL:showthumbnailURL} = result.rows[0]; */
+    const { id, name, thumbnailURL } = result.rows[0];
+    return res.json({ id, name, thumbnailURL });
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
-}; 
+};
 
 // Returns a specific show
-app.get('/show', /* verifyToken, */ async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM users');
-    res.json({ users: result.rows });
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+app.get(
+  '/show',
+  /* verifyToken, */ async (req, res) => {
+    try {
+      const result = await pool.query('SELECT * FROM users');
+      res.json({ users: result.rows });
+    } catch (error) {
+      console.error('Error executing query', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
   }
-});
-
-
-
-
+);
 
 ///
-
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
