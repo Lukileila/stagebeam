@@ -19,7 +19,7 @@ export const Controller = () => {
 
   const [activeScenes, setActiveScenes] = useState(
     !localStorage.getItem('activeScenes')
-      ? []
+      ? sceneTemplates
       : JSON.parse(localStorage.getItem('activeScenes'))
   );
 
@@ -36,21 +36,20 @@ export const Controller = () => {
   };
 
   useEffect(() => {
-    activeScenes && setSelectedScene(activeScenes[0].id);
+    setSelectedScene(activeScenes[0].id);
   }, []);
 
   //copying active Objects to Scene
   useEffect(() => {
-    activeObjects.length &&
-      (async () => {
-        const dataUrl = await generateThumbnail();
-        const newAS = activeScenes.map((scene) =>
-          scene.id === selectedScene
-            ? { ...scene, aOs: activeObjects, thumbnail: dataUrl }
-            : scene
-        );
-        setActiveScenes(newAS);
-      })();
+    (async () => {
+      const dataUrl = await generateThumbnail();
+      const newAS = activeScenes.map((scene) =>
+        scene.id === selectedScene
+          ? { ...scene, aOs: activeObjects, thumbnail: dataUrl }
+          : scene
+      );
+      setActiveScenes(newAS);
+    })();
   }, [activeObjects]);
 
   //Loading Palette Objects from file to State. Might as well not have a state since palette Objects don't change right now.
