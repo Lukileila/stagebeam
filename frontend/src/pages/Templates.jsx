@@ -113,7 +113,6 @@ export const Templates = () => {
           </div>
         </div>
       </div>
-      <LogOutButton />
     </>
   );
 };
