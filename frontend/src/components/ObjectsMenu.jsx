@@ -9,7 +9,8 @@ import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 
 export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, selected, setSelected}) => {
   
-  const [beamerOnline, setBeamerOnline] = useState( JSON.parse(localStorage.getItem('beamerOnline'))) 
+  const [beamerOnline, setBeamerOnline] = useState( JSON.parse(localStorage.getItem('beamerOnline')));  
+  const { loadingUser, user, setUser, loadingToken, token, } = useUserContext();
 
   useEffect(() => {
     const onStorageUpdate=()=>{ setBeamerOnline(JSON.parse(localStorage.getItem('beamerOnline')) ?? false)}
@@ -29,8 +30,10 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
   const exportActiveObjects = ()=>{
     setActiveObjects([])
   }
+  const handleSave = ()=>{
+                                                                                       /*      <--- Insert Code here      */
+  }
 
-  const { loadingUser, user, setUser, loadingToken, token, } = useUserContext();
 
   return (
     <>
@@ -45,11 +48,11 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
                   <p className=' text-black '>← Dashboard</p>
                 </NavLink>
 
-                <button onClick={openBeamer} className='flex grow  justify-between border outline outline-1 outline-black border-gray-800  bg-gray-900   rounded px-2 py-1 mr-1' style={{backgroundColor:"#6B7280"}}>
+                <button className='flex grow  justify-between border outline outline-1 outline-black border-gray-800  bg-gray-900   rounded px-2 py-1 mr-1' style={{backgroundColor:"#6B7280"}}>
                   <p className=' text-black '> Logged in as {user.name} </p>
                 </button>
 
-                <button onClick={openBeamer} className='flex grow hover:translate-y-px justify-between border outline outline-1 outline-black border-gray-800 hover:border-gray-950 bg-gray-900   rounded px-2 py-1 ' style={{backgroundColor:"#FACC15"}}>
+                <button onClick={handleSave} className='flex grow hover:translate-y-px justify-between border outline outline-1 outline-black border-gray-800 hover:border-gray-950 bg-gray-900   rounded px-2 py-1 ' style={{backgroundColor:"#FACC15"}}>
                   <p className=' text-black '>💾 Save this show</p>
                 </button>
 
