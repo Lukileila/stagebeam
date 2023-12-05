@@ -130,15 +130,30 @@ app.get('/api/users', verifyToken, async (req, res) => {
 
 ///
 
-
-
-app.post('/api/login', async (req, res) => {
+//Updates the shows list on the database
+app.post('/shows',/* verifyToken, */   async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { userid } = req.body;
+    const result = await pool.query('SELECT * FROM shows WHERE id = $1', [userid]);
 
-    if (!email || !password) {
-      return res.status(400).json({ message: 'Email and password are required for login' });
+    if (!result.rows.length) {
+      return res.status(401).json({ message: 'Could not find that' });
     }
+
+   /*  const { id: showid, name: showname, thumbnailURL:showthumbnailURL} = result.rows[0]; */
+    const { id, name, thumbnailURL} = result.rows[0];
+    return res.json({ id, name, thumbnailURL});
+
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+//Updates one specific show on the database
+app.post('/show', /* verifyToken, */ async (req, res) => {
+  try {
+    const { shows } = req.body;
 
     const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
 
@@ -162,8 +177,8 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// Returns the shows a user has
-app.get('/shows', verifyToken, async (req, res) => {
+// Returns a list of the shows a user has
+app.get('/shows',   /* verifyToken, */ async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM users');
     res.json({ users: result.rows });
@@ -173,8 +188,27 @@ app.get('/shows', verifyToken, async (req, res) => {
   }
 });
 
+/* app.get('/shows',/* verifyToken, */   async (req, res) => {
+  try {
+    const { userid } = req.body;
+    const result = await pool.query('SELECT * FROM shows WHERE id = $1', [userid]);
+
+    if (!result.rows.length) {
+      return res.status(401).json({ message: 'Could not find that' });
+    }
+
+   /*  const { id: showid, name: showname, thumbnailURL:showthumbnailURL} = result.rows[0]; */
+    const { id, name, thumbnailURL} = result.rows[0];
+    return res.json({ id, name, thumbnailURL});
+
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+}; 
+
 // Returns a specific show
-app.get('/show', verifyToken, async (req, res) => {
+app.get('/show', /* verifyToken, */ async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM users');
     res.json({ users: result.rows });
