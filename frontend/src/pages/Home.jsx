@@ -51,18 +51,19 @@ export const Home = () => {
         className='relative bg-cover bg-center h-screen'
         style={{ backgroundImage: `url(${background})` }}
       >
-        <div className='flex items-center justify-between mx-6 pt-4'>
+        <div className='flex items-center justify-between pl-6 pr-10 pt-4'>
           <NavLink to='/'>
             <img src={logo} alt='Logo' className='max-w-32' />
           </NavLink>
           <div className='flex gap-4 items-center'>
-            <div className='text-yellow-500'>
-              Hello {user ? user.name : 'there!'}
-            </div>
-
             {/* Must see how this should be written!!! */}
             {user ? (
-              <LogOutButton />
+              <>
+                <div className='text-yellow-500 text-xl'>
+                  Welcome back {user.name}
+                </div>
+                <LogOutButton />
+              </>
             ) : (
               <>
                 <NavLink

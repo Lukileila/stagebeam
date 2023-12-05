@@ -9,7 +9,7 @@ export const LogOutButton = () => {
     setUser(null);
     setToken(null);
     localStorage.removeItem('token');
-    navigate('/');
+    if (location.pathname === 'dashboard') navigate('/');
   };
 
   return (
