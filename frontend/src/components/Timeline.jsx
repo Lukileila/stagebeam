@@ -29,6 +29,31 @@ export const Timeline = ({
     setSelectedPosition(+e.target.dataset.position);
   };
 
+  const KeyPressElement=() =>{
+    const handleKeyPress=(e)=> {
+      switch (e.key) {
+        case "ArrowDown":
+          // Do something for "down arrow" key press.   Maybe adjust Brightness.
+          break;
+        case "ArrowUp":
+          // Do something for "up arrow" key press.     Maybe adjust Brightness.
+          break;
+        case "ArrowLeft":
+          // Switch Scenes to the one before
+          break;
+        case "ArrowRight":
+          // Switch Scenes to the one after
+          break;
+        default:
+          return; // Quit when this doesn't handle the key event.
+      }
+    return (
+        <div>
+            <input type="text" onKeyDown={(e) => handleKeyPress(e)} />
+        </div>
+    )
+}
+
   const addScene = async () => {
     try {
       const newId = crypto.randomUUID();
@@ -148,6 +173,7 @@ export const Timeline = ({
           </div>
         </div>
       </div>
+    {KeyPressElement}
     </div>
   );
 };
@@ -201,4 +227,4 @@ var activeObjectsTestdata = [
     ],
     id: 'spotlight_3bcbc432-7e5b-436e-9d8d-5ad0dd6cf39b',
   },
-];
+];}
