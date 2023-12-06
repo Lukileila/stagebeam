@@ -37,6 +37,8 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+
+
 // api/signup receives User data and returns a token
 app.post('/api/signup', async (req, res) => {
   try {
@@ -45,20 +47,6 @@ app.post('/api/signup', async (req, res) => {
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'All fields are required!!!' });
     }
-<<<<<<< Updated upstream
-=======
-// current frontend signup endpoint code:
-
-//        app.use(cors(corsOptions));
-//        const handleSignUp = async () => {
-//        try {
-//        const response = await axios.post('/api/signup', { name, email, password });
-//        console.log('User signed up:', response.data.user);
-//        } catch (error) {
-//        console.error('Error signing up:', error.response.data.message);
-//        }
-//        };
->>>>>>> Stashed changes
 
     const hashedPassword = await hashPassword(password);
 
@@ -117,7 +105,7 @@ app.post('/api/login', async (req, res) => {
     return res.sendStatus(200);
   } catch (error) {
     console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json(error);
   }
 });
 
@@ -126,15 +114,31 @@ app.get('/api/user', verifyToken, async (req, res) => {
   try {
     const { userId, email } = req.user;
 
-    const result = await pool.query(
-      'SELECT id, name, email FROM users WHERE id=$1 OR email=$2',
+    // getting all shows, whcih a user has
+    const {rows:showsFromUser} = await pool.query(
+      `SELECT shows.id as showId,
+      shows.name as showname,
+      array_agg(to_json(scenes.scenes)) as scenes FROM shows JOIN scenes ON scenes.showId=shows.id JOIN users ON users.id=shows.userId WHERE users.id=$1 OR email=$2 GROUP BY shows.id;`,
+      [userId, email]
+    );
+    
+    // Idk, why are are getting the stuff we already have. Maybe the user name isn't included in the token.
+    const {rows:[user]}= await poolquery(
+      `SELECT id, name, email FROM users WHERE users.id=$1 OR email=$2;`,
       [userId, email]
     );
 
-    res.json({ user: result.rows[0] });
+    const parseShows = showFromUser.map((show) => ({
+      ...show,
+      scenes: show.scenes.map((scene)=>JSON.parse(scene)).flat(1),
+    }));
+
+    user.shows = parseShows;
+
+    return res.json(user);
   } catch (error) {
     console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json(error);
   }
 });
 

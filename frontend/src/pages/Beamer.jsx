@@ -1,8 +1,6 @@
 import { BeamerManager } from "../components/BeamerManager"
 import { useEffect, useState } from "react";
 
-
-
 export const Beamer = () => {
 
   const [beamerOnline, setBeamerOnline] = useState(true)
@@ -10,14 +8,10 @@ export const Beamer = () => {
   useEffect(()=>{setBeamerOnline(true)}
 
     ,[]);
-/* 
-  useEffect(()=>{console.log("beamerOnline",beamerOnline)},[beamerOnline]) */
-  
 
 
 
-
-//updates beamerOnline, when window is closed
+  //updates beamerOnline, when window is closed
   useEffect(() => {
       const onClose =(e)=>{
         e.preventDefault();

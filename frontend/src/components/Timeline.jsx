@@ -18,8 +18,6 @@ export const Timeline = ({
       : console.error('activeScenes[selectedPosition]is falsy');
   }, [selectedScene]);
 
-  //Calls the thumbnail maker, whenever certain States altered. Could probably be turned into its own component  - Deactivated to enable Mutation Listener Experiment
-
   //from element properties on the DOM to State.
   const handleSceneClick = (e) => {
     setActiveObjects(
@@ -28,31 +26,6 @@ export const Timeline = ({
     setSelectedScene(e.target.id);
     setSelectedPosition(+e.target.dataset.position);
   };
-
-/*   const KeyPressElement=() =>{
-    const handleKeyPress=(e)=> {
-      switch (e.key) {
-        case "ArrowDown":
-          // Do something for "down arrow" key press.   Maybe adjust Brightness.
-          break;
-        case "ArrowUp":
-          // Do something for "up arrow" key press.     Maybe adjust Brightness.
-          break;
-        case "ArrowLeft":
-          // Switch Scenes to the one before
-          break;
-        case "ArrowRight":
-          // Switch Scenes to the one after
-          break;
-        default:
-          return; // Quit when this doesn't handle the key event.
-      }
-    return (
-        <div>
-            <input type="text" onKeyDown={(e) => handleKeyPress(e)} />
-        </div>
-    )
-} */
 
   const addScene = async () => {
     try {
@@ -177,54 +150,3 @@ export const Timeline = ({
     </div>
   );
 };
-
-var activeObjectsTestdata = [
-  {
-    templateId: 1,
-    name: 'spotlight',
-    thumbnail:
-      'https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png',
-    position: {
-      rx: 0.5,
-      ry: 0.5,
-    },
-    size: 0.3,
-    opacity: 0.9,
-    edgeHardness: 0.8,
-    color: '#ffffff',
-    controls: [
-      {
-        type: 'range',
-        property: 'size',
-        label: 'Size',
-      },
-      {
-        type: 'range',
-        property: 'opacity',
-        label: 'Opacity',
-      },
-      {
-        type: 'range',
-        property: 'edgeHardness',
-        label: 'edge Hardness',
-      },
-      {
-        type: 'color',
-        property: 'color',
-        label: 'Color',
-      },
-    ],
-    elements: [
-      {
-        css: {
-          backgroundColor: '#FFFEF5',
-          aspectRatio: '1',
-          borderRadius: '50%',
-          translate: '-50% -50%',
-        },
-        size: 1,
-      },
-    ],
-    id: 'spotlight_3bcbc432-7e5b-436e-9d8d-5ad0dd6cf39b',
-  },
-];
