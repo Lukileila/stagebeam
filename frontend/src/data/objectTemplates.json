@@ -12,6 +12,9 @@
     "opacity":0.9,
     "edgeHardness":0.8,
     "color":"#ffffff",
+    "css": {         
+                "animation":"rotate 0.5s linear 0s infinite"
+      },
 
     "controls":[
       {"type":"range",
@@ -53,6 +56,9 @@
     "opacity":"0.9",
     "edgeHardness":0.8,
     "color":"",
+    "css": {         
+      "animation":"rotate 0.5s linear 0s infinite"
+},
 
     "controls":[
       {"type":"range",
@@ -92,6 +98,9 @@
     "size":"0.3",
     "opacity":"0.9",
     "edgeHardness":0.8,
+    "css": {         
+      "animation":"rotate 0.5s linear 0s infinite"
+},
 
     "controls":[
       {"type":"range",
@@ -131,6 +140,9 @@
     "size":"0.3",
     "opacity":"0.9",
     "edgeHardness":0.8,
+    "css": {         
+      "animation":"rotate 0.5s linear 0s infinite"
+},
 
     "controls":[
       {"type":"range",
@@ -170,6 +182,9 @@
     "size":"0.3",
     "opacity":"0.9",
     "edgeHardness":0.8,
+    "css": {         
+      "animation":"rotate 0.5s linear 0s infinite"
+},
 
     "controls":[
       {"type":"range",
