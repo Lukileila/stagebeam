@@ -7,8 +7,15 @@ import { useUserContext } from '../context/UserContext';
 import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 
 
+
 export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, selected, setSelected}) => {
+ 
   
+  const [openModal, setOpenModal] = useState(false);
+
+
+
+
   const [beamerOnline, setBeamerOnline] = useState( JSON.parse(localStorage.getItem('beamerOnline')));  
   const { loadingUser, user, setUser, loadingToken, token, } = useUserContext();
 
@@ -30,13 +37,14 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
   const exportActiveObjects = ()=>{
     setActiveObjects([])
   }
-  const handleSave = ()=>{
-                                                                                       /*      <--- Insert Code here      */
-  }
+  const handleSave = ()=> {
+          setOpenModal((prev)=> !prev); }
 
 
   return (
     <>
+          {openModal && <Modal setOpenModal={setOpenModal} />}
+
       <div className='flex flex-col fixed w-[30%] h-full bg-black p-1 pr-0'>
 
           <div   className='flex flex-row justify-between border-2 border-gray-800 bg-gradient-to-t from-gray-950 to-gray-900 rounded p-1 text-gray-300  cursor-pointer mb-1' > 
@@ -118,5 +126,5 @@ export const ObjectsMenu = ({templateObjects, activeObjects, setActiveObjects, s
  
       </div>
     </>
-  )
-}
+  );
+};
