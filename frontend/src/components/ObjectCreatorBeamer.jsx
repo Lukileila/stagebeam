@@ -10,6 +10,7 @@ export const ObjectCreatorBeamer = ({activeObjects}) => {
             style={{
               top: x.position.ry*100 + '%',
               left: x.position.rx*100 + '%',
+              animation:x.css && x.css.animation ? x.css.animation : "garbage",
             }}>
             
             {x.elements.length>0 && x.elements.map((element,j)=>{ 
@@ -29,6 +30,7 @@ export const ObjectCreatorBeamer = ({activeObjects}) => {
                     background: elementBackground,
                     translate:element.css.translate,
                     opacity: x.opacity,
+                    animation: element.css.animation
                   }}
                 ></div>
               )
