@@ -45,6 +45,20 @@ app.post('/api/signup', async (req, res) => {
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'All fields are required!!!' });
     }
+<<<<<<< Updated upstream
+=======
+// current frontend signup endpoint code:
+
+//        app.use(cors(corsOptions));
+//        const handleSignUp = async () => {
+//        try {
+//        const response = await axios.post('/api/signup', { name, email, password });
+//        console.log('User signed up:', response.data.user);
+//        } catch (error) {
+//        console.error('Error signing up:', error.response.data.message);
+//        }
+//        };
+>>>>>>> Stashed changes
 
     const hashedPassword = await hashPassword(password);
 
