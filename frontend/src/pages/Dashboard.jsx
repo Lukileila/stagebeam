@@ -1,12 +1,8 @@
-import { useEffect, useState } from 'react';
 import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 import logo from '../assets/images/LogoWOBG.png';
 import backgroundDashboard from '../assets/images/backgroundDashboard.png';
 import { LogOutButton } from '../components/LogOutButton.jsx';
 import { useUserContext } from '../context/UserContext';
-
-// Eventually delete this when fetching from backend
-import getShowsData from '../data/FakeUserData/get_shows.json';
 
 export const Dashboard = () => {
   const { loadingUser, user } = useUserContext();
@@ -14,8 +10,8 @@ export const Dashboard = () => {
 
   const setupShow = (show) => {
     console.log(show);
-    localStorage.setItem('activeScenes', JSON.stringify(show));
-    localStorage.setItem('activeObjects', JSON.stringify(show.aOs));
+    localStorage.setItem('activeScenes', JSON.stringify(show.scenes));
+    localStorage.setItem('activeObjects', JSON.stringify(show.scenes[0].aOs));
     navigate('/controller');
   };
 
@@ -49,7 +45,7 @@ export const Dashboard = () => {
           <img src={logo} alt='Logo' className='max-w-32 block' />
         </NavLink>
         <div className='flex gap-4 items-center'>
-          <div className='text-xl'>Welcome back {user.username}</div>
+          <div className='text-xl'>Welcome back {user.name}</div>
           <LogOutButton />
         </div>
       </div>
@@ -71,12 +67,12 @@ export const Dashboard = () => {
                 >
                   <div className='h-full'>
                     <img
-                      src={show.thumbnail}
-                      alt={`Card ${show.name}`}
+                      src={show.scenes[0].thumbnail}
+                      alt={`Card ${show.showname}`}
                       className='w-full h-4/5 p-4 object-cover mb-2 bg-black rounded'
                     />
                     <p className='text-black grow text-center font-bold mt-6 text-xl'>
-                      {show.name}
+                      {show.showname}
                     </p>
                   </div>
                 </div>

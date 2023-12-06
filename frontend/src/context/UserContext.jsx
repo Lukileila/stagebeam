@@ -21,11 +21,7 @@ const UserContext = ({ children }) => {
         }
       );
 
-      const parsedUser = {
-        ...userData.data,
-        shows: JSON.parse(userData.data.shows),
-      };
-      setUser(parsedUser);
+      setUser(userData.data);
       setLoadingUser(false);
     } catch (error) {
       console.error('Error sending token', error);

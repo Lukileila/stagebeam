@@ -116,7 +116,7 @@ app.post('/api/login', async (req, res) => {
     return res.sendStatus(200);
   } catch (error) {
     console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json(error);
   }
 });
 
@@ -125,33 +125,24 @@ app.get('/api/user', verifyToken, async (req, res) => {
   try {
     const { userId, email } = req.user;
 
-    const {
-      rows: [user],
-    } = await pool.query(
-      `SELECT users.id, email, users.name as username, shows.name as showname, scenes as shows FROM users JOIN shows ON users.id = shows.userId WHERE users.id=$1 OR email=$2;`,
+    const { rows: showsFromUser } = await pool.query(
+      `SELECT shows.id as showId, shows.name as showname, array_agg(to_json(scenes.scenes)) as scenes FROM shows JOIN scenes ON scenes.showId=shows.id JOIN users ON users.id=shows.userId WHERE users.id=$1 OR email=$2 GROUP BY shows.id;`,
       [userId, email]
     );
 
-    return res.json(user);
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
-});
-
-app.get('/user/:id', async (req, res) => {
-  try {
-    console.log('sup');
     const {
       rows: [user],
     } = await pool.query(
-      `SELECT shows.id as showId, shows.name as showname, array_agg(to_json(scenes.*)) as scenes FROM shows JOIN scenes ON scenes.showId=shows.id GROUP BY shows.id;`
+      `SELECT id, name, email FROM users WHERE users.id=$1 OR email=$2;`,
+      [userId, email]
     );
 
-    /*
-    `SELECT users.id as userid, email, users.name as username, array_agg(to_json(shows.*)) as shows FROM users JOIN shows ON users.id = shows.userId WHERE users.id=$1 GROUP BY users.id;`,
-    `SELECT users.id as userid, email, users.name as username, array_agg(to_json(shows.* )) as shows FROM users JOIN shows ON users.id = shows.userId JOIN scenes ON scenes.showId=shows.id WHERE users.id=$1 GROUP BY users.id;`
-    */
+    const parseShows = showsFromUser.map((show) => ({
+      ...show,
+      scenes: show.scenes.map((scene) => JSON.parse(scene)).flat(1),
+    }));
+
+    user.shows = parseShows;
 
     return res.json(user);
   } catch (error) {
@@ -159,6 +150,34 @@ app.get('/user/:id', async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+// app.get('/user/:id', async (req, res) => {
+//   try {
+//     const { rows: showsFromUser } = await pool.query(
+//       `SELECT shows.id as showId, shows.name as showname, array_agg(to_json(scenes.scenes)) as scenes FROM shows JOIN scenes ON scenes.showId=shows.id JOIN users ON users.id=shows.userId WHERE users.id=$1 GROUP BY shows.id;`,
+//       [req.params.id]
+//     );
+
+//     const {
+//       rows: [user],
+//     } = await pool.query(
+//       `SELECT id, name, email FROM users WHERE users.id=$1;`,
+//       [req.params.id]
+//     );
+
+//     const parseShows = showsFromUser.map((show) => ({
+//       ...show,
+//       scenes: show.scenes.map((scene) => JSON.parse(scene)).flat(1),
+//     }));
+
+//     user.shows = parseShows;
+
+//     return res.json(user);
+//   } catch (error) {
+//     console.error('Error executing query', error);
+//     res.status(500).json(error);
+//   }
+// });
 
 ///
 
@@ -274,4 +293,18 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-// '[{"templateId":1,"name":"spotlight","thumbnail":"https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png","position":{"rx":0.06486518712831443,"ry":0.22723900370959194},"size":0.12,"opacity":0.9,"edgeHardness":0.27,"color":"#ffffff","controls":[{"type":"range","property":"size","label":"Size"},{"type":"range","property":"opacity","label":"Opacity"},{"type":"range","property":"edgeHardness","label":"edge Hardness"},{"type":"color","property":"color","label":"Color"}],"elements":[{"css":{"backgroundColor":"#FFFEF5","aspectRatio":"1","borderRadius":"50%","translate":"-50% -50%"},"size":1}],"id":"spotlight_812acbe0-afae-4cd5-b9d4-7d40cc23edcc"},{"templateId":1,"name":"spotlight","thumbnail":"https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png","position":{"rx":0.49030450270520026,"ry":0.23232644409114997},"size":0.25,"opacity":0.9,"edgeHardness":0.34,"color":"#ffffff","controls":[{"type":"range","property":"size","label":"Size"},{"type":"range","property":"opacity","label":"Opacity"},{"type":"range","property":"edgeHardness","label":"edge Hardness"},{"type":"color","property":"color","label":"Color"}],"elements":[{"css":{"backgroundColor":"#FFFEF5","aspectRatio":"1","borderRadius":"50%","translate":"-50% -50%"},"size":1}],"id":"spotlight_a271993a-f945-4aa8-a076-951e957a48b9"},{"templateId":1,"name":"spotlight","thumbnail":"https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png","position":{"rx":0.9090665196071125,"ry":0.24250132485426604},"size":0.12,"opacity":0.9,"edgeHardness":0.27,"color":"#ffffff","controls":[{"type":"range","property":"size","label":"Size"},{"type":"range","property":"opacity","label":"Opacity"},{"type":"range","property":"edgeHardness","label":"edge Hardness"},{"type":"color","property":"color","label":"Color"}],"elements":[{"css":{"backgroundColor":"#FFFEF5","aspectRatio":"1","borderRadius":"50%","translate":"-50% -50%"},"size":1}],"id":"spotlight_72b779d5-972d-4044-ac3f-6db9a9c96c23"},{"templateId":1,"name":"spotlight","thumbnail":"https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png","position":{"rx":0.2518295500275737,"ry":0.21536830948595653},"size":0.22,"opacity":0.9,"edgeHardness":0.27,"color":"#ffffff","controls":[{"type":"range","property":"size","label":"Size"},{"type":"range","property":"opacity","label":"Opacity"},{"type":"range","property":"edgeHardness","label":"edge Hardness"},{"type":"color","property":"color","label":"Color"}],"elements":[{"css":{"backgroundColor":"#FFFEF5","aspectRatio":"1","borderRadius":"50%","translate":"-50% -50%"},"size":1}],"id":"spotlight_756a0beb-8c4c-4e89-b871-f4972044d139"},{"templateId":1,"name":"spotlight","thumbnail":"https://images.ctfassets.net/vu8gu00g7wzj/6KcbZlBdfZjNksZlPxcrHl/47fc17619798e6d316a48d0b33f0688d/spotlight.png","position":{"rx":0.7268716557614058,"ry":0.23910969793322734},"size":0.22,"opacity":0.9,"edgeHardness":0.27,"color":"#ffffff","controls":[{"type":"range","property":"size","label":"Size"},{"type":"range","property":"opacity","label":"Opacity"},{"type":"range","property":"edgeHardness","label":"edge Hardness"},{"type":"color","property":"color","label":"Color"}],"elements":[{"css":{"backgroundColor":"#FFFEF5","aspectRatio":"1","borderRadius":"50%","translate":"-50% -50%"},"size":1}],"id":"spotlight_92acf7a2-f8c4-421a-89b6-02b0b5db2627"}]'
+/*
+CREATE TABLE scenes (
+  id SERIAL PRIMARY KEY,
+  scenes TEXT,
+  showId INT,
+  FOREIGN KEY (showId) REFERENCES shows(id)
+);
+
+CREATE TABLE shows (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  userId INT,
+  FOREIGN KEY (userId) REFERENCES users(id)
+);
+*/
