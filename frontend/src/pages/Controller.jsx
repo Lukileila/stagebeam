@@ -36,7 +36,7 @@ export const Controller = () => {
   };
 
   useEffect(() => {
-    setSelectedScene(activeScenes[0].id);
+    setSelectedScene(activeScenes.id);
   }, []);
 
   //copying active Objects to Scene

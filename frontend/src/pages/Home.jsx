@@ -60,7 +60,7 @@ export const Home = () => {
             {user ? (
               <>
                 <div className='text-yellow-500 text-xl'>
-                  Welcome back {user.name}
+                  Welcome back {user.username}
                 </div>
                 <LogOutButton />
               </>

@@ -5,7 +5,7 @@ import { useUserContext } from '../context/UserContext';
 
 export const LogInPage = () => {
   const navigate = useNavigate();
-  const { setToken, loadingUser, user } = useUserContext();
+  const { setToken, loadingUser, user, setUser } = useUserContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
