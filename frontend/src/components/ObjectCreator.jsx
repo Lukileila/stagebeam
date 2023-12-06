@@ -1,3 +1,5 @@
+import './Animations.css';
+
 export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions, selected, setSelected}) => {
 
 
@@ -20,12 +22,14 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
       aO = activeObjects.filter(object=>!(object.id===elId)).map(object=>object)
     }
     setActiveObjects(aO);
+    setActiveScenes
   };
 
   
   return (<>
   
     {activeObjects.length>0 && activeObjects.map((x,i)=>{
+      {console.log("x.css",x.css)}
       return (
           
           <div key={x.id} id={x.id} draggable onDragStart={startDrag} onDragEnd={(e) => stopDrag(e, x.id)}
@@ -33,6 +37,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
             style={{
               top: x.position.ry*100 + '%',
               left: x.position.rx*100 + '%',
+              animation:x.css && x.css.animation ? x.css.animation : "garbage",
             }}>
             
             {x.elements.length>0 && x.elements.map((element,j)=>{ 
@@ -52,6 +57,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
                     background: elementBackground,
                     translate:element.css.translate,
                     opacity: x.opacity,
+                    animation: element.css.animation
                   }}
                 ></div>
               )
