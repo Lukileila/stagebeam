@@ -1,6 +1,9 @@
 import './Animations.css';
 
-export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions, selected, setSelected}) => {
+export const ObjectCreator = ({
+  activeObjects, setActiveObjects,
+  stageDimensions,
+  selected, setSelected}) => {
 
 
   const startDrag = (e) => {
@@ -22,7 +25,6 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
       aO = activeObjects.filter(object=>!(object.id===elId)).map(object=>object)
     }
     setActiveObjects(aO);
-    setActiveScenes
   };
 
   

@@ -21,7 +21,7 @@ const UserContext = ({ children }) => {
         }
       );
 
-      setUser(userData.data.user);
+      setUser(userData.data);
       setLoadingUser(false);
     } catch (error) {
       console.error('Error sending token', error);
