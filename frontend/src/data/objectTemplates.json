@@ -63,7 +63,11 @@
       "label":"Opacity"},
       {"type":"range",
       "property":"edgeHardness",
-      "label":"edge Hardness"}
+      "label":"edge Hardness"},
+      {"type":"color",
+      "property":"color",
+      "label":"Color"}
+
         ],
     "elements":[  
       {"css": {         
@@ -95,7 +99,14 @@
       "label":"Size"},
       {"type":"range",
       "property":"opacity",
-      "label":"Opacity"}
+      "label":"Opacity"},
+      {"type":"range",
+      "property":"edgeHardness",
+      "label":"edge Hardness"},
+      {"type":"color",
+      "property":"color",
+      "label":"Color"}
+
         ],
     "elements":[  
       {"css": {         
@@ -130,7 +141,11 @@
       "label":"Opacity"},
       {"type":"range",
       "property":"edgeHardness",
-      "label":"edge Hardness"}
+      "label":"edge Hardness"},
+      {"type":"color",
+      "property":"color",
+      "label":"Color"}
+
         ],
     "elements":[  
       {"css": {         
@@ -166,6 +181,7 @@
       {"type":"range",
       "property":"edgeHardness",
       "label":"edge Hardness"}
+
         ],
     "elements":[  
       {"css": {         
@@ -194,64 +210,6 @@
           "translate": "-28.25% -37.5%"
       },
       "size":0.7}
-    ]
-  },
-  
-  {
-    "templateId": 3,
-    "name": "placeholder",
-    "thumbnail": "https://i0.wp.com/monroedemocrats.com/wp-content/uploads/2017/09/placeholder-photo.png",
-    "position": {
-      "rx":0.5,
-      "ry":0.5
-    }, 
-    "elements":[  
-      {"css": {         
-                "backgroundColor":"#FF0000E5", 
-                "aspectRatio":"1",
-                "height":"300px",
-                "borderRadius": "50%", 
-                "translate": "-50% -75%"
-      },
-      "size":0.2},
-      {"css": {          
-                "backgroundColor":"#00FF00E5",
-                "aspectRatio":"1",
-                "width":"300",
-                "height":"300px",
-                "borderRadius": "50%", 
-                "translate": "-71.75% -37.5%"
-      },
-      "size":0.2},
-      {"css": {         
-          "backgroundColor":"#0000FFE5", 
-          "aspectRatio":"1",
-          "width":"300px",
-          "height":"300px",
-          "borderRadius": "50%", 
-          "translate": "-28.25% -37.5%"
-      },
-      "size":0.2}
-    ]
-  },
-
-  {
-    "templateId": 4,
-    "name": "mrTwister",
-    "thumbnail": "https://i.pinimg.com/originals/9a/f8/72/9af87257f744794b3de07d6bb95c7198.png",
-    "position": {
-      "rx":0.2,
-      "ry":0.2
-    },
-    "elements":[  
-      {"css": {         
-              "backgroundColor":"#FFFEF5E5", 
-              "width":"3000px",
-              "height":"10px",
-              "borderRadius": "5px",
-              "translate": "-5px -50%"
-              }
-      }
     ]
   }
 ]
