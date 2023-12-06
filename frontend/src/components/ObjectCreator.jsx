@@ -29,7 +29,7 @@ export const ObjectCreator = ({activeObjects, setActiveObjects, stageDimensions,
   return (<>
   
     {activeObjects.length>0 && activeObjects.map((x,i)=>{
-      {console.log("x.css",x.css)}
+      
       return (
           
           <div key={x.id} id={x.id} draggable onDragStart={startDrag} onDragEnd={(e) => stopDrag(e, x.id)}
