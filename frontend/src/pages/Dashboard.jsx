@@ -57,8 +57,8 @@ export const Dashboard = () => {
         <NavLink to='/'>
           <img src={logo} alt='Logo' className='max-w-32 block' />
         </NavLink>
-        <div className='flex items-center'>
-          <div className='text-xl mr-10'>Welcome back {user.name}</div>
+        <div className='flex gap-4 items-center'>
+          <div className='text-xl'>Welcome back {user.name}</div>
           <LogOutButton />
         </div>
       </div>
@@ -88,19 +88,21 @@ export const Dashboard = () => {
               </div>
             </div>
           ))}
-          {/* {savedShows.length > 0 ? (
-            savedShows.map((show) => (
+          {/* {user.shows.length ? user.shows.map((show) => (
               <div
                 key={show.id}
-                className='card bg-yellow-500 m-4 p-10 w-64 h-64 flex flex-col items-center'
+                className='bg-yellow-500 m-4 p-4 pb-10 w-64 aspect-square flex flex-col items-center justify-between rounded hover:cursor-pointer'
+                onClick={() => setupShow(show)}
               >
-                <img
-                  src={show.thumbnailURL}
-                  alt={`Card ${show.id}`}
-                  className='w-full h-full object-cover mb-2'
-                />
-                <div className='text-black text-center font-bold'>
-                  {show.name}
+                <div className='h-full'>
+                  <img
+                    src={show.scenes[0].thumbnail}
+                    alt={`Card ${show.name}`}
+                    className='w-full h-4/5 p-4 object-cover mb-2 bg-black rounded'
+                  />
+                  <p className='text-black grow text-center font-bold mt-6 text-xl'>
+                    {show.name}
+                  </p>
                 </div>
               </div>
             ))
