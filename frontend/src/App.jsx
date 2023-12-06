@@ -21,13 +21,6 @@ import { Controller } from "./pages/Controller.jsx";
 import { Beamer } from "./pages/Beamer.jsx";
 import { NotFound } from './pages/NotFound.jsx';
 
-
-// Imports for state management
-import {useState, useEffect} from 'react';
-
-
-/* const { DEV, BACKEND_URL_DEPLOY, BACKEND_URL_DEV } = import.meta.env;   // Maybe implement later */
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
@@ -42,12 +35,9 @@ const router = createBrowserRouter(
       <Route path="share" element={<Share />}/>  
       <Route path="watchtutorialvideo" element={<WatchTutorialVideo />}/>   
       <Route path="signuppage" element={<SignUpPage />}/>
-     
-      
     </Route>
   )
 );
-
 
 const App = () => {
   return (
