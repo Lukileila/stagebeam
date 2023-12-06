@@ -29,7 +29,7 @@ export const Timeline = ({
     setSelectedPosition(+e.target.dataset.position);
   };
 
-  const KeyPressElement=() =>{
+/*   const KeyPressElement=() =>{
     const handleKeyPress=(e)=> {
       switch (e.key) {
         case "ArrowDown":
@@ -52,7 +52,7 @@ export const Timeline = ({
             <input type="text" onKeyDown={(e) => handleKeyPress(e)} />
         </div>
     )
-}
+} */
 
   const addScene = async () => {
     try {
@@ -173,7 +173,7 @@ export const Timeline = ({
           </div>
         </div>
       </div>
-    {KeyPressElement}
+  {/*   {KeyPressElement} */}
     </div>
   );
 };
@@ -227,4 +227,4 @@ var activeObjectsTestdata = [
     ],
     id: 'spotlight_3bcbc432-7e5b-436e-9d8d-5ad0dd6cf39b',
   },
-];}
+];
